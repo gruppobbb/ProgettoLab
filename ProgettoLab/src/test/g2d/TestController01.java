@@ -24,7 +24,8 @@ public class TestController01 {
 		GameCanvas gameCanvas = new GameCanvas(ship, mobsManager);
 		frame.setSize(800, 600);
 		frame.addKeyListener(control);
-		frame.setFocusable(true);		
+		frame.setFocusable(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setVisible(true);
 		frame.getContentPane().add(gameCanvas);

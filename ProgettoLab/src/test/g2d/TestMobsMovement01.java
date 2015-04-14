@@ -8,6 +8,7 @@ import model.Coordinate;
 import model.MobsManager;
 import model.mobs.Mob2D;
 import model.movement.MobMover2D;
+import model.movement.Mover;
 import model.movement.Mover2D;
 import model.ships.Ship2D;
 import view2d.CircleMobDrawer;
@@ -17,7 +18,7 @@ import view2d.SquareShipDrawer;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 
-public class TestMobsManager01 {
+public class TestMobsMovement01 {
 	
 	public static void main(String[] args) {
 		
@@ -33,6 +34,7 @@ public class TestMobsManager01 {
 		mobsManager.addMob(new Mob2D(new Coordinate(200, 370, 0),	10,	new Dimension(30, 30), mobsDrawer, mobsMover));
 		mobsManager.addMob(new Mob2D(new Coordinate(100, 500, 0),	10,	new Dimension(40, 40), mobsDrawer, mobsMover));
 		
+		(new Thread(new Mover(mobsManager))).start();
 				
 		JFrame frame = new JFrame();	
 		GameCanvas gameCanvas = new GameCanvas(ship, mobsManager);

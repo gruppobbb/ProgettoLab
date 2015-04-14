@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import view2d.Drawable2D;
 import view2d.Drawer2D;
 import model.Coordinate;
+import model.movement.Moveable;
 
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
@@ -38,5 +39,6 @@ public class Ship2D extends Ship implements Drawable2D {
 	public void draw(Graphics g){
 		shipDrawer.draw(g, getCoordinate(), getDimension());
 	}
+
 	
 }
