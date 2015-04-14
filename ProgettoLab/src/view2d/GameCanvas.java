@@ -7,8 +7,14 @@ import java.util.TimerTask;
 
 import model.ships.Ship2D;
 
+/**
+ * Canvas per il disegno di tutta l'area di gioco.
+ * @author Max
+ *
+ */
 public class GameCanvas extends Canvas {
 	
+	private static final long serialVersionUID = 2871408762813611270L;
 	private Ship2D ship;
 	private Timer updateTimer = new Timer();
 

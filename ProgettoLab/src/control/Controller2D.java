@@ -7,6 +7,7 @@ import java.util.TimerTask;
 
 import model.Coordinate;
 import model.ships.Ship;
+import model.ships.Ship2D;
 
 
 /**
@@ -18,18 +19,15 @@ import model.ships.Ship;
 public class Controller2D implements KeyListener{
 	
 		
-	private Ship userShip;
+	private Ship2D userShip;
 	private int directionPressed;
 	private Timer timer;
 	private boolean started = false;
 	private boolean debug = false;
 
-	public Controller2D(Ship userShip) {
+	public Controller2D(Ship2D userShip) {
 		this.userShip = userShip;
-
 	}
-	
-
 	
 
 	@Override
@@ -64,7 +62,7 @@ public class Controller2D implements KeyListener{
 	 */
 	public void moveXAxis() {
 		Coordinate coo= userShip.getCoordinate();
-		int newX = coo.getX() + userShip.SHIFT_AMOUNT*directionPressed;
+		int newX = coo.getX() + Ship.SHIFT_AMOUNT*directionPressed;
 		userShip.setCoordinate(new Coordinate(newX, coo.getY(), 0));
 		if(debug){
 			System.out.println(coo);

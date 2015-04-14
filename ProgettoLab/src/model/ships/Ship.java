@@ -2,6 +2,11 @@ package model.ships;
 
 import model.Coordinate;
 
+/**
+ * Modello di una generica ship. Contiene metodi e attributi comuni a tutte le ship.
+ * @author Max
+ *
+ */
 public class Ship {
 	
 	private int ammo = 3;

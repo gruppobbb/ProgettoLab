@@ -6,6 +6,11 @@ import java.awt.Graphics;
 import model.Coordinate;
 import model.ships.ShipDrawer2D;
 
+/**
+ * Drawer che rappresenta la ship come un quadrato.
+ * @author Max
+ *
+ */
 public class SquareShipDrawer implements ShipDrawer2D {
 	
 	@Override

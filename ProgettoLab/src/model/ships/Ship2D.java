@@ -5,6 +5,11 @@ import java.awt.Graphics;
 
 import model.Coordinate;
 
+/**
+ * Modello di una ship che deve essere rappresentata in 2D.
+ * @author Max
+ *
+ */
 public class Ship2D {
 
 	private Ship ship;
@@ -44,6 +49,10 @@ public class Ship2D {
 		this.dimension = dimension;
 	}
 
+	/**
+	 * Disegna la ship.
+	 * @param g
+	 */
 	public void draw(Graphics g){
 		shipDrawer.draw(g, ship.getCoordinate(), getDimension());
 	}
