@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import model.Coordinate;
 import model.Drawable2D;
-import model.ships.ShipDrawer2D;
+import model.Drawer2D;
 
 /**
  * Modello di un mob che deve essere rappresentato in 2D.
@@ -16,9 +16,9 @@ public class Mob2D implements Drawable2D {
 	
 	private Mob mob;
 	private Dimension dimension;
-	private MobDrawer2D mobDrawer;
+	private Drawer2D mobDrawer;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, MobDrawer2D mobDrawer) {
+	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer) {
 		super();
 		this.mobDrawer = mobDrawer;
 		this.mob = new Mob(coordinates, shiftAmount);

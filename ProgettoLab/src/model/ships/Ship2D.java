@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import model.Coordinate;
 import model.Drawable2D;
+import model.Drawer2D;
 
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
@@ -14,10 +15,10 @@ import model.Drawable2D;
 public class Ship2D implements Drawable2D {
 
 	private Ship ship;
-	private ShipDrawer2D shipDrawer;
+	private Drawer2D shipDrawer;
 	private Dimension dimension;
 	
-	public Ship2D(Coordinate coordinates, ShipDrawer2D shipDrawer) {
+	public Ship2D(Coordinate coordinates, Drawer2D shipDrawer) {
 		this.shipDrawer = shipDrawer;
 		ship = new Ship(coordinates);
 		

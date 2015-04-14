@@ -4,14 +4,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import model.Coordinate;
-import model.ships.ShipDrawer2D;
+import model.Drawer2D;
 
 /**
  * Drawer che rappresenta la ship come un quadrato.
  * @author Max
  *
  */
-public class SquareShipDrawer implements ShipDrawer2D {
+public class SquareShipDrawer implements Drawer2D {
 	
 	@Override
 	public void draw(Graphics g, Coordinate shipCoordinates, Dimension dimensions) {
