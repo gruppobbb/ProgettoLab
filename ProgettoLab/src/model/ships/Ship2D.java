@@ -4,13 +4,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import model.Coordinate;
+import model.Drawable2D;
 
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
  * @author Max
  *
  */
-public class Ship2D {
+public class Ship2D implements Drawable2D {
 
 	private Ship ship;
 	private ShipDrawer2D shipDrawer;
