@@ -1,7 +1,9 @@
-package model;
+package view2d;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+
+import model.Coordinate;
 
 /**
  * Interfaccia che astrae sul modo in cui viene rappresentato un elemento in 2D.

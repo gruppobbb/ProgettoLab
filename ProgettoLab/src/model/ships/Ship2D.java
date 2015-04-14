@@ -3,44 +3,24 @@ package model.ships;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import view2d.Drawable2D;
+import view2d.Drawer2D;
 import model.Coordinate;
-import model.Drawable2D;
-import model.Drawer2D;
 
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
  * @author Max
  *
  */
-public class Ship2D implements Drawable2D {
+public class Ship2D extends Ship implements Drawable2D {
 
-	private Ship ship;
 	private Drawer2D shipDrawer;
 	private Dimension dimension;
 	
-	public Ship2D(Coordinate coordinates, Drawer2D shipDrawer) {
+	public Ship2D(Coordinate coordinates, Dimension dimensions, Drawer2D shipDrawer) {
+		super(coordinates);
 		this.shipDrawer = shipDrawer;
-		ship = new Ship(coordinates);
-		
-		//default dimensions
-		setDimension(new Dimension(50, 50));
-			
-	}
-
-	public int getAmmo() {
-		return ship.getAmmo();
-	}
-	
-	public void setAmmo(int ammo) {
-		ship.setAmmo(ammo);
-	}
-
-	public Coordinate getCoordinate() {
-		return ship.getCoordinate();
-	}
-
-	public void setCoordinate(Coordinate coordinate) {
-		ship.setCoordinate(coordinate);
+		this.dimension = dimensions;			
 	}
 	
 	public Dimension getDimension() {
@@ -56,7 +36,7 @@ public class Ship2D implements Drawable2D {
 	 * @param g
 	 */
 	public void draw(Graphics g){
-		shipDrawer.draw(g, ship.getCoordinate(), getDimension());
+		shipDrawer.draw(g, getCoordinate(), getDimension());
 	}
 	
 }

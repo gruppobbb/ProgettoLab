@@ -1,4 +1,4 @@
-package model;
+package view2d;
 
 import java.awt.Graphics;
 

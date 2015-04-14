@@ -1,5 +1,7 @@
 package test;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import model.Coordinate;
@@ -13,7 +15,7 @@ public class TestController {
 	
 	public static void main(String[] args) {
 		
-		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new SquareShipDrawer());
+		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new Dimension(50, 50), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship);
 		
 		JFrame frame = new JFrame();	

@@ -3,43 +3,23 @@ package model.mobs;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import view2d.Drawable2D;
+import view2d.Drawer2D;
 import model.Coordinate;
-import model.Drawable2D;
-import model.Drawer2D;
 
 /**
  * Modello di un mob che deve essere rappresentato in 2D.
  * @author Max
  *
  */
-public class Mob2D implements Drawable2D {
+public class Mob2D extends Mob implements Drawable2D {
 	
-	private Mob mob;
 	private Dimension dimension;
 	private Drawer2D mobDrawer;
 	
 	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer) {
-		super();
+		super(coordinates, shiftAmount);
 		this.mobDrawer = mobDrawer;
-		this.mob = new Mob(coordinates, shiftAmount);
-		
-		mob.setShiftAmount(shiftAmount);
-	}
-
-	public Coordinate getCoordinate() {
-		return mob.getCoordinate();
-	}
-
-	public void setCoordinate(Coordinate coordinate) {
-		mob.setCoordinate(coordinate);
-	}
-
-	public int getShiftAmount() {
-		return mob.getShiftAmount();
-	}
-
-	public void setShiftAmount(int shiftAmount) {
-		mob.setShiftAmount(shiftAmount);
 	}
 	
 	public Dimension getDimension() {
@@ -53,7 +33,6 @@ public class Mob2D implements Drawable2D {
 	@Override
 	public void draw(Graphics g) {
 		mobDrawer.draw(g, getCoordinate(), getDimension());
-		
 	}
 	
 

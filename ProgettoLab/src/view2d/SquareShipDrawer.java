@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import model.Coordinate;
-import model.Drawer2D;
 
 /**
  * Drawer che rappresenta la ship come un quadrato.
