@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import model.Coordinate;
-import model.Ship;
+import model.ships.Ship;
 
 
 /**

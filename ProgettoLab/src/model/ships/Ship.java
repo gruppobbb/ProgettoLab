@@ -1,4 +1,6 @@
-package model;
+package model.ships;
+
+import model.Coordinate;
 
 public class Ship {
 	
@@ -7,7 +9,6 @@ public class Ship {
 	public static final int SHIFT_AMOUNT = 10;
 	
 	public Ship(Coordinate coordinate) {
-		super();
 		this.coordinate = coordinate;
 	}
 
@@ -27,6 +28,4 @@ public class Ship {
 		this.coordinate = coordinate;
 	}
 	
-	
-
 }

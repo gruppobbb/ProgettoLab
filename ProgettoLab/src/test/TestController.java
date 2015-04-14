@@ -1,7 +1,7 @@
 package test;
 
 import model.Coordinate;
-import model.Ship;
+import model.ships.Ship;
 import control.Controller2D;
 
 public class TestController {
