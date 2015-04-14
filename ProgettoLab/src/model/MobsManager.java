@@ -14,7 +14,7 @@ import model.mobs.Mob;
  */
 
 //Questa classe dovrebbe gestire tutte le concorrenze per l'accesso alla lista dei mob.
-public class MobManager {
+public class MobsManager {
 	
 	private List<Mob> mobs = Collections.synchronizedList(new LinkedList<Mob>());
 	

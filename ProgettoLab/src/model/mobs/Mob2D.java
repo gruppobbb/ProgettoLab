@@ -17,9 +17,10 @@ public class Mob2D extends Mob implements Drawable2D {
 	private Dimension dimension;
 	private Drawer2D mobDrawer;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer) {
+	public Mob2D(Coordinate coordinates, int shiftAmount, Dimension dimension, Drawer2D mobDrawer) {
 		super(coordinates, shiftAmount);
 		this.mobDrawer = mobDrawer;
+		this.dimension = dimension;
 	}
 	
 	public Dimension getDimension() {
