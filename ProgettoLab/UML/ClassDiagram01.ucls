@@ -89,38 +89,26 @@
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="15">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="16">    
+  <association id="15">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="17" name="INITIAL_SHIP_2D_COORDINATE"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="16" name="INITIAL_SHIP_2D_COORDINATE"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="20" name="ship"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="22">    
+  <association id="18">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="23" name="userShip"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
+      <attribute id="19" name="userShip"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="25">    
+  <association id="21">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="26" name="ship"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
+      <attribute id="22" name="ship"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

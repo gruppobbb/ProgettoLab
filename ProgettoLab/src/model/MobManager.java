@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,5 +18,38 @@ public class MobManager {
 	
 	private List<Mob> mobs = Collections.synchronizedList(new LinkedList<Mob>());
 	
+	/**
+	 * Aggiunge un nuovo mob alla lista. 
+	 * NOTA: deve rimanere sincronizzato.
+	 * @param newMob
+	 */
+	public void addMob(Mob newMob) {
+		synchronized(mobs) {
+			mobs.add(newMob);
+		}
+	}
+	
+	/**
+	 * Restituisce una copia della lista dei mob.
+	 * NOTA: deve rimanere sincronizzato.
+	 * @return
+	 */
+	public ArrayList<Mob> getMobsList() {
+		ArrayList<Mob> copiedList;
+		synchronized(mobs) {
+			copiedList = new ArrayList<Mob>(mobs);
+		}
+		return copiedList;
+	}
+	
+	/**
+	 * Elimina il mob specificato tramite reference dalla lista.
+	 * @param mobToRemove
+	 */
+	public void removeMob(Mob mobToRemove) {
+		synchronized (mobs) {
+			mobs.remove(mobToRemove);
+		}
+	}	
 
 }
