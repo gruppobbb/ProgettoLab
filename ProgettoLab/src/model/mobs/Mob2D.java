@@ -37,7 +37,7 @@ public class Mob2D extends Mob implements Drawable2D, Moveable {
 	
 	@Override
 	public void draw(Graphics g) {
-		mobDrawer.draw(g, getCoordinate(), getDimension());
+		mobDrawer.draw(g, coordinate, dimension);
 	}
 	
 	@Override

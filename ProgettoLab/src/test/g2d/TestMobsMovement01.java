@@ -22,7 +22,7 @@ public class TestMobsMovement01 {
 	
 	public static void main(String[] args) {
 		
-		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new Dimension(50, 50), new SquareShipDrawer());
+		Ship2D ship = new Ship2D(new Coordinate(40, 300, 0), new Dimension(50, 50), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship);
 		MobsManager mobsManager = new MobsManager();
 		
@@ -30,10 +30,12 @@ public class TestMobsMovement01 {
 		Mover2D mobsMover = new MobMover2D();
 		
 		//istanziamo un po' di mob
-		mobsManager.addMob(new Mob2D(new Coordinate(520, 120, 0),	10, new Dimension(30, 30), mobsDrawer, mobsMover));
-		mobsManager.addMob(new Mob2D(new Coordinate(200, 370, 0),	10,	new Dimension(30, 30), mobsDrawer, mobsMover));
-		mobsManager.addMob(new Mob2D(new Coordinate(100, 500, 0),	10,	new Dimension(40, 40), mobsDrawer, mobsMover));
-		
+		mobsManager.addMob(new Mob2D(new Coordinate(300, 20, 0),	10, new Dimension(30, 30), mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(200, 20, 0),	10,	new Dimension(30, 30), mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(100, 20, 0),	10,	new Dimension(40, 40), mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(400, 20, 0),	10,	new Dimension(40, 40), mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(500, 20, 0),	10,	new Dimension(40, 40), mobsDrawer, mobsMover));
+
 		(new Thread(new Mover(mobsManager))).start();
 				
 		JFrame frame = new JFrame();	

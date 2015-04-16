@@ -9,7 +9,7 @@ import model.Coordinate;
  */
 public class Mob {
 	
-	private Coordinate coordinate;
+	protected Coordinate coordinate;
 	private int shiftAmount;
 	
 	public Mob(Coordinate coordinate, int shiftAmount) {
