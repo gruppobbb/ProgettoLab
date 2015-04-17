@@ -19,7 +19,7 @@ public class TestSpawner {
 	public static void main(String[] args) {
 		
 
-		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new Dimension(50, 50), new SquareShipDrawer());
+		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship);
 		MobsManager mobsManager = new MobsManager();
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());

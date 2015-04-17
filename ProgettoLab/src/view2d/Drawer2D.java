@@ -16,8 +16,13 @@ public interface Drawer2D {
 	 * Disegna usando i parametri passati come argomenti.
 	 * @param g
 	 * @param coordinates
-	 * @param dimensions
 	 */
-	public void draw(Graphics g, Coordinate coordinates, Dimension dimensions);
+	public void draw(Graphics g, Coordinate coordinates);
+	
+	/**
+	 * Ritorna le dimensioni attuali dello sprite.
+	 * @return
+	 */
+	public Dimension getSpriteDimension();
 
 }

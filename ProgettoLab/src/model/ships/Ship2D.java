@@ -21,11 +21,10 @@ public class Ship2D extends Ship implements Drawable2D, Collideable {
 	private Dimension dimension;
 	private CollisionMask collisionMask;
 	
-	public Ship2D(Coordinate coordinates, Dimension dimensions, Drawer2D shipDrawer) {
+	public Ship2D(Coordinate coordinates, Drawer2D shipDrawer) {
 		super(coordinates);
 		this.shipDrawer = shipDrawer;
-		this.dimension = dimensions;	
-		setCollisionMask(coordinates, dimensions);
+		setDimension(shipDrawer.getSpriteDimension());
 	}
 	
 	public Dimension getDimension() {
@@ -42,7 +41,7 @@ public class Ship2D extends Ship implements Drawable2D, Collideable {
 	 * @param g
 	 */
 	public void draw(Graphics g){
-		shipDrawer.draw(g, getCoordinate(), getDimension());
+		shipDrawer.draw(g, getCoordinate());
 	}
 	
 	@Override

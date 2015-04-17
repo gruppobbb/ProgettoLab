@@ -23,12 +23,11 @@ public class Mob2D extends Mob implements Drawable2D, Moveable, Collideable {
 	private Mover2D mobMover;
 	private CollisionMask collisionMask;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, Dimension dimension, Drawer2D mobDrawer, Mover2D mobMover) {
+	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer, Mover2D mobMover) {
 		super(coordinates, shiftAmount);
 		this.mobDrawer = mobDrawer;
-		this.dimension = dimension;
 		this.mobMover = mobMover;
-		setCollisionMask(coordinates, dimension);
+		setDimension(mobDrawer.getSpriteDimension());
 	}
 
 	public Dimension getDimension() {
@@ -42,7 +41,7 @@ public class Mob2D extends Mob implements Drawable2D, Moveable, Collideable {
 	
 	@Override
 	public void draw(Graphics g) {
-		mobDrawer.draw(g, getCoordinate(), getDimension());
+		mobDrawer.draw(g, getCoordinate());
 	}
 	
 	@Override

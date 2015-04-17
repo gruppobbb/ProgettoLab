@@ -32,7 +32,7 @@ public class Spawner {
 			public void run() {
 				Random rand = new Random();
 				int randX = rand.nextInt((700 - 200) +1) +200;
-				Mob newMob = new Mob2D(new Coordinate(randX, 20, 0),	10, new Dimension(30, 30),
+				Mob newMob = new Mob2D(new Coordinate(randX, 20, 0),	10, 
 						new CircleMobDrawer(), 
 							mobMover);
 				manager.addMob(newMob);

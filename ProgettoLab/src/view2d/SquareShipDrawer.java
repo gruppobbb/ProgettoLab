@@ -12,11 +12,18 @@ import model.Coordinate;
  */
 public class SquareShipDrawer implements Drawer2D {
 	
+	private Dimension dimension = new Dimension(50, 50);	//qui le dimensioni sono di default (non ci sono immagini!)
+	
 	@Override
-	public void draw(Graphics g, Coordinate shipCoordinates, Dimension dimensions) {
+	public void draw(Graphics g, Coordinate shipCoordinates) {
 		
-		g.fillRect(shipCoordinates.getX(), shipCoordinates.getY(), (int) dimensions.getWidth(), (int) dimensions.getHeight());
+		g.fillRect(shipCoordinates.getX(), shipCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
 		
+	}
+	
+	@Override
+	public Dimension getSpriteDimension() {
+		return dimension;
 	}
 
 }
