@@ -1,6 +1,7 @@
 package model.mobs;
 
 import model.Coordinate;
+import model.collisions.Collideable;
 
 /**
  * Modello di un generico mob. Contiene metodi e attributi comuni a tutti i mob.
@@ -9,7 +10,7 @@ import model.Coordinate;
  */
 public class Mob {
 	
-	protected Coordinate coordinate;
+	private Coordinate coordinate;
 	private int shiftAmount;
 	
 	public Mob(Coordinate coordinate, int shiftAmount) {

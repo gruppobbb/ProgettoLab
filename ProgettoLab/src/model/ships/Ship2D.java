@@ -24,7 +24,8 @@ public class Ship2D extends Ship implements Drawable2D, Collideable {
 	public Ship2D(Coordinate coordinates, Dimension dimensions, Drawer2D shipDrawer) {
 		super(coordinates);
 		this.shipDrawer = shipDrawer;
-		this.dimension = dimensions;			
+		this.dimension = dimensions;	
+		setCollisionMask(coordinates, dimensions);
 	}
 	
 	public Dimension getDimension() {

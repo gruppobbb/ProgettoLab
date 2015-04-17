@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.Spawner;
+import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
 import view2d.GameCanvas;
@@ -21,10 +22,10 @@ public class TestSpawner {
 		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new Dimension(50, 50), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship);
 		MobsManager mobsManager = new MobsManager();
-		Spawner spawner = new Spawner(mobsManager);
+		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
 		spawner.newMob();
 		
-		(new Thread(new Mover(spawner.getManager()))).start();
+		(new Thread(new Mover(mobsManager))).start();
 		
 		
 		JFrame frame = new JFrame();	
