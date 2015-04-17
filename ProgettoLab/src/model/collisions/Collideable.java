@@ -9,11 +9,8 @@ import model.Coordinate;
  */
 public interface Collideable {
 	
-	/**
-	 * Ritorna la collision mask del Collideable.
-	 * @return
-	 */
-	public CollisionMask getCollisionMask();
+	public Coordinate getCoordinate();
+	public double getCollisionRay();
 	
 
 }

@@ -8,10 +8,11 @@ import model.collisions.Collideable;
  * @author Max
  *
  */
-public class Mob {
+public class Mob implements Collideable {
 	
 	private Coordinate coordinate;
 	private int shiftAmount;
+	private double collisionRay;
 	
 	public Mob(Coordinate coordinate, int shiftAmount) {
 		super();
@@ -34,6 +35,16 @@ public class Mob {
 	public void setShiftAmount(int shiftAmount) {
 		this.shiftAmount = shiftAmount;
 	}
+
+	public double getCollisionRay() {
+		return collisionRay;
+	}
+
+	public void setCollisionRay(double collisionRay) {
+		this.collisionRay = collisionRay;
+	}
+	
+	
 	
 
 }

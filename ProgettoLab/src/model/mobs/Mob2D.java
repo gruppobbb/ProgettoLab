@@ -4,8 +4,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import model.Coordinate;
-import model.collisions.Collideable;
-import model.collisions.CollisionMask;
 import model.movement.Moveable;
 import model.movement.Mover2D;
 import view2d.Drawable2D;
@@ -16,12 +14,11 @@ import view2d.Drawer2D;
  * @author Max
  *
  */
-public class Mob2D extends Mob implements Drawable2D, Moveable, Collideable {
+public class Mob2D extends Mob implements Drawable2D, Moveable {
 	
 	private Dimension dimension;
 	private Drawer2D mobDrawer;
 	private Mover2D mobMover;
-	private CollisionMask collisionMask;
 	
 	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer, Mover2D mobMover) {
 		super(coordinates, shiftAmount);
@@ -36,7 +33,9 @@ public class Mob2D extends Mob implements Drawable2D, Moveable, Collideable {
 	
 	public void setDimension(Dimension dimension) {
 		this.dimension = dimension;
-		setCollisionMask(getCoordinate(), dimension);
+		double halfHeight = (dimension.getHeight()/2);
+		double halfWidth = (dimension.getWidth()/2);
+		setCollisionRay(Math.sqrt(halfHeight * halfHeight + halfWidth * halfWidth));		
 	}
 	
 	@Override
@@ -49,16 +48,5 @@ public class Mob2D extends Mob implements Drawable2D, Moveable, Collideable {
 		mobMover.move(this);		
 	}
 	
-	@Override
-	public CollisionMask getCollisionMask() {
-		return collisionMask;
-	}
-	
-	private void setCollisionMask(Coordinate coordinates, Dimension dimension) {
-		double halfHeight = (dimension.getHeight()/2);
-		double halfWidth = (dimension.getWidth()/2);
-		double collisionRay = Math.sqrt(halfHeight * halfHeight + halfWidth * halfWidth);
-		this.collisionMask = new CollisionMask(coordinates, collisionRay);
-	}	
 
 }
