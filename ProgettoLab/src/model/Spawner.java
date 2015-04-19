@@ -36,6 +36,10 @@ public class Spawner {
 						new CircleMobDrawer(), 
 							mobMover);
 				manager.addMob(newMob);
+				
+				//DEBUG CODE
+				System.out.println(manager.getMobsList().size() + " mobs are currently spawned");
+				//
 			}
 		};
 		timer.scheduleAtFixedRate( spawn, 0, 1000);

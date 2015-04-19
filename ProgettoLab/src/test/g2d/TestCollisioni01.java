@@ -26,8 +26,10 @@ public class TestCollisioni01 {
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
 		spawner.newMob();
 		
+		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirà mai
+		
 		(new Thread(new Mover(mobsManager))).start();
-		(new Thread(new CollisionChecker(mobsManager, ship))).start();
+		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
 		
 		
 		JFrame frame = new JFrame();	
