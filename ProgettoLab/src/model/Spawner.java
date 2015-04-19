@@ -1,14 +1,11 @@
 package model;
 
-import java.awt.Dimension;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import model.mobs.Mob;
 import model.mobs.Mob2D;
-import model.movement.MobMover2D;
-import model.movement.Mover;
 import model.movement.Mover2D;
 import view2d.CircleMobDrawer;
 
@@ -46,9 +43,6 @@ public class Spawner {
 		
 	}
 	
-	
-
-
 	public MobsManager getManager() {
 		return manager;
 	}
