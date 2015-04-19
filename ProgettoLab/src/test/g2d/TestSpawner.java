@@ -23,7 +23,7 @@ public class TestSpawner {
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
-		spawner.newMob();
+		spawner.start();
 		
 		(new Thread(new Mover(mobsManager))).start();
 		

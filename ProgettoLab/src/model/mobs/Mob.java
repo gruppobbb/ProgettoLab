@@ -49,7 +49,4 @@ public class Mob implements Collideable {
 	public String toString() {
 		return "Mob at "+coordinate;
 	}
-	
-	
-
 }

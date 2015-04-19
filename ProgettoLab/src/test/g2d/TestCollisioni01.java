@@ -24,7 +24,7 @@ public class TestCollisioni01 {
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
-		spawner.newMob();
+		spawner.start();
 		
 		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirà mai
 		

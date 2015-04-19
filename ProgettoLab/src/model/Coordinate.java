@@ -50,4 +50,6 @@ public class Coordinate {
 		return String.format("x: %s y: %s z: %s", x,y,z);
 	}
 	
+	
+	
 }
