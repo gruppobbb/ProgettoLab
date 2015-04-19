@@ -14,6 +14,7 @@ import model.ships.Ship2D;
 /**
  * Canvas per il disegno di tutta l'area di gioco.
  * @author Max
+ * @author Jan
  *
  */
 public class GameCanvas extends Canvas {
