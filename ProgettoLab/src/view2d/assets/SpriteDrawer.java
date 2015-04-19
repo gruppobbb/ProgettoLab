@@ -9,9 +9,11 @@ import view2d.Drawer2D;
 public class SpriteDrawer implements Drawer2D{
 	
 	private Sprite sprite;
+	private Dimension spriteDim;
 	
 	public SpriteDrawer(int spriteID) {
 		sprite = Assets.getLoader().getSprite(spriteID);
+		spriteDim = new Dimension(sprite.getWidth(), sprite.getHeight());
 	}
 	
 	@Override
@@ -21,6 +23,6 @@ public class SpriteDrawer implements Drawer2D{
 	
 	@Override
 	public Dimension getSpriteDimension() {
-		return new Dimension(sprite.getWidth(), sprite.getHeight());
+		return spriteDim;
 	}
 }
