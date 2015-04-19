@@ -45,6 +45,11 @@ public class Mob implements Collideable {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Mob at "+coordinate;
+	}
+	
 	
 
 }

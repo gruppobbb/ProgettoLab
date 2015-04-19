@@ -66,8 +66,8 @@ public class RGameCanvas extends Canvas implements Runnable{
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
 		
-		//screen = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		screen = create(width, height, true);
+		screen = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		//screen = create(width, height, false);
 		pixels = ((DataBufferInt)screen.getRaster().getDataBuffer()).getData();
 		
 		//background = create(width, height, false);

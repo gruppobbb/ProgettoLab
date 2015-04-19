@@ -1,5 +1,6 @@
 package model.ships;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -40,9 +41,7 @@ public class Ship2D extends Ship implements Drawable2D {
 	 * @param g
 	 */
 	public void draw(Graphics g){
+		g.setColor(Color.BLACK);
 		shipDrawer.draw(g, getCoordinate());
 	}
-	
-	
-	
 }

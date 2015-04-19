@@ -18,7 +18,7 @@ public class CircleMobDrawer implements Drawer2D {
 	@Override
 	public void draw(Graphics g, Coordinate mobCoordinates) {
 		
-		g.setColor(Color.red);
+		g.setColor(Color.RED);
 		g.fillOval(mobCoordinates.getX(), mobCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
 		
 	}

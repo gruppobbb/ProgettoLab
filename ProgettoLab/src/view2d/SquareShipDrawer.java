@@ -1,5 +1,6 @@
 package view2d;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -16,9 +17,8 @@ public class SquareShipDrawer implements Drawer2D {
 	
 	@Override
 	public void draw(Graphics g, Coordinate shipCoordinates) {
-		
+		g.setColor(Color.BLACK);
 		g.fillRect(shipCoordinates.getX(), shipCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
-		
 	}
 	
 	@Override
