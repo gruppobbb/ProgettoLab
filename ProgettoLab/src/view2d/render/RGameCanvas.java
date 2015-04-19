@@ -3,7 +3,6 @@ package view2d.render;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import control.Controller2D;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
@@ -171,6 +169,9 @@ public class RGameCanvas extends Canvas implements Runnable{
 	//Aggiornamento del frame da mandare a video.
 	private void tick(Graphics2D graphics2d){
 		
+		graphics2d.setColor( bgColor );
+		graphics2d.fillRect(0, 0, screen.getWidth(), screen.getHeight());
+		
 		ArrayList<Mob> mobsToDraw = mobsManager.getMobsList();
 		for (Mob mob : mobsToDraw) {
 			((Mob2D) mob).draw(graphics2d);
@@ -178,7 +179,8 @@ public class RGameCanvas extends Canvas implements Runnable{
 		
 		ship.draw(graphics2d);
 		
-		graphics2d.dispose();
+		//graphics2d.dispose();
+		
 	}
 	
 	
@@ -192,33 +194,14 @@ public class RGameCanvas extends Canvas implements Runnable{
 			return;
 		}
 		
-		//do{
-			g = (Graphics2D)buffer.getDrawGraphics();
-			g.setColor(bgColor);
-			g.fillRect(0, 0, screen.getWidth(), screen.getHeight());
-			//g.drawImage(screen, 0, 0, screen.getWidth(), screen.getHeight(), null);
-			g.drawImage(screen, 0, 0, null);
-			g.dispose();
-	    	g = null;
-    		buffer.show();
-		//}while(!updateScreen());
+		g = (Graphics2D)buffer.getDrawGraphics();
+		g.setColor(bgColor);
+		g.fillRect(0, 0, screen.getWidth(), screen.getHeight());
+		//g.drawImage(screen, 0, 0, screen.getWidth(), screen.getHeight(), null);
+		g.drawImage(screen, 0, 0, null);
+		g.dispose();
+		buffer.show();
 	}
-	
-	private boolean updateScreen() { 
-    	g.dispose();
-    	g = null;
-    	try { 
-    		buffer.show();
-    		Toolkit.getDefaultToolkit().sync(); 
-    		return (!buffer.contentsLost());
- 
-    	} catch (NullPointerException e) {
-    		return true; 
- 
-    	} catch (IllegalStateException e) {
-    		return true; 
-    	} 
-    }
 	
 	// create a hardware accelerated image 
     public final BufferedImage create(final int width, final int height,
