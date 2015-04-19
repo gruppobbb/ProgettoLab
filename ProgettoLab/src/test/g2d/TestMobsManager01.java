@@ -22,7 +22,7 @@ public class TestMobsManager01 {
 	public static void main(String[] args) {
 		
 		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new SquareShipDrawer());
-		Controller2D control = new Controller2D(ship);
+		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 		
 		Drawer2D mobsDrawer = new CircleMobDrawer();

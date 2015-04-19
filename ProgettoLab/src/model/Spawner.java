@@ -38,7 +38,7 @@ public class Spawner {
 				manager.addMob(newMob);
 				
 				//DEBUG CODE
-				System.out.println(manager.getMobsList().size() + " mobs are currently spawned");
+				System.out.println("(" + manager.getMobsList().size() + " mobs are currently spawned)");
 				//
 			}
 		};

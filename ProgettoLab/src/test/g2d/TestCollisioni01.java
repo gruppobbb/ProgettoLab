@@ -21,7 +21,7 @@ public class TestCollisioni01 {
 		
 
 		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new SquareShipDrawer());
-		Controller2D control = new Controller2D(ship);
+		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
 		spawner.newMob();
