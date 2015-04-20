@@ -118,49 +118,57 @@ public class RGameCanvas extends Canvas implements Runnable{
 		long now;
 		boolean needRender = true;
 		
-		while(running){
-			now = System.nanoTime();
-			delta += (now - lastTime )/nsPerUpdate;
-			lastTime = now;
-			
-			if( renderSync ){
-				//Sincronizzazione tra ticks e render.
-				//Se disattivato, si faranno più aggiornamenti per ogni chiamata di render.
-				//Con piu' aggiornamenti si ha che quando serve renderizzare per soddisfare gli FPS
-				//richiesti, si ha già tutto pronto, e non si deve elaborare al momento.
-				needRender = false;
-			}
-			
-			while( delta >= 1){
-				ticks++;
-				tick(screenGraphics);
-				delta -= 1;
-				needRender = true;
-			}
-			
-			if(limitate){
-				//E' inutile tentare di aggiornare troppo frequentemente.
-				//Si introduce quindi una pausa per dimunire il carico alla CPU.
-				//Questa, quando abilitata, deve essere comunque piccola.
-				//Dopotutto non si vuole "notare" a video.
+		while(true){
+			if(running){
+				now = System.nanoTime();
+				delta += (now - lastTime )/nsPerUpdate;
+				lastTime = now;
+				
+				if( renderSync ){
+					//Sincronizzazione tra ticks e render.
+					//Se disattivato, si faranno più aggiornamenti per ogni chiamata di render.
+					//Con piu' aggiornamenti si ha che quando serve renderizzare per soddisfare gli FPS
+					//richiesti, si ha già tutto pronto, e non si deve elaborare al momento.
+					needRender = false;
+				}
+				
+				while( delta >= 1){
+					ticks++;
+					tick(screenGraphics);
+					delta -= 1;
+					needRender = true;
+				}
+				
+				if(limitate){
+					//E' inutile tentare di aggiornare troppo frequentemente.
+					//Si introduce quindi una pausa per dimunire il carico alla CPU.
+					//Questa, quando abilitata, deve essere comunque piccola.
+					//Dopotutto non si vuole "notare" a video.
+					try {
+						Thread.sleep(renderSleepMillis);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				
+				if(needRender){
+					frames++;
+					refresh();
+				}
+				
+				if( (System.currentTimeMillis() - lastTimer ) >= 1000){
+					lastTimer+=1000;
+					info.setLastInfo(frames, ticks);
+					frames = 0;
+					ticks = 0;
+				}
+			}else{
 				try {
-					Thread.sleep(renderSleepMillis);
+					Thread.sleep(20);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
-			
-			
-			if(needRender){
-				frames++;
-				refresh();
-			}
-			
-			if( (System.currentTimeMillis() - lastTimer ) >= 1000){
-				lastTimer+=1000;
-				info.setLastInfo(frames, ticks);
-				frames = 0;
-				ticks = 0;
 			}
 		}
 	}
