@@ -9,7 +9,7 @@ public class TestSinglePlayer01 {
 	public static void main(String[] args) {
 		
 		JFrame frame = new JFrame();	
-		frame.setSize(1280, 1280*9/16);
+		//frame.setSize(1280, 1280*9/16);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//QUI DOVREMO METTERE IL MENU
@@ -21,6 +21,7 @@ public class TestSinglePlayer01 {
 		frame.getContentPane().add(sp.getGameCanvas());
 		
 		frame.setVisible(true);
+		frame.pack();
 		frame.setFocusable(true);			
 		
 		
