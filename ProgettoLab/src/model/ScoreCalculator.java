@@ -6,7 +6,7 @@ import java.util.TimerTask;
 
 public class ScoreCalculator {
 	
-	private int score = 0;
+	private long score = 0;
 	private static final int COEFF = 50;
 	
 	
@@ -17,21 +17,15 @@ public class ScoreCalculator {
 			@Override
 			public void run() {
 
-				setScore(score+COEFF);
+				score = score+COEFF;
 				System.out.println(score);
 			}
 		};
 		timer.scheduleAtFixedRate(task, 0, 500);
 	}
 
-	public int getScore() {
+	public long getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
-	}
-	
-	
-	
 }
