@@ -8,6 +8,8 @@ import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.Mover2D;
 import view2d.CircleMobDrawer;
+import view2d.assets.Assets;
+import view2d.assets.SpriteDrawer;
 
 public class Spawner {
 	
@@ -44,7 +46,7 @@ public class Spawner {
 		Random rand = new Random();
 		int randX = rand.nextInt((700 - 200) +1) +200;
 		Mob newMob = new Mob2D(new Coordinate(randX, 20, 0),	10, 
-				new CircleMobDrawer(), 
+				new SpriteDrawer(Assets.SPRITE_MOB), 
 					mobMover);
 		return newMob;
 	}
