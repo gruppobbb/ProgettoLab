@@ -1,62 +1,45 @@
 package model;
 
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.Mover2D;
-import view2d.assets.Assets;
-import view2d.assets.SpriteDrawer;
+import view2d.Drawer2D;
 
-public class Spawner {
+public class Spawner implements Runnable {
 	
+	public static final int SLEEP_TIME = 1000;
 	private MobsManager manager;
 	private Mover2D mobMover;
-	private Timer timer = new Timer();
+	private Drawer2D mobDrawer;
 	
-	public Spawner(MobsManager manager, Mover2D mobMover) {
+	public Spawner(MobsManager manager, Mover2D mobMover, Drawer2D mobDrawer) {
 		super();
 		this.manager = manager;
 		this.mobMover = mobMover;
+		this.mobDrawer = mobDrawer;
 	}
 	
-	
-	public void start(){
-
-		TimerTask spawn = new TimerTask() {
-			@Override
-			public void run() {
-				manager.addMob(spawn());
-				
-				//DEBUG CODE
-				System.out.println("(" + manager.getMobsList().size() + " mobs are currently spawned)");
-				//
-			}
-
-			
-		};
-		timer.scheduleAtFixedRate( spawn, 0, 1000);
-		
-	}
-	
-	protected Mob spawn() {
+	private void spawn() {
 		Random rand = new Random();
 		int randX = rand.nextInt((700 - 200) +1) +200;
-		Mob newMob = new Mob2D(new Coordinate(randX, 20, 0),	10, 
-				new SpriteDrawer(Assets.SPRITE_MOB), 
-					mobMover);
-		return newMob;
+		Mob newMob = new Mob2D(new Coordinate(randX, 20, 0), 10, mobDrawer, mobMover);
+		manager.addMob(newMob);
 	}
 	
-	public MobsManager getManager() {
-		return manager;
-	}
-
-
-	public void setManager(MobsManager manager) {
-		this.manager = manager;
+	@Override
+	public void run() {
+		while(true) {
+			spawn();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	

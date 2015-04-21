@@ -37,8 +37,9 @@ public class SpriteTest {
 		MobsManager mobsManager = new MobsManager();
 		final MobMover2D mobMover = new MobMover2D();
 		
-		Spawner spawner = new Spawner(mobsManager, mobMover){
+		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB)){
 			
+			/*
 			private Random rand = new Random();
 			private int randX;
 			private SpriteDrawer mobDrawer;
@@ -59,9 +60,9 @@ public class SpriteTest {
 				Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	10, mobDrawer, mobMover);
 				return mob;
 			}
-		};
-		
-		spawner.start();
+			*/
+		})
+		).start();
 		
 		Coordinate bounds = new Coordinate(height+200, width, 0);
 		

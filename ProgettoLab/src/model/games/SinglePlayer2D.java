@@ -51,7 +51,7 @@ public class SinglePlayer2D implements Game {
 						
 		threads.add(new Thread(new Mover(mobsManager)));	//Il mover
 		threads.add(new Thread(new CollisionChecker(mobsManager, ship, viewBounds)));	//Il collision checker
-		//facciamo diventare un thread anche lo spawner?
+		threads.add(new Thread(new Spawner(mobsManager, new MobMover2D(), new SpriteDrawer(Assets.SPRITE_MOB))));	//Lo spawner
 				
 	}	
 	
@@ -60,7 +60,6 @@ public class SinglePlayer2D implements Game {
 		for (Thread thread : threads) {
 			thread.start();
 		}
-		(new Spawner(mobsManager, new MobMover2D())).start();	//lo spawner va fatto a parte, perchè non è un thread..
 		gameCanvas.start();
 	}
 	

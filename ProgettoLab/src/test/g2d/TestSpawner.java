@@ -8,6 +8,7 @@ import model.Spawner;
 import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import view2d.CircleMobDrawer;
 import view2d.GameCanvas;
 import view2d.SquareShipDrawer;
 import control.Controller2D;
@@ -20,9 +21,8 @@ public class TestSpawner {
 		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
-		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
-		spawner.start();
 		
+		(new Thread(new Spawner(mobsManager, new MobMover2D() , new CircleMobDrawer()))).start();;		
 		(new Thread(new Mover(mobsManager))).start();
 		
 		
