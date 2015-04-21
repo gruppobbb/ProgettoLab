@@ -1,5 +1,6 @@
 package test.server;
 
+import model.scores.ScoreCalculator;
 import model.server.ScoreService;
 import model.server.Server;
 
@@ -8,6 +9,16 @@ public class TestScore {
 	public final static int PORT = 8080;
 	
 	public static void main(String[] args) {
+		
+		ScoreCalculator calc = new ScoreCalculator();
+		calc.start();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		calc.stop();
 		
 		Server server = new Server(PORT);
 		
