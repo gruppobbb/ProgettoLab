@@ -10,18 +10,20 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import model.Coordinate;
+import model.GameEngine;
 import model.MobsManager;
 import model.mobs.Mob2D;
 import model.movement.MobMovingLogic2D;
 import model.movement.MovingLogic2D;
 import model.ships.Ship2D;
 import view2d.drawers.CircleDrawer;
+import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import view2d.render.RGameCanvas.RenderInfo;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 
-public class TestRender00 {
+public class TestRender01 {
 	
 	public static void main(String[] args) {
 		
@@ -33,19 +35,46 @@ public class TestRender00 {
 		final MobsManager mobsManager = new MobsManager();
 		final MovingLogic2D mobsMover = new MobMovingLogic2D();
 		
+		Coordinate bounds = new Coordinate(height+200, width, 0);
+		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
+		
 		JFrame frame = new JFrame();
 		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
 		frame.addKeyListener(controller);
-		
-		int gap = 50 ;
-		
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				mobsManager.addMob(new Mob2D(new Coordinate(25+j*gap,25+ i*gap, 0),	10, mobsMover));
+		MouseAdapter mouse = new MouseAdapter() {
+			
+			ArrayList<Mob2D> mobs = new ArrayList<Mob2D>();
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10, mobsMover));
+				ship.setCoordinate(new Coordinate(e.getX(), e.getY(), 0));
 			}
-		}
-				
-		
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(e.getButton() == MouseEvent.BUTTON3){
+					mobsManager.removeAllMobs();
+					this.mobs = new ArrayList<Mob2D>();
+				}else{
+					this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10, mobsMover));
+				}
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				for (Mob2D mob : mobs) {
+					mobsManager.addMob(mob);
+				}
+			}
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				ship.setCoordinate(new Coordinate(e.getX(), e.getY(), 0));
+			}
+		};
+		gameCanvas.addMouseListener(mouse);
+		gameCanvas.addMouseMotionListener(mouse);
 		
 		
 		gameCanvas.getRenderinfo().addObserver(new Observer() {
@@ -62,7 +91,8 @@ public class TestRender00 {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		gameCanvas.setMobDrawer( new CircleDrawer());
+		//gameCanvas.setMobDrawer( new CircleDrawer());
+		//gameCanvas.setShipDrawer(new SquareDrawer());
 		
 		gameCanvas.start();
 	}

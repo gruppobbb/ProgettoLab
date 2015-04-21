@@ -16,9 +16,9 @@ public class Mob2D extends Mob implements Moveable {
 	private Dimension dimension;
 	private MovingLogic2D mobMover;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, MovingLogic2D mobMover) {
+	public Mob2D(Coordinate coordinates, int shiftAmount, MovingLogic2D mobsMover) {
 		super(coordinates, shiftAmount);
-		this.mobMover = mobMover;
+		this.mobMover = mobsMover;
 		setDimension(new Dimension(50,50));
 	}
 

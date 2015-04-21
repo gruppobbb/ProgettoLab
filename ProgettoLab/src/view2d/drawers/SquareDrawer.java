@@ -12,16 +12,14 @@ import view2d.Drawer2D;
  * @author Max
  *
  */
-public class CircleMobDrawer implements Drawer2D {
+public class SquareDrawer implements Drawer2D {
 	
 	private Dimension dimension = new Dimension(50, 50);	//qui le dimensioni sono di default (non ci sono immagini!)
 	
 	@Override
-	public void draw(Graphics g, Coordinate mobCoordinates) {
-		
-		g.setColor(Color.RED);
-		g.fillOval(mobCoordinates.getX(), mobCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
-		
+	public void draw(Graphics g, Coordinate shipCoordinates) {
+		g.setColor(Color.BLACK);
+		g.fillRect(shipCoordinates.getX()-25, shipCoordinates.getY()-25, (int) dimension.getWidth(), (int) dimension.getHeight());
 	}
 	
 	@Override

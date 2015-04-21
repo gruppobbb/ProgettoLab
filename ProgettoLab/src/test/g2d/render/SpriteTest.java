@@ -13,9 +13,9 @@ import model.ships.Ship2D;
 import model.spawning.SimpleJans2DSpawner;
 import model.spawning.Spawner;
 import view2d.assets.Assets;
-import view2d.drawers.CircleMobDrawer;
+import view2d.drawers.CircleDrawer;
 import view2d.drawers.SpriteDrawer;
-import view2d.drawers.SquareShipDrawer;
+import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import view2d.render.RGameCanvas.RenderInfo;
 import control.Controller2D;
@@ -56,8 +56,8 @@ public class SpriteTest {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		gameCanvas.setShipDrawer( new SquareShipDrawer());
-		gameCanvas.setMobDrawer( new CircleMobDrawer());
+		gameCanvas.setShipDrawer( new SquareDrawer());
+		gameCanvas.setMobDrawer( new CircleDrawer());
 		
 		gameCanvas.getRenderinfo().addObserver(new Observer() {
 			@Override

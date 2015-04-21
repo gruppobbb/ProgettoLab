@@ -63,6 +63,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager) {
 		super();
+		setFocusable(false);
 		this.width = width;
 		this.height = height;
 		this.ship = ship;
@@ -121,9 +122,12 @@ public class RGameCanvas extends Canvas implements Runnable{
 	@Override
 	public void run() {
 		int frames = 0;
-		int ticks = 0;
+		long renderTimeSum = 0;
+		long renderTimeStart = System.currentTimeMillis();
+		long lastRenderTime;
+		int n = 0;
+		long now;
 		long lastTimer = System.currentTimeMillis();
-		info.setLastInfo(frames, ticks);
 		
 		limitate = true;
 		
@@ -151,12 +155,20 @@ public class RGameCanvas extends Canvas implements Runnable{
 				
 				if(debug){
 					frames++;
+					n++;
+					now = System.currentTimeMillis();
+					lastRenderTime =  now - renderTimeStart;
+					renderTimeSum += lastRenderTime;
+					
 					if( (System.currentTimeMillis() - lastTimer ) >= 1000){
 						
 						lastTimer+=1000;
-						info.setLastInfo(frames, ticks);
+						info.setLastInfo(frames,renderTimeSum/n);
 						frames = 0;
+						n = 0;
+						renderTimeSum = 0;
 					}
+					renderTimeStart = now;
 				}
 				
 			}else{
@@ -241,7 +253,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	public class RenderInfo extends Observable{
 		private int lastFPS;
-		private int lastRenderTime;
+		private double renderTimeAVG;
 		
 		@Override
 		public synchronized void addObserver(Observer o) {
@@ -249,9 +261,9 @@ public class RGameCanvas extends Canvas implements Runnable{
 			super.addObserver(o);
 		}
 		
-		public void setLastInfo(int lastFPS, int lastRenderTime) {
+		public void setLastInfo(int lastFPS, double renderTimeAVG) {
 			this.lastFPS = lastFPS;
-			this.lastRenderTime = lastRenderTime;
+			this.renderTimeAVG = renderTimeAVG;
 			setChanged();
 			notifyObservers();
 		}
@@ -260,13 +272,13 @@ public class RGameCanvas extends Canvas implements Runnable{
 			return lastFPS;
 		}
 		
-		public int getRenderTime() {
-			return lastRenderTime;
+		public double getRenderTimeAVG() {
+			return renderTimeAVG;
 		}
 		
 		@Override
 		public String toString() {
-			return ">[FPS:"+this.lastFPS+"][LRT:"+this.lastRenderTime+"]";
+			return ">[FPS:"+this.lastFPS+"][RT_AVG:"+this.renderTimeAVG+"]";
 		}
 	}
 }

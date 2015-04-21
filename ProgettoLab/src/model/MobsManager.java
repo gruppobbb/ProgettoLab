@@ -50,6 +50,12 @@ public class MobsManager {
 		synchronized (mobs) {
 			mobs.remove(mobToRemove);
 		}
-	}	
+	}
+	
+	public void removeAllMobs(){
+		synchronized (mobs) {
+			mobs.clear();
+		}
+	}
 	
 }

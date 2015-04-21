@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
-import view2d.drawers.SquareShipDrawer;
+import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
@@ -29,7 +29,7 @@ public class TestController01 {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		gameCanvas.setShipDrawer(new SquareShipDrawer());
+		gameCanvas.setShipDrawer(new SquareDrawer());
 		
 		gameCanvas.start();
 		

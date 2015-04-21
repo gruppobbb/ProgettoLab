@@ -9,8 +9,8 @@ import model.movement.MobMovingLogic2D;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
-import view2d.drawers.CircleMobDrawer;
-import view2d.drawers.SquareShipDrawer;
+import view2d.drawers.CircleDrawer;
+import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
@@ -41,8 +41,8 @@ public class TestSpawner {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		gameCanvas.setShipDrawer(new SquareShipDrawer());
-		gameCanvas.setMobDrawer( new CircleMobDrawer());
+		gameCanvas.setShipDrawer(new SquareDrawer());
+		gameCanvas.setMobDrawer( new CircleDrawer());
 		
 		gameCanvas.start();
 		
