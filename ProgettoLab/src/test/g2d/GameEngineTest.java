@@ -10,7 +10,9 @@ import model.ships.Ship2D;
 import model.spawning.SimpleJans2DSpawner;
 import model.spawning.Spawner;
 import view2d.assets.Assets;
+import view2d.drawers.CircleMobDrawer;
 import view2d.drawers.SpriteDrawer;
+import view2d.drawers.SquareShipDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
@@ -22,18 +24,20 @@ public class GameEngineTest {
 		final int height = (width/16)*9;
 
 		SpriteDrawer shipDrawer = new SpriteDrawer(Assets.SPRITE_SHIP);
+		SpriteDrawer mobDrawer = new SpriteDrawer(Assets.SPRITE_MOB);
+		
 		int shipHalfWidth = shipDrawer.getSpriteDimension().width/2;
 		int shipHalfHeight = shipDrawer.getSpriteDimension().height/2;
 		int y = height - shipHalfHeight;
 		Coordinate coo = new Coordinate( width/2, y, 0);
 		
-		Ship2D ship = new Ship2D(coo, shipDrawer);
+		Ship2D ship = new Ship2D(coo);
 		Controller2D control = new Controller2D(ship, width-shipHalfWidth, shipHalfWidth);
 		
 		MobsManager mobsManager = new MobsManager();
-		final MobMovingLogic2D mobMover = new MobMovingLogic2D();
+		MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
-		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB), new SimpleJans2DSpawner(width)))).start();
+		(new Thread( new Spawner(mobsManager, mobMover, new SimpleJans2DSpawner(width)))).start();
 		
 		Coordinate bounds = new Coordinate(height+200, width, 0);
 		
@@ -41,16 +45,20 @@ public class GameEngineTest {
 		
 		
 		
-		JFrame frame = new JFrame();	
-		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
-		
+		JFrame frame = new JFrame();
 		frame.addKeyListener(control);
-		frame.setFocusable(true);		
+		RGameCanvas gameCanvas = new RGameCanvas(800,600,ship, mobsManager);
+		
+		frame.getContentPane().add(gameCanvas);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.setVisible(true);
-		frame.getContentPane().add(gameCanvas);
-		frame.pack();
+		gameCanvas.setShipDrawer(new SquareShipDrawer());
+		gameCanvas.setMobDrawer( new CircleMobDrawer());
+		
 		gameCanvas.start();
 		
 	}

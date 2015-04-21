@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import view2d.Drawer2D;
 import model.Coordinate;
+import view2d.Drawer2D;
 
 /**
  * Drawer che rappresenta la ship come un quadrato.
@@ -19,7 +19,7 @@ public class SquareShipDrawer implements Drawer2D {
 	@Override
 	public void draw(Graphics g, Coordinate shipCoordinates) {
 		g.setColor(Color.BLACK);
-		g.fillRect(shipCoordinates.getX(), shipCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
+		//g.fillRect(shipCoordinates.getX(), shipCoordinates.getY(), (int) dimension.getWidth(), (int) dimension.getHeight());
 	}
 	
 	@Override

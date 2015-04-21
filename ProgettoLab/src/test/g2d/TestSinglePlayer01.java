@@ -20,9 +20,10 @@ public class TestSinglePlayer01 {
 					
 		frame.getContentPane().add(sp.getGameCanvas());
 		
+		frame.setResizable(false);
 		frame.setVisible(true);
 		frame.pack();
-		frame.setFocusable(true);			
+		frame.setLocationRelativeTo(null);			
 		
 		
 		sp.start();	//INIZIA IL GIOCO!

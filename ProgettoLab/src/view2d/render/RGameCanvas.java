@@ -3,30 +3,24 @@ package view2d.render;
 import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Composite;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.TexturePaint;
 import java.awt.Transparency;
-import java.awt.dnd.DragSourceEvent;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import view2d.Drawer2D;
-import view2d.assets.Assets;
-import view2d.drawers.SpriteDrawer;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.ships.Ship2D;
+import view2d.Drawer2D;
+import view2d.assets.Assets;
+import view2d.drawers.SpriteDrawer;
 
 /**
  * Classe per la gestione delle chiamate draw e render(?).
@@ -117,6 +111,10 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	public void setMobDrawer(Drawer2D mobDrawer) {
 		this.mobDrawer = mobDrawer;
+	}
+	
+	public void setShipDrawer(Drawer2D shipDrawer) {
+		this.shipDrawer = shipDrawer;
 	}
 	
 	

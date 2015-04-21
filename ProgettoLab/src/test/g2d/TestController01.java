@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
-import view2d.GameCanvas;
 import view2d.drawers.SquareShipDrawer;
+import view2d.render.RGameCanvas;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 
@@ -14,19 +14,24 @@ public class TestController01 {
 	
 	public static void main(String[] args) {
 		
-		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new SquareShipDrawer());
-		Controller2D control = new Controller2D(ship, 735, 0);
+		Ship2D ship = new Ship2D(new Coordinate(400, 150, 0));
+		Controller2D control = new Controller2D(ship, 700, 100);
 		MobsManager mobsManager = new MobsManager();
 				
-		JFrame frame = new JFrame();	
-		GameCanvas gameCanvas = new GameCanvas(ship, mobsManager);
-		frame.setSize(800, 600);
+		JFrame frame = new JFrame();
 		frame.addKeyListener(control);
-		frame.setFocusable(true);
+		RGameCanvas gameCanvas = new RGameCanvas(800,300,ship, mobsManager);
+		
+		frame.getContentPane().add(gameCanvas);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		frame.setVisible(true);
-		frame.getContentPane().add(gameCanvas);
+		gameCanvas.setShipDrawer(new SquareShipDrawer());
+		
+		gameCanvas.start();
 		
 	}
 
