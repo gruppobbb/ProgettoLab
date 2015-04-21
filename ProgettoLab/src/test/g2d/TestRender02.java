@@ -3,10 +3,9 @@ package test.g2d;
 import javax.swing.JFrame;
 
 import model.Coordinate;
+import model.GameEngine;
 import model.MobsManager;
-import model.collisions.CollisionChecker;
 import model.movement.MobMovingLogic2D;
-import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
@@ -19,15 +18,16 @@ public class TestRender02 {
 	
 	public static void main(String[] args) {
 		
+		final int width = 1280;
+		final int height = (width/16)*9;
 
 		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 			
-		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirà mai
+		Coordinate bounds = new Coordinate(height+200, width, 0);
 		
-		(new Thread(new Mover(mobsManager))).start();
-		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
+		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
 		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer(), new SimpleRandom2DSpawnLogic()))).start();
 		
 		

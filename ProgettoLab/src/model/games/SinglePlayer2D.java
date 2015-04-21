@@ -5,10 +5,9 @@ import java.util.ArrayList;
 
 import model.Coordinate;
 import model.Game;
+import model.GameEngine;
 import model.MobsManager;
-import model.collisions.CollisionChecker;
 import model.movement.MobMovingLogic2D;
-import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
@@ -50,8 +49,7 @@ public class SinglePlayer2D implements Game {
 		controller = new Controller2D(ship, WIDTH-shipHalfWidth, shipHalfWidth);
 		gameCanvas.addKeyListener(controller);
 						
-		threads.add(new Thread(new Mover(mobsManager)));	//Il mover
-		threads.add(new Thread(new CollisionChecker(mobsManager, ship, viewBounds)));	//Il collision checker
+		threads.add(new Thread(new GameEngine(mobsManager,ship, viewBounds)));
 		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SpriteDrawer(Assets.SPRITE_MOB), new SimpleRandom2DSpawnLogic())));	//Lo spawner
 				
 	}	

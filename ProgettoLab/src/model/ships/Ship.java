@@ -1,14 +1,13 @@
 package model.ships;
 
 import model.Coordinate;
-import model.collisions.Collideable;
 
 /**
  * Modello di una generica ship. Contiene metodi e attributi comuni a tutte le ship.
  * @author Max
  *
  */
-public class Ship implements Collideable {
+public class Ship {
 	
 	private int ammo = 3;
 	private Coordinate coordinate;

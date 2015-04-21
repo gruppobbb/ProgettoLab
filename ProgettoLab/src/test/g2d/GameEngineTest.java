@@ -14,7 +14,7 @@ import view2d.drawers.SpriteDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
-public class SpriteTest {
+public class GameEngineTest {
 	
 	public static void main(String[] args) {
 		
@@ -33,36 +33,12 @@ public class SpriteTest {
 		MobsManager mobsManager = new MobsManager();
 		final MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
-		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB), new SimpleJans2DSpawner(width)){
-			
-			/*
-			private Random rand = new Random();
-			private int randX;
-			private SpriteDrawer mobDrawer;
-			private int N = 0;
-			private int mobWidth;
-			
-			@Override
-			protected Mob spawn() {
-				//Concetto di corsia ... secondo me migliora di molto la giocabilita...
-				//TODO: Se approvato, passare la larghezza dell'area di gioco, per calcolare le corsie ..
-				
-				mobDrawer = new SpriteDrawer(Assets.SPRITE_MOB);
-				if(N==0){
-					mobWidth = (int)mobDrawer.getSpriteDimension().getWidth() ;
-					N = (int)(width/mobWidth);
-				}
-				randX = rand.nextInt(N)*mobWidth + mobWidth/2 ;
-				Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	10, mobDrawer, mobMover);
-				return mob;
-			}
-			*/
-		})
-		).start();
+		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB), new SimpleJans2DSpawner(width)))).start();
 		
 		Coordinate bounds = new Coordinate(height+200, width, 0);
 		
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
+		
 		
 		
 		JFrame frame = new JFrame();	

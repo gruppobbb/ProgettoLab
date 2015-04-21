@@ -3,10 +3,9 @@ package test.g2d;
 import javax.swing.JFrame;
 
 import model.Coordinate;
+import model.GameEngine;
 import model.MobsManager;
-import model.collisions.CollisionChecker;
 import model.movement.MobMovingLogic2D;
-import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
@@ -26,8 +25,7 @@ public class TestCollisioni01 {
 		
 		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscir� mai
 		
-		(new Thread(new Mover(mobsManager))).start();
-		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
+		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
 		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer(), new SimpleRandom2DSpawnLogic()))).start();
 		
 		
