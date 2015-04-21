@@ -8,7 +8,7 @@ import model.mobs.Mob2D;
  * @author Max
  *
  */
-public class MobMover2D implements Mover2D {
+public class MobMovingLogic2D implements MovingLogic2D {
 	
 	@Override
 	public void move(Mob2D mob) {

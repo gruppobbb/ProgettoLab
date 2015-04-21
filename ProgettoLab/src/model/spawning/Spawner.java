@@ -6,17 +6,17 @@ import model.Coordinate;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
-import model.movement.Mover2D;
+import model.movement.MovingLogic2D;
 import view2d.Drawer2D;
 
 public class Spawner implements Runnable {
 	
 	public static final int SLEEP_TIME = 1000;
 	private MobsManager manager;
-	private Mover2D mobMover;
+	private MovingLogic2D mobMover;
 	private Drawer2D mobDrawer;
 	
-	public Spawner(MobsManager manager, Mover2D mobMover, Drawer2D mobDrawer) {
+	public Spawner(MobsManager manager, MovingLogic2D mobMover, Drawer2D mobDrawer) {
 		super();
 		this.manager = manager;
 		this.mobMover = mobMover;

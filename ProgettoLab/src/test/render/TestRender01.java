@@ -5,9 +5,9 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.mobs.Mob2D;
-import model.movement.MobMover2D;
+import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
-import model.movement.Mover2D;
+import model.movement.MovingLogic2D;
 import model.ships.Ship2D;
 import view2d.Drawer2D;
 import view2d.drawers.CircleMobDrawer;
@@ -25,7 +25,7 @@ public class TestRender01 {
 		MobsManager mobsManager = new MobsManager();
 		
 		Drawer2D mobsDrawer = new CircleMobDrawer();
-		Mover2D mobsMover = new MobMover2D();
+		MovingLogic2D mobsMover = new MobMovingLogic2D();
 		
 		//istanziamo un po' di mob
 		mobsManager.addMob(new Mob2D(new Coordinate(300, 20, 0),	10, mobsDrawer, mobsMover));

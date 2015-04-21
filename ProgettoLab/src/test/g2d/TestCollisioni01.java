@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.collisions.CollisionChecker;
-import model.movement.MobMover2D;
+import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.Spawner;
@@ -27,7 +27,7 @@ public class TestCollisioni01 {
 		
 		(new Thread(new Mover(mobsManager))).start();
 		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
-		(new Thread(new Spawner(mobsManager, new MobMover2D(), new CircleMobDrawer()))).start();
+		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer()))).start();
 		
 		
 		JFrame frame = new JFrame();	

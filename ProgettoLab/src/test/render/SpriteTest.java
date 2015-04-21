@@ -9,7 +9,7 @@ import model.MobsManager;
 import model.collisions.CollisionChecker;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
-import model.movement.MobMover2D;
+import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.Spawner;
@@ -35,7 +35,7 @@ public class SpriteTest {
 		Controller2D control = new Controller2D(ship, width-shipHalfWidth, shipHalfWidth);
 		
 		MobsManager mobsManager = new MobsManager();
-		final MobMover2D mobMover = new MobMover2D();
+		final MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
 		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB)){
 			

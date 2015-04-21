@@ -7,7 +7,7 @@ import model.Coordinate;
 import model.Game;
 import model.MobsManager;
 import model.collisions.CollisionChecker;
-import model.movement.MobMover2D;
+import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.Spawner;
@@ -51,7 +51,7 @@ public class SinglePlayer2D implements Game {
 						
 		threads.add(new Thread(new Mover(mobsManager)));	//Il mover
 		threads.add(new Thread(new CollisionChecker(mobsManager, ship, viewBounds)));	//Il collision checker
-		threads.add(new Thread(new Spawner(mobsManager, new MobMover2D(), new SpriteDrawer(Assets.SPRITE_MOB))));	//Lo spawner
+		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SpriteDrawer(Assets.SPRITE_MOB))));	//Lo spawner
 				
 	}	
 	

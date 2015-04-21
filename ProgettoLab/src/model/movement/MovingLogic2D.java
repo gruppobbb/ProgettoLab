@@ -7,7 +7,7 @@ import model.mobs.Mob2D;
  * @author Max
  *
  */
-public interface Mover2D {
+public interface MovingLogic2D {
 	
 	/**
 	 * Muove il mob.

@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import model.Coordinate;
 import model.movement.Moveable;
-import model.movement.Mover2D;
+import model.movement.MovingLogic2D;
 import view2d.Drawable2D;
 import view2d.Drawer2D;
 
@@ -18,9 +18,9 @@ public class Mob2D extends Mob implements Drawable2D, Moveable {
 	
 	private Dimension dimension;
 	private Drawer2D mobDrawer;
-	private Mover2D mobMover;
+	private MovingLogic2D mobMover;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer, Mover2D mobMover) {
+	public Mob2D(Coordinate coordinates, int shiftAmount, Drawer2D mobDrawer, MovingLogic2D mobMover) {
 		super(coordinates, shiftAmount);
 		this.mobDrawer = mobDrawer;
 		this.mobMover = mobMover;
