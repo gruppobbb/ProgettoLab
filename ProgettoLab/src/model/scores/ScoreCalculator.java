@@ -6,12 +6,13 @@ import java.util.TimerTask;
 
 public class ScoreCalculator {
 	
+	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
 	private long score = 0;
 	private static final int COEFF = 50;
-	
+	Timer timer;
 	
 	public void start(){
-		Timer timer = new Timer();
+		timer = new Timer();
 		TimerTask task = new TimerTask() {
 			
 			@Override
@@ -22,6 +23,11 @@ public class ScoreCalculator {
 			}
 		};
 		timer.scheduleAtFixedRate(task, 0, 500);
+	}
+	
+	public void stop(){
+		scores.addScore(score);
+		timer.cancel();
 	}
 
 	public long getScore() {

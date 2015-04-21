@@ -1,4 +1,4 @@
-package model.server;
+package model.scores;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,22 +12,15 @@ import java.util.Collections;
 public class ScoreKeeper {
 	
 	private static ScoreKeeper scoreKeeper;
-	private static ArrayList<Integer> highScores;
+	private static ArrayList<Long> highScores;
+	public static final int MAX_SCORES = 10;
 	
 	private ScoreKeeper() {
-		highScores = new ArrayList<Integer>(10);
-//		CODICE DI TEST
-		highScores.add(7843);
-		highScores.add(75);
-		highScores.add(26);
-		highScores.add(744);
-		highScores.add(85764);
-		highScores.add(876);
-		highScores.add(4098);
-		highScores.add(387);
-		highScores.add(65);
-		highScores.add(504);
-//		FINE CODICE DI TEST
+		highScores = new ArrayList<Long>(MAX_SCORES);
+		for (int i = 0; i < MAX_SCORES; i++) {
+			highScores.add(0l);
+		}
+		
 	}
 	/**
 	 * Per recuperare il Singleton.
@@ -45,11 +38,11 @@ public class ScoreKeeper {
 	 * @return Lista dei 10 punteggi piu' alti
 	 */
 	
-	public ArrayList<Integer> getHighScores(){
+	public ArrayList<Long> getHighScores(){
 		Collections.sort(highScores);
 		Collections.reverse(highScores);
-		if (highScores.size() > 10) {
-			highScores.subList(10, highScores.size()).clear();
+		if (highScores.size() > MAX_SCORES) {
+			highScores.subList(MAX_SCORES, highScores.size()).clear();
 		}
 		return highScores;
 	}
@@ -58,7 +51,7 @@ public class ScoreKeeper {
 	 * Metodo per aggiungere un nuovo punteggio, viene chiamato a fine partita.
 	 * @param score Nuovo punteggio
 	 */
-	public void addScore(int score){
+	public void addScore(long score){
 		highScores.add(score);
 	}
 	
