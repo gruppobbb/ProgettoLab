@@ -1,4 +1,4 @@
-package test.g2d;
+package test.g2d.render;
 
 import javax.swing.JFrame;
 
