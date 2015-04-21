@@ -1,46 +1,47 @@
-package test.render;
+package test.g2d;
 
 import javax.swing.JFrame;
 
 import model.Coordinate;
 import model.MobsManager;
-import model.collisions.CollisionChecker;
+import model.mobs.Mob2D;
 import model.movement.MobMovingLogic2D;
-import model.movement.Mover;
+import model.movement.MovingLogic2D;
 import model.ships.Ship2D;
-import model.spawning.Spawner;
-import view2d.assets.Assets;
+import view2d.Drawer2D;
 import view2d.drawers.CircleMobDrawer;
-import view2d.drawers.SpriteDrawer;
 import view2d.drawers.SquareShipDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
-public class TestRender02 {
+//Test del controllo 2d della ship. 
+public class TestRender00 {
 	
 	public static void main(String[] args) {
 		
-
-		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0), new SquareShipDrawer());
+		Ship2D ship = new Ship2D(new Coordinate(40, 50, 0), new SquareShipDrawer());
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
-			
-		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirà mai
 		
-		(new Thread(new Mover(mobsManager))).start();
-		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
-		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer()))).start();
+		Drawer2D mobsDrawer = new CircleMobDrawer();
+		MovingLogic2D mobsMover = new MobMovingLogic2D();
 		
+		//istanziamo un po' di mob
+		mobsManager.addMob(new Mob2D(new Coordinate(520, 120, 0),	10, mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(200, 370, 0),	10,	mobsDrawer, mobsMover));
+		mobsManager.addMob(new Mob2D(new Coordinate(100, 500, 0),	10,	mobsDrawer, mobsMover));
 		
+				
 		JFrame frame = new JFrame();	
 		RGameCanvas gameCanvas = new RGameCanvas(800,600,ship, mobsManager);
-		frame.setSize(800, 600);
+		
 		frame.addKeyListener(control);
 		frame.setFocusable(true);		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setVisible(true);
 		frame.getContentPane().add(gameCanvas);
+		frame.pack();
 		gameCanvas.start();
 		
 	}
