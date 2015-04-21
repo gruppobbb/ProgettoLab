@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import model.MobsManager;
 import model.mobs.Mob;
-import model.mobs.Mob2D;
 
 /**
  * Componente che si occupa di muovere periodicamente i {@link Moveable}.

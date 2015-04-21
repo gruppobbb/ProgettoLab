@@ -1,7 +1,5 @@
 package test.g2d;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
 import model.Coordinate;
@@ -26,7 +24,7 @@ public class TestCollisioni01 {
 		Spawner spawner = new Spawner(mobsManager, new MobMover2D());
 		spawner.start();
 		
-		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirà mai
+		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscirï¿½ mai
 		
 		(new Thread(new Mover(mobsManager))).start();
 		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();

@@ -7,7 +7,6 @@ import java.util.TimerTask;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.Mover2D;
-import view2d.CircleMobDrawer;
 import view2d.assets.Assets;
 import view2d.assets.SpriteDrawer;
 

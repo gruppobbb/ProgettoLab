@@ -13,7 +13,6 @@ import model.mobs.Mob2D;
 import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
-import view2d.SquareShipDrawer;
 import view2d.assets.Assets;
 import view2d.assets.SpriteDrawer;
 import view2d.render.RGameCanvas;

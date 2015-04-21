@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
-import java.awt.Toolkit;
 import java.awt.Transparency;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -126,9 +125,9 @@ public class RGameCanvas extends Canvas implements Runnable{
 				
 				if( renderSync ){
 					//Sincronizzazione tra ticks e render.
-					//Se disattivato, si faranno più aggiornamenti per ogni chiamata di render.
+					//Se disattivato, si faranno piï¿½ aggiornamenti per ogni chiamata di render.
 					//Con piu' aggiornamenti si ha che quando serve renderizzare per soddisfare gli FPS
-					//richiesti, si ha già tutto pronto, e non si deve elaborare al momento.
+					//richiesti, si ha giï¿½ tutto pronto, e non si deve elaborare al momento.
 					needRender = false;
 				}
 				
