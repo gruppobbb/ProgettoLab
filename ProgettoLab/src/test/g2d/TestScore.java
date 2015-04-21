@@ -1,6 +1,6 @@
 package test.g2d;
 
-import model.ScoreCalculator;
+import model.scores.ScoreCalculator;
 
 public class TestScore {
 	
