@@ -59,6 +59,7 @@ public class TestRender01 {
 				}else{
 					this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10, mobsMover));
 				}
+				ship.setCoordinate(new Coordinate(e.getX(), e.getY(), 0));
 			}
 			
 			@Override
