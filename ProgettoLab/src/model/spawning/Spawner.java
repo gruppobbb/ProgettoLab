@@ -1,11 +1,6 @@
 package model.spawning;
 
-import java.util.Random;
-
-import model.Coordinate;
 import model.MobsManager;
-import model.mobs.Mob;
-import model.mobs.Mob2D;
 import model.movement.MovingLogic2D;
 import view2d.Drawer2D;
 
@@ -15,19 +10,18 @@ public class Spawner implements Runnable {
 	private MobsManager manager;
 	private MovingLogic2D mobMover;
 	private Drawer2D mobDrawer;
+	private SpawnLogic spawnLogic;
 	
-	public Spawner(MobsManager manager, MovingLogic2D mobMover, Drawer2D mobDrawer) {
+	public Spawner(MobsManager manager, MovingLogic2D mobMover, Drawer2D mobDrawer, SpawnLogic spawnLogic) {
 		super();
 		this.manager = manager;
 		this.mobMover = mobMover;
 		this.mobDrawer = mobDrawer;
+		this.spawnLogic = spawnLogic;
 	}
 	
 	private void spawn() {
-		Random rand = new Random();
-		int randX = rand.nextInt((700 - 200) +1) +200;
-		Mob newMob = new Mob2D(new Coordinate(randX, 20, 0), 10, mobDrawer, mobMover);
-		manager.addMob(newMob);
+		manager.addMob(spawnLogic.spawnMob(mobMover, mobDrawer));
 	}
 	
 	@Override
@@ -41,7 +35,6 @@ public class Spawner implements Runnable {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 	
 	

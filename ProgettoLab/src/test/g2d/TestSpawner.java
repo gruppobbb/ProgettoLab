@@ -7,6 +7,7 @@ import model.MobsManager;
 import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
 import view2d.GameCanvas;
 import view2d.drawers.CircleMobDrawer;
@@ -22,7 +23,7 @@ public class TestSpawner {
 		Controller2D control = new Controller2D(ship, 735, 0);
 		MobsManager mobsManager = new MobsManager();
 		
-		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D() , new CircleMobDrawer()))).start();;		
+		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D() , new CircleMobDrawer(), new SimpleRandom2DSpawnLogic()))).start();;		
 		(new Thread(new Mover(mobsManager))).start();
 		
 		

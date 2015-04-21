@@ -8,10 +8,9 @@ import model.collisions.CollisionChecker;
 import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
-import view2d.assets.Assets;
 import view2d.drawers.CircleMobDrawer;
-import view2d.drawers.SpriteDrawer;
 import view2d.drawers.SquareShipDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
@@ -29,7 +28,7 @@ public class TestRender02 {
 		
 		(new Thread(new Mover(mobsManager))).start();
 		(new Thread(new CollisionChecker(mobsManager, ship, bounds))).start();
-		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer()))).start();
+		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new CircleMobDrawer(), new SimpleRandom2DSpawnLogic()))).start();
 		
 		
 		JFrame frame = new JFrame();	

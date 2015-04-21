@@ -1,17 +1,14 @@
 package test.g2d;
 
-import java.util.Random;
-
 import javax.swing.JFrame;
 
 import model.Coordinate;
 import model.MobsManager;
 import model.collisions.CollisionChecker;
-import model.mobs.Mob;
-import model.mobs.Mob2D;
 import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import model.spawning.SimpleJans2DSpawner;
 import model.spawning.Spawner;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
@@ -37,7 +34,7 @@ public class SpriteTest {
 		MobsManager mobsManager = new MobsManager();
 		final MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
-		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB)){
+		(new Thread( new Spawner(mobsManager, mobMover, new SpriteDrawer(Assets.SPRITE_MOB), new SimpleJans2DSpawner(width)){
 			
 			/*
 			private Random rand = new Random();

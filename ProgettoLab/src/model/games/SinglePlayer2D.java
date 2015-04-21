@@ -10,6 +10,7 @@ import model.collisions.CollisionChecker;
 import model.movement.MobMovingLogic2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.assets.Assets;
@@ -51,7 +52,7 @@ public class SinglePlayer2D implements Game {
 						
 		threads.add(new Thread(new Mover(mobsManager)));	//Il mover
 		threads.add(new Thread(new CollisionChecker(mobsManager, ship, viewBounds)));	//Il collision checker
-		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SpriteDrawer(Assets.SPRITE_MOB))));	//Lo spawner
+		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SpriteDrawer(Assets.SPRITE_MOB), new SimpleRandom2DSpawnLogic())));	//Lo spawner
 				
 	}	
 	
