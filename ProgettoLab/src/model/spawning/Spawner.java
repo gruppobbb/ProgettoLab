@@ -1,7 +1,9 @@
-package model;
+package model.spawning;
 
 import java.util.Random;
 
+import model.Coordinate;
+import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.Mover2D;

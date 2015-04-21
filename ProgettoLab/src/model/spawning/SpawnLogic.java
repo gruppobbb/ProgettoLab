@@ -1,4 +1,4 @@
-package model;
+package model.spawning;
 
 /**
  * Logica secondo cui vengono spawnati gli elementi.

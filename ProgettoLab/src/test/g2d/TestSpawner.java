@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 
 import model.Coordinate;
 import model.MobsManager;
-import model.Spawner;
 import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
+import model.spawning.Spawner;
 import view2d.CircleMobDrawer;
 import view2d.GameCanvas;
 import view2d.SquareShipDrawer;
