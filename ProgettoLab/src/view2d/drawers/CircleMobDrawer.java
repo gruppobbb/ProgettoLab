@@ -1,9 +1,10 @@
-package view2d;
+package view2d.drawers;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import view2d.Drawer2D;
 import model.Coordinate;
 
 /**

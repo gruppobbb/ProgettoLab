@@ -8,9 +8,9 @@ import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.Spawner;
-import view2d.CircleMobDrawer;
 import view2d.GameCanvas;
-import view2d.SquareShipDrawer;
+import view2d.drawers.CircleMobDrawer;
+import view2d.drawers.SquareShipDrawer;
 import control.Controller2D;
 
 public class TestSpawner {

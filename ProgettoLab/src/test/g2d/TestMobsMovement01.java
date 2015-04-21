@@ -9,10 +9,10 @@ import model.movement.MobMover2D;
 import model.movement.Mover;
 import model.movement.Mover2D;
 import model.ships.Ship2D;
-import view2d.CircleMobDrawer;
 import view2d.Drawer2D;
 import view2d.GameCanvas;
-import view2d.SquareShipDrawer;
+import view2d.drawers.CircleMobDrawer;
+import view2d.drawers.SquareShipDrawer;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 

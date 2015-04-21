@@ -6,7 +6,7 @@ import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
 import view2d.GameCanvas;
-import view2d.SquareShipDrawer;
+import view2d.drawers.SquareShipDrawer;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 

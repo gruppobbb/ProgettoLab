@@ -14,7 +14,7 @@ import model.movement.Mover;
 import model.ships.Ship2D;
 import model.spawning.Spawner;
 import view2d.assets.Assets;
-import view2d.assets.SpriteDrawer;
+import view2d.drawers.SpriteDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
