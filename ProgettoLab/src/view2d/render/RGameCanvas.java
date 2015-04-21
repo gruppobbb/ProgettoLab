@@ -1,12 +1,18 @@
 package view2d.render;
 
+import java.awt.AlphaComposite;
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.TexturePaint;
 import java.awt.Transparency;
+import java.awt.dnd.DragSourceEvent;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -14,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import view2d.Drawer2D;
+import view2d.assets.Assets;
+import view2d.drawers.SpriteDrawer;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
@@ -28,7 +37,8 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 2871408762813611270L;
 	
-	private double FPS;
+	
+	private int width, height;
 	
 	private Ship2D ship;
 	private MobsManager mobsManager;
@@ -36,48 +46,48 @@ public class RGameCanvas extends Canvas implements Runnable{
 	private volatile boolean running;
 	private Thread renderThread;
 	
-	private Render2D render;
 	private RenderInfo info;
-	private boolean renderSync;
 	private boolean limitate;
 	private long renderSleepMillis;
 	
 	private BufferStrategy buffer;
 	private int bufferStrategySize;
 	private Graphics2D g;
-	private Color bgColor; 
+	private Color bgColor = new Color(43,62,84);
 	
 	private BufferedImage screen;
 	private BufferedImage background;
-	private int[] pixels;
+	private BufferedImage HUD;
 	
+	private boolean debug;
 	private GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment()
     														  .getDefaultScreenDevice() 
     														  .getDefaultConfiguration();
 	
+	private Drawer2D mobDrawer;
+	private Drawer2D shipDrawer;
 	
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager) {
 		super();
-		this.FPS = 60;
+		this.width = width;
+		this.height = height;
 		this.ship = ship;
 		this.mobsManager = mobsManager;
+		setBackground(Color.red);
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
 		
 		screen = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-		//screen = create(width, height, false);
-		pixels = ((DataBufferInt)screen.getRaster().getDataBuffer()).getData();
-		
-		//background = create(width, height, false);
+		//screen = create(width, height, true);
+		//HUD = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		
 		info = new RenderInfo();
-		render = new Render2D(pixels, width, height);
 		limitate = true;
 		renderSleepMillis = 2;
-		
 		bufferStrategySize = 2;
-		bgColor = new Color(43,62,84);
+		mobDrawer = new SpriteDrawer(Assets.SPRITE_DEFAULT);
+		shipDrawer = new SpriteDrawer(Assets.SPRITE_DEFAULT);
 	}
 	
 	/**
@@ -87,6 +97,10 @@ public class RGameCanvas extends Canvas implements Runnable{
 		running = true;
 		renderThread = new Thread(this);
 		renderThread.start();
+	}
+	
+	public void setBackground(BufferedImage background) {
+		this.background = background;
 	}
 	
 	/**
@@ -101,43 +115,25 @@ public class RGameCanvas extends Canvas implements Runnable{
 		}
 	}
 	
+	public void setMobDrawer(Drawer2D mobDrawer) {
+		this.mobDrawer = mobDrawer;
+	}
+	
 	
 	@Override
 	public void run() {
-		
-		Graphics2D screenGraphics = (Graphics2D) screen.getGraphics();
-		
+		int frames = 0;
 		int ticks = 0;
-		int frames = 0 ;
 		long lastTimer = System.currentTimeMillis();
-		double nsPerUpdate = 1000000000D/FPS;
-		long lastTime = System.nanoTime();
-		double delta = 0;
+		info.setLastInfo(frames, ticks);
 		
-		long now;
-		boolean needRender = true;
+		limitate = true;
+		
+		createBufferStrategy(bufferStrategySize);
+		do{buffer = getBufferStrategy();}while(buffer == null);
 		
 		while(true){
 			if(running){
-				now = System.nanoTime();
-				delta += (now - lastTime )/nsPerUpdate;
-				lastTime = now;
-				
-				if( renderSync ){
-					//Sincronizzazione tra ticks e render.
-					//Se disattivato, si faranno pi� aggiornamenti per ogni chiamata di render.
-					//Con piu' aggiornamenti si ha che quando serve renderizzare per soddisfare gli FPS
-					//richiesti, si ha gi� tutto pronto, e non si deve elaborare al momento.
-					needRender = false;
-				}
-				
-				while( delta >= 1){
-					ticks++;
-					tick(screenGraphics);
-					delta -= 1;
-					needRender = true;
-				}
-				
 				if(limitate){
 					//E' inutile tentare di aggiornare troppo frequentemente.
 					//Si introduce quindi una pausa per dimunire il carico alla CPU.
@@ -150,18 +146,21 @@ public class RGameCanvas extends Canvas implements Runnable{
 					}
 				}
 				
+				refresh();
+				tick(g);
+				//drawHud(g);
+				g.dispose();
 				
-				if(needRender){
+				if(debug){
 					frames++;
-					refresh();
+					if( (System.currentTimeMillis() - lastTimer ) >= 1000){
+						
+						lastTimer+=1000;
+						info.setLastInfo(frames, ticks);
+						frames = 0;
+					}
 				}
 				
-				if( (System.currentTimeMillis() - lastTimer ) >= 1000){
-					lastTimer+=1000;
-					info.setLastInfo(frames, ticks);
-					frames = 0;
-					ticks = 0;
-				}
 			}else{
 				try {
 					Thread.sleep(20);
@@ -172,42 +171,10 @@ public class RGameCanvas extends Canvas implements Runnable{
 		}
 	}
 	
-	
-	//Aggiornamento del frame da mandare a video.
-	private void tick(Graphics2D graphics2d){
-		
-		graphics2d.setColor( bgColor );
-		graphics2d.fillRect(0, 0, screen.getWidth(), screen.getHeight());
-		
-		ArrayList<Mob> mobsToDraw = mobsManager.getMobsList();
-		for (Mob mob : mobsToDraw) {
-			((Mob2D) mob).draw(graphics2d);
-		}
-		
-		ship.draw(graphics2d);
-		
-		//graphics2d.dispose();
-		
-	}
-	
-	
 	//Refresh del video.
 	private void refresh(){
-		
-		buffer = getBufferStrategy();
-		
-		if(buffer == null){
-			createBufferStrategy(bufferStrategySize);
-			return;
-		}
-		
-		g = (Graphics2D)buffer.getDrawGraphics();
-		g.setColor(bgColor);
-		g.fillRect(0, 0, screen.getWidth(), screen.getHeight());
-		//g.drawImage(screen, 0, 0, screen.getWidth(), screen.getHeight(), null);
-		g.drawImage(screen, 0, 0, null);
-		g.dispose();
 		buffer.show();
+		g = (Graphics2D)buffer.getDrawGraphics();
 	}
 	
 	// create a hardware accelerated image 
@@ -217,50 +184,76 @@ public class RGameCanvas extends Canvas implements Runnable{
     			? Transparency.TRANSLUCENT : Transparency.OPAQUE); 
     }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void addInfoObserver(Observer o){
-		info.addObserver(o);
-	}
-	
-	class Render2D {
-		private int[] pixels;
-		private int width, height;
+	//Aggiornamento del frame da mandare a video.
+	private void tick(Graphics2D g){
+		drawBackground(g);
 		
-		public Render2D(int[] pixels, int width, int height) {
-			this.pixels = pixels;
-			this.width = width;
-			this.height = height;
+		ArrayList<Mob> mobsToDraw = mobsManager.getMobsList();
+		for (Mob mob : mobsToDraw) {
+			Mob2D mob2d = (Mob2D) mob;
+			mobDrawer.draw(g, mob2d.getCoordinate());
 		}
+		
+		shipDrawer.draw(g, ship.getCoordinate());
+		g.dispose();
 	}
 	
 	
-	class RenderInfo extends Observable{
-		private int lastFPS;
-		private int lastTicks;
+	private void drawHud(Graphics2D g){
+		return;
 		
-		public void setLastInfo(int lastFPS, int lastTicks) {
+		
+		
+		//Usare per lo HUD!
+//		Composite originalComposite = g.getComposite();
+//		//g.setPaint(Color.blue);
+//	  	drawBackground(g);
+//	  	g.setComposite(makeComposite(0.7f));
+//	  	//g.setPaint(Color.red);
+//	  	drawScreen(g);
+//	  	g.setComposite(originalComposite);
+		//Graphics2D hudGraphics = (Graphics2D) HUD.getGraphics();
+		//TODO
+	}
+	
+	
+	
+	private void drawBackground(Graphics2D g){
+		if(background == null){
+			background = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+			Graphics2D backGraphics = (Graphics2D) background.getGraphics();
+			backGraphics.setColor(bgColor);
+			backGraphics.fillRect(0, 0, background.getWidth(), background.getHeight());
+		}
+		g.drawImage(background, 0, 0, null);
+	}
+	
+	 private AlphaComposite makeComposite(float alpha) {
+		  int type = AlphaComposite.SRC_OVER;
+		  return(AlphaComposite.getInstance(type, alpha));
+	 }
+	 
+	public RenderInfo getRenderinfo(){
+		return info;
+	}
+	
+	
+	
+	
+	
+	public class RenderInfo extends Observable{
+		private int lastFPS;
+		private int lastRenderTime;
+		
+		@Override
+		public synchronized void addObserver(Observer o) {
+			debug = true;
+			super.addObserver(o);
+		}
+		
+		public void setLastInfo(int lastFPS, int lastRenderTime) {
 			this.lastFPS = lastFPS;
-			this.lastTicks = lastTicks;
+			this.lastRenderTime = lastRenderTime;
 			setChanged();
 			notifyObservers();
 		}
@@ -269,8 +262,13 @@ public class RGameCanvas extends Canvas implements Runnable{
 			return lastFPS;
 		}
 		
-		public int getLastTicks() {
-			return lastTicks;
+		public int getRenderTime() {
+			return lastRenderTime;
+		}
+		
+		@Override
+		public String toString() {
+			return ">[FPS:"+this.lastFPS+"][LRT:"+this.lastRenderTime+"]";
 		}
 	}
 }
