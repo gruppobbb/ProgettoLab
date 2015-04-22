@@ -63,7 +63,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager) {
 		super();
-		setFocusable(false);
+		setFocusable(true);
 		this.width = width;
 		this.height = height;
 		this.ship = ship;

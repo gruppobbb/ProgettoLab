@@ -15,13 +15,12 @@ public class TestController01 {
 	public static void main(String[] args) {
 		
 		Ship2D ship = new Ship2D(new Coordinate(400, 150, 0));
-		Controller2D control = new Controller2D(ship, 700, 100);
+		Controller2D control = new Controller2D(ship, 775, 25);
 		MobsManager mobsManager = new MobsManager();
 				
 		JFrame frame = new JFrame();
-		frame.addKeyListener(control);
 		RGameCanvas gameCanvas = new RGameCanvas(800,300,ship, mobsManager);
-		
+		gameCanvas.addKeyListener(control);
 		frame.getContentPane().add(gameCanvas);
 		frame.setResizable(false);
 		frame.setVisible(true);

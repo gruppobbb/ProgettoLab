@@ -57,6 +57,10 @@ public class Controller2D implements KeyListener{
 			}
 		}
 	
+	public void setBound( int left_bound, int right_bound ){
+		this.left_bound = left_bound;
+		this.right_bound = right_bound;
+	}
 	
 	@Override
 	public void keyReleased(KeyEvent e) {

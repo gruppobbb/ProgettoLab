@@ -19,19 +19,20 @@ public class TestCollisioni01 {
 	public static void main(String[] args) {
 		
 
-		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0));
-		Controller2D control = new Controller2D(ship, 735, 0);
+		Ship2D ship = new Ship2D(new Coordinate(400, 500, 0));
+		Controller2D control = new Controller2D(ship,775, 25);
 		MobsManager mobsManager = new MobsManager();
 		
-		Coordinate bounds = new Coordinate(1000, 500, 0);	//setto x altissimo, tanto non uscira' mai
+		Coordinate bounds = new Coordinate(800, 600, 0);	//setto x altissimo, tanto non uscira' mai
 		
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
 		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic()))).start();
 		
 		
 		JFrame frame = new JFrame();
-		frame.addKeyListener(control);
+		
 		RGameCanvas gameCanvas = new RGameCanvas(800,600,ship, mobsManager);
+		gameCanvas.addKeyListener(control);
 		
 		frame.getContentPane().add(gameCanvas);
 		frame.setResizable(false);

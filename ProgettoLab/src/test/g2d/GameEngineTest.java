@@ -10,9 +10,7 @@ import model.ships.Ship2D;
 import model.spawning.SimpleJans2DSpawner;
 import model.spawning.Spawner;
 import view2d.assets.Assets;
-import view2d.drawers.CircleDrawer;
 import view2d.drawers.SpriteDrawer;
-import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
@@ -39,16 +37,15 @@ public class GameEngineTest {
 		
 		(new Thread( new Spawner(mobsManager, mobMover, new SimpleJans2DSpawner(width)))).start();
 		
-		Coordinate bounds = new Coordinate(height+200, width, 0);
+		Coordinate bounds = new Coordinate(width,height+200, 0);
 		
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
 		
 		
 		
 		JFrame frame = new JFrame();
-		frame.addKeyListener(control);
-		RGameCanvas gameCanvas = new RGameCanvas(800,600,ship, mobsManager);
-		
+		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
+		gameCanvas.addKeyListener(control);
 		frame.getContentPane().add(gameCanvas);
 		frame.setResizable(false);
 		frame.setVisible(true);
@@ -56,8 +53,8 @@ public class GameEngineTest {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		gameCanvas.setShipDrawer(new SquareDrawer());
-		gameCanvas.setMobDrawer( new CircleDrawer());
+		gameCanvas.setShipDrawer(shipDrawer);
+		gameCanvas.setMobDrawer( mobDrawer);
 		
 		gameCanvas.start();
 		

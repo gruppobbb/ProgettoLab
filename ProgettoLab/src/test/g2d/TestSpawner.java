@@ -21,18 +21,19 @@ public class TestSpawner {
 		final int width = 1280;
 		final int height = (width/16)*9;
 
-		Ship2D ship = new Ship2D(new Coordinate(40, 500, 0));
-		Controller2D control = new Controller2D(ship, 735, 0);
+		Ship2D ship = new Ship2D(new Coordinate(400, 500, 0));
+		Controller2D control = new Controller2D(ship, 775, 25);
 		MobsManager mobsManager = new MobsManager();
 		
-		Coordinate bounds = new Coordinate(height+200, width, 0);
+		Coordinate bounds = new Coordinate(width,height+200, 0);
 		
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
 		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic()))).start();		
 		
 		JFrame frame = new JFrame();
-		frame.addKeyListener(control);
+		
 		RGameCanvas gameCanvas = new RGameCanvas(800,600,ship, mobsManager);
+		gameCanvas.addKeyListener(control);
 		
 		frame.getContentPane().add(gameCanvas);
 		frame.setResizable(false);

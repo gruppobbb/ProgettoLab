@@ -1,9 +1,5 @@
 package test.g2d.render;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -35,7 +31,7 @@ public class TestRender00 {
 		
 		JFrame frame = new JFrame();
 		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
-		frame.addKeyListener(controller);
+		gameCanvas.addKeyListener(controller);
 		
 		int gap = 50 ;
 		

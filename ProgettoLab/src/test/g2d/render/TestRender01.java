@@ -2,7 +2,6 @@ package test.g2d.render;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,8 +15,6 @@ import model.mobs.Mob2D;
 import model.movement.MobMovingLogic2D;
 import model.movement.MovingLogic2D;
 import model.ships.Ship2D;
-import view2d.drawers.CircleDrawer;
-import view2d.drawers.SquareDrawer;
 import view2d.render.RGameCanvas;
 import view2d.render.RGameCanvas.RenderInfo;
 import control.Controller2D;
@@ -40,7 +37,7 @@ public class TestRender01 {
 		
 		JFrame frame = new JFrame();
 		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
-		frame.addKeyListener(controller);
+		gameCanvas.addKeyListener(controller);
 		MouseAdapter mouse = new MouseAdapter() {
 			
 			ArrayList<Mob2D> mobs = new ArrayList<Mob2D>();
