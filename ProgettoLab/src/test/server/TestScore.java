@@ -1,8 +1,8 @@
 package test.server;
 
+import server.ScoreService;
+import server.Server;
 import model.scores.ScoreCalculator;
-import model.server.ScoreService;
-import model.server.Server;
 
 public class TestScore {
 	
