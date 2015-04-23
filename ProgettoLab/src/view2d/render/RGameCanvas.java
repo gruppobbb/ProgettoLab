@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
@@ -23,7 +25,7 @@ import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 
 /**
- * Classe per la gestione delle chiamate draw e render(?).
+ * Classe per la renderizzazione a video dei Mob e della Ship.
  * @author Jan
  *
  */
@@ -38,7 +40,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	private MobsManager mobsManager;
 	
 	private volatile boolean running;
-	private Thread renderThread;
+	private Thread viewThread;
 	
 	private RenderInfo info;
 	private boolean limitate;
@@ -86,12 +88,25 @@ public class RGameCanvas extends Canvas implements Runnable{
 	}
 	
 	/**
-	 * Metodo per l'avvio del thread grafico.
+	 * Metodo per l'avvio del thread grafico e del frame.
 	 */
 	public synchronized void start(){
 		running = true;
-		renderThread = new Thread(this);
-		renderThread.start();
+		viewThread = new Thread(this);
+		openGemePanel();
+		viewThread.start();			
+	}
+
+	//Avvio del frame contenente il canva.
+	private void openGemePanel() {
+		JFrame frame = new JFrame();
+		//Per ora .. più in la facciamo che si torna al menu ...
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(this);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
 	}
 	
 	public void setBackground(BufferedImage background) {
@@ -104,7 +119,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	public synchronized void stop(){
 		running = false;
 		try {
-			renderThread.join();
+			viewThread.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

@@ -10,14 +10,21 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 
 import model.Game;
 import view2d.assets.Assets;
 import view2d.assets.BFont;
 
+/**
+ * Pulsante castomizzato.
+ * @author Jan
+ *
+ */
 public class MenuButton extends JComponent implements MouseListener{
 
 	private Game game;
+	private JFrame parentFrame;
 
 	private float fontSize;
 	private BFont bFont;
@@ -31,12 +38,13 @@ public class MenuButton extends JComponent implements MouseListener{
 	private int xButtonName, yButtonName;
 	private boolean needCentring;
 	
-	public MenuButton(Game game, String buttonName) {
-		this(game, buttonName, Assets.FONT_BUTTON_NAME, 32f);
+	public MenuButton(JFrame parentFrame, Game game, String buttonName) {
+		this(parentFrame, game, buttonName, Assets.FONT_BUTTON_NAME, 32f);
 	}
 	
-	public MenuButton( Game game, String buttonName, int fontID, float fontSize) {
+	public MenuButton(JFrame parentFrame, Game game, String buttonName, int fontID, float fontSize) {
 		super();
+		this.parentFrame = parentFrame;
 		this.game = game;
 		bFont = Assets.getLoader().getFont(fontID);
 		this.fontSize = fontSize;
@@ -61,6 +69,12 @@ public class MenuButton extends JComponent implements MouseListener{
 		this.buttonName = buttonName;
 		needCentring = true;
 	}
+	
+	public void setFontSize(float fontSize) {
+		this.fontSize = fontSize;
+		needCentring = true;
+	}
+	
 	
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -136,6 +150,7 @@ public class MenuButton extends JComponent implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		changeImage(Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED);
+		openPanel();
 	}
 	
 	private void changeImage(int imageID){
@@ -157,5 +172,18 @@ public class MenuButton extends JComponent implements MouseListener{
 	@Override
 	public Dimension getMaximumSize() {
 		return buttondDimension;
+	}
+	
+	private void openPanel(){
+		//Perche' usiamo il getContentPane ? -.-
+		//getParent().getParent().getParent().getParent().getParent().setVisible(false); // LOL, però va XD
+		
+		//Meglio... no ? XD
+		if(parentFrame!= null && game != null ){
+			//Per ora metto disable, ma l'idea è di fare sparire... o di fare un morph del panel :3
+			parentFrame.setEnabled(false);
+			//parentFrame.setVisible(false);
+			game.start();
+		}
 	}
 }

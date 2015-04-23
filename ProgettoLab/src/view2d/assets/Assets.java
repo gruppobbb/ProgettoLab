@@ -7,6 +7,11 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Classe per la gestone degli Assets del gioco.
+ * @author Jan
+ *
+ */
 public class Assets {
 	
 	private static final Assets loader = new Assets();

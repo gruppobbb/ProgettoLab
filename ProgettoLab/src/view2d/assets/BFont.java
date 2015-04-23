@@ -5,7 +5,11 @@ import java.awt.FontFormatException;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Classe per la semplificazione di caricamento di un dato font.
+ * @author Jan
+ *
+ */
 public class BFont {
 	private Font myFont;
 	public BFont(String path) {

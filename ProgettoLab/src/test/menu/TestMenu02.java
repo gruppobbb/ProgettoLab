@@ -6,10 +6,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.games.SinglePlayer2D;
 import view2d.assets.Assets;
 import view2d.menu.MenuButton;
 
-public class TestMenu01 {
+public class TestMenu02 {
 	
 	public static void main(String[] args) {
 		
@@ -19,8 +20,10 @@ public class TestMenu01 {
 		menuPanel.setBackground(Color.BLACK);
 		
 		for (int i = 0; i < 5; i++) {
-			menuPanel.add(new MenuButton(null, null, "Nuova Partita",  Assets.FONT_BUTTON_NAME, 36f));
+			menuPanel.add(new MenuButton(frame, new SinglePlayer2D(), "Nuova Partita",  Assets.FONT_BUTTON_NAME, 36f));
 		}
+		
+		
 		
 		frame.getContentPane().add(menuPanel);
 		

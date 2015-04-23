@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- * Classe che rappresenta gli Sprite.
+ * Classe che rappresenta un singolo Sprite.
  *
  * @author Jan
  *
