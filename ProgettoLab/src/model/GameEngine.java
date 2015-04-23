@@ -6,6 +6,11 @@ import model.mobs.Mob;
 import model.movement.Moveable;
 import model.ships.Ship;
 
+/**
+ * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.
+ * @author Max
+ *
+ */
 public class GameEngine implements Runnable {
 	
 	private final long SLEEP_TIME = 20;
@@ -63,7 +68,9 @@ public class GameEngine implements Runnable {
 										(mobY - shipY) * (mobY - shipY) +	
 										(mobZ - shipZ) * (mobZ - shipZ));
 		if(distance < shipCollisionRay + mobCollisionRay) {
+			//DEBUG CODE
 			System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
+			//
 		}
 	}
 
