@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import view2d.assets.Assets;
+import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
 public class TestMenu01 {
@@ -18,13 +19,14 @@ public class TestMenu01 {
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 		menuPanel.setBackground(Color.BLACK);
 		
-		for (int i = 0; i < 5; i++) {
-			menuPanel.add(new MenuButton(null, null, "Nuova Partita",  Assets.FONT_BUTTON_NAME, 36f));
-		}
+		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS,
+				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED,
+				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED);
+		
+		menuPanel.add(new MenuButton(null, null, "Nuova Partita",  imageSet));
 		
 		frame.getContentPane().add(menuPanel);
 		
-		//frame.setResizable(false);
 		frame.setVisible(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
