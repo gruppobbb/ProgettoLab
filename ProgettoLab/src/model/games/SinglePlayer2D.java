@@ -3,6 +3,7 @@ package model.games;
 import java.awt.Canvas;
 import java.util.ArrayList;
 
+import audio.AudioPlayer;
 import model.Coordinate;
 import model.Game;
 import model.GameEngine;
@@ -55,7 +56,11 @@ public class SinglePlayer2D implements Game {
 						
 		threads.add(new Thread(new GameEngine(mobsManager,ship, viewBounds)));
 		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
-				
+
+		//istanzio BGM del gioco
+		AudioPlayer player = new AudioPlayer("res/bgm/win.wav");
+		player.playLoop();
+
 	}	
 	
 	@Override

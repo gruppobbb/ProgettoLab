@@ -3,7 +3,6 @@ package test.audio;
 import javax.swing.JFrame;
 
 import audio.AudioPlayer;
-import audio.AudioPlayerCanvas;
 
 public class TestAudio {
 	
@@ -12,9 +11,9 @@ public class TestAudio {
 		   JFrame frame=new JFrame();
 		   
 		   AudioPlayer player = new AudioPlayer("res/bgm/win.wav");
-		   AudioPlayerCanvas canvas = new AudioPlayerCanvas(player);
+		   player.playLoop();
 		   
-		   frame.getContentPane().add(canvas);
+		  
 		   frame.setSize(400, 400);
 		   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		   frame.setTitle("Example");
