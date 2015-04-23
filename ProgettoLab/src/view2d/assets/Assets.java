@@ -50,9 +50,12 @@ public class Assets {
 	
 	private void loadImages(){
 		try {
-			images.put(IMAGE_BUTTON_OUT_FOCUS, ImageIO.read(new File ("res/menu/greenButtonOutFocus.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED, ImageIO.read(new File("res/menu/onFocusGreenButtonUnpressed.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED, ImageIO.read(new File("res/menu/onFocusGreenButtonPressed.png")));
+			images.put(IMAGE_BUTTON_OUT_FOCUS_B, ImageIO.read(new File ("res/menu/buttons/bounded/outFocusBoundedGreenButton.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonUnpressed.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonPressed.png")));
+			images.put(IMAGE_BUTTON_OUT_FOCUS_F, ImageIO.read(new File ("res/menu/buttons/fullGreen/outFocusFullGreenButton.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonUnpressed.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonPressed.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -69,9 +72,12 @@ public class Assets {
 	public static final int SPRITE_MOB = 2;
 	
 	
-	public static final int IMAGE_BUTTON_OUT_FOCUS = 0;
-	public static final int IMAGE_BUTTON_ONFOCUS_PRESSED = 1;
-	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED = 2;
+	public static final int IMAGE_BUTTON_OUT_FOCUS_B = 0;
+	public static final int IMAGE_BUTTON_ONFOCUS_PRESSED_B = 1;
+	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED_B = 2;
+	public static final int IMAGE_BUTTON_OUT_FOCUS_F = 3;
+	public static final int IMAGE_BUTTON_ONFOCUS_PRESSED_F = 4;
+	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED_F = 5;
 	
 	
 	public static final int FONT_BUTTON_NAME = 0;

@@ -11,21 +11,25 @@ public class TestMenu04 {
 	public static void main(String[] args) {
 		BMenu menu = new BMenu("Test");
 		
-		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS,
-				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED,
-				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED);
+		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS_B,
+				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_B,
+				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_B);
+		
+		ButtonImageSet imageSet2 = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS_F,
+				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_F,
+				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_F);
 		
 		MenuButton[] buttons = new MenuButton[2];
 		for (int i = 0; i < 2; i++) {
 			buttons[i] = new MenuButton(null, null, "Nuova Partita", imageSet);
-			buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],5));
+			buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],i+1));
 			buttons[i].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 		}
 		menu.addButtons(buttons);
 		
 		for (int i = 0; i < 2; i++) {
-			buttons[i] = new MenuButton(null, null, "Nuova Partita", imageSet);
-			buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],5));
+			buttons[i] = new MenuButton(null, null, "Nuova Partita", imageSet2);
+			//buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],5));
 			buttons[i].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 			menu.addButton(buttons[i]);
 		}

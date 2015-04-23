@@ -19,9 +19,9 @@ public class TestMenu01 {
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 		menuPanel.setBackground(Color.BLACK);
 		
-		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS,
-				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED,
-				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED);
+		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS_B,
+				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_B,
+				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_B);
 		
 		menuPanel.add(new MenuButton(null, null, "Nuova Partita",  imageSet));
 		
