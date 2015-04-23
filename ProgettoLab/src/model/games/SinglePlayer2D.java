@@ -2,6 +2,8 @@ package model.games;
 
 import java.awt.Canvas;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import audio.AudioPlayer;
 import model.Coordinate;
@@ -18,7 +20,7 @@ import view2d.drawers.SpriteDrawer;
 import view2d.render.RGameCanvas;
 import control.Controller2D;
 
-public class SinglePlayer2D implements Game {
+public class SinglePlayer2D implements Game, Observer {
 
 	private ArrayList<Thread> threads = new ArrayList<Thread>();	//contiene i thread che dovranno essere lanciati, messi in pausa e fermati
 	private MobsManager mobsManager;
@@ -53,8 +55,11 @@ public class SinglePlayer2D implements Game {
 		//istanzio il controllo
 		controller = new Controller2D(ship, WIDTH-shipHalfWidth, shipHalfWidth);
 		gameCanvas.addKeyListener(controller);
-						
-		threads.add(new Thread(new GameEngine(mobsManager,ship, viewBounds)));
+		
+		GameEngine engine = new GameEngine(mobsManager,ship, viewBounds);
+		engine.addObserver(this);
+		
+		threads.add(new Thread(engine));
 		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
 
 		//istanzio BGM del gioco
@@ -79,11 +84,17 @@ public class SinglePlayer2D implements Game {
 	
 	@Override
 	public void gameOver() {
-		// TODO implementazione gameover
+		System.out.println("GAME OVER");
 		
 	}
 	
 	public Canvas getGameCanvas() {
 		return gameCanvas;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		gameOver();
+		
 	}
 }

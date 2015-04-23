@@ -9,6 +9,11 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Componente che carica una clip audio .wav
+ * @author Bianca
+ *
+ */
 public class AudioLoader {
 	
 private Clip clip;

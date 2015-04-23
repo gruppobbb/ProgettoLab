@@ -1,22 +1,26 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.ships.Ship;
+import audio.AudioPlayer;
 
 /**
  * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.
  * @author Max
  *
  */
-public class GameEngine implements Runnable {
+public class GameEngine extends Observable implements Runnable{
 	
 	private final long SLEEP_TIME = 20;
 	private MobsManager mobsManager;
 	private Ship ship;
 	private Coordinate bounds;
+	private boolean collided = false;
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
@@ -67,10 +71,12 @@ public class GameEngine implements Runnable {
 		double distance = Math.sqrt(	(mobX - shipX) * (mobX - shipX) +	
 										(mobY - shipY) * (mobY - shipY) +	
 										(mobZ - shipZ) * (mobZ - shipZ));
+		AudioPlayer player = new AudioPlayer("res/bgm/bomb.wav");
 		if(distance < shipCollisionRay + mobCollisionRay) {
-			//DEBUG CODE
 			System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
-			//
+			
+			player.play();
+			setCollided(true);
 		}
 	}
 
@@ -83,6 +89,21 @@ public class GameEngine implements Runnable {
 			mobsManager.removeMob(mob);
 		}
 	}
+
+
+	public boolean isCollided() {
+		return collided;
+	}
+
+
+	public void setCollided(boolean collided) {
+		this.collided = collided;
+		setChanged();
+		notifyObservers();
+	}
+
+
+	
 	
 	
 
