@@ -63,7 +63,7 @@ public class SinglePlayer2D implements Game, Observer {
 		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
 
 		//istanzio BGM del gioco
-		AudioPlayer player = new AudioPlayer("res/bgm/win.wav");
+		AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 		player.playLoop();
 
 	}	

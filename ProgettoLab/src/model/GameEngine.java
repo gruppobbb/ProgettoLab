@@ -71,7 +71,7 @@ public class GameEngine extends Observable implements Runnable{
 		double distance = Math.sqrt(	(mobX - shipX) * (mobX - shipX) +	
 										(mobY - shipY) * (mobY - shipY) +	
 										(mobZ - shipZ) * (mobZ - shipZ));
-		AudioPlayer player = new AudioPlayer("res/bgm/bomb.wav");
+		AudioPlayer player = new AudioPlayer("res/bgm/ship_explosion.wav");
 		if(distance < shipCollisionRay + mobCollisionRay) {
 			System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
 			
