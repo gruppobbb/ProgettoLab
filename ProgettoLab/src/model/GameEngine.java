@@ -20,16 +20,16 @@ public class GameEngine extends Observable implements Runnable{
 	private Ship ship;
 	private Coordinate bounds;
 	private boolean collided = false;
+	private boolean toKill = false;	//il thread deve terminare?
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
 		this.ship = ship;
 		this.bounds = viewBounds;
-	}
-	
+	}	
 	
 	public void run() {
-		while(true) {
+		while(toKill == false) {
 			ArrayList<Mob> mobs = mobsManager.getMobsList();
 			
 			int shipX = ship.getCoordinate().getX();
@@ -89,18 +89,30 @@ public class GameEngine extends Observable implements Runnable{
 		}
 	}
 
-
+	/**
+	 * Ritorna true se è stata rilevata una collisione.
+	 * @return
+	 */
 	public boolean isCollided() {
 		return collided;
 	}
 
-
+	/**
+	 * Imposta il flag che indica il rilevamento di una collisione.
+	 * @param collided
+	 */
 	public void setCollided(boolean collided) {
 		this.collided = collided;
 		setChanged();
 		notifyObservers();
 	}
 
+	/**
+	 * Imposta il flag che indica se il thread è da terminare.
+	 */
+	public void setToKill(boolean toKill) {
+		this.toKill = toKill;
+	}
 
 	
 	

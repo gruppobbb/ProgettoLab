@@ -8,7 +8,7 @@ import model.Coordinate;
 import view2d.Drawer2D;
 
 /**
- * Drawer che rappresenta la ship come un quadrato.
+ * Drawer che rappresenta l'elemento come un cerchio.
  * @author Max
  *
  */

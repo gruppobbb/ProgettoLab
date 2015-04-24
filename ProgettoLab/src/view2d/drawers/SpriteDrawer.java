@@ -8,6 +8,11 @@ import view2d.Drawer2D;
 import view2d.assets.Assets;
 import view2d.assets.Sprite;
 
+/**
+ * Drawer che rappresenta l'elemento attraverso la sprite specificata.
+ * @author Jan
+ *
+ */
 public class SpriteDrawer implements Drawer2D{
 	
 	private Sprite sprite;

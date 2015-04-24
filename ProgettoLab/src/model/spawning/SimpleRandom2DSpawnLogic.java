@@ -7,6 +7,11 @@ import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.MovingLogic2D;
 
+/**
+ * Logica di spawning 2D elementare, basata su variabili casuali uniformi.
+ * @author Max
+ *
+ */
 public class SimpleRandom2DSpawnLogic implements SpawnLogic {
 	
 	@Override

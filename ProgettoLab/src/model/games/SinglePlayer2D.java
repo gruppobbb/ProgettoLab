@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import audio.AudioPlayer;
 import model.Coordinate;
 import model.Game;
 import model.GameEngine;
 import model.MobsManager;
 import model.movement.MobMovingLogic2D;
+import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
@@ -18,8 +18,14 @@ import view2d.Drawer2D;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 import view2d.render.RGameCanvas;
+import audio.AudioPlayer;
 import control.Controller2D;
 
+/**
+ * Componente che si occupa dell'assemblaggio di tutto ciò che serve per giocare una partita in single player, in 2D.
+ * @author Max
+ *
+ */
 public class SinglePlayer2D implements Game, Observer {
 
 	private ArrayList<Thread> threads = new ArrayList<Thread>();	//contiene i thread che dovranno essere lanciati, messi in pausa e fermati
@@ -31,11 +37,12 @@ public class SinglePlayer2D implements Game, Observer {
 	private RGameCanvas gameCanvas;
 	private Ship2D ship;
 	private int shipHalfWidth;
+	private GameEngine engine;
+	private Spawner spawner;
+	ScoreCalculator scoreCalculator;
 	
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = (WIDTH/16)*9;
-	
-	
 	
 	public SinglePlayer2D() {
 
@@ -43,13 +50,14 @@ public class SinglePlayer2D implements Game, Observer {
 		
 		createGameField();	//istanzia canvas + relativo controllo
 		
-		GameEngine engine = new GameEngine(mobsManager,ship, viewBounds);
+		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
 		
-		threads.add(new Thread(engine));
-		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
+		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic());
 
-		playGameSound();
+		threads.add(new Thread(engine));
+		threads.add(new Thread(spawner));	//Lo spawner
+		scoreCalculator = new ScoreCalculator();
 
 	}
 
@@ -72,22 +80,29 @@ public class SinglePlayer2D implements Game, Observer {
 	
 	@Override
 	public void start() {
+		engine.setToKill(false);
+		spawner.setToKill(false);
 		for (Thread thread : threads) {
 			thread.start();
 		}
 		gameCanvas.start();
+		scoreCalculator.start();
+		playGameSound();
 	}
 	
 	@Override
 	public void pause() {
-		//TODO implementazione della pausa
+		//TODO implementazione della pausa... forse più avanti
 		
 	}
 	
 	@Override
 	public void gameOver() {
 		System.out.println("GAME OVER");
-		
+		spawner.setToKill(true);	
+		engine.setToKill(true);	
+		scoreCalculator.stop();
+		gameCanvas.removeKeyListener(controller);
 	}
 	
 	public Canvas getGameCanvas() {
@@ -96,8 +111,7 @@ public class SinglePlayer2D implements Game, Observer {
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		gameOver();
-		
+		gameOver();		
 	}
 	
 	private void loadGameElements() {

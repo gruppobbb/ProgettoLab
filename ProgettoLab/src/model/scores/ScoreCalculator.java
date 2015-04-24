@@ -3,7 +3,11 @@ package model.scores;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * Componente che si occupa del calcolo del punteggio.
+ * @author Bianca
+ *
+ */
 public class ScoreCalculator {
 	
 	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();

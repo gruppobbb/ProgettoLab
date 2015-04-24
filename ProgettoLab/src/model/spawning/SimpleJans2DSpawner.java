@@ -8,6 +8,11 @@ import model.mobs.Mob2D;
 import model.movement.MovingLogic2D;
 import view2d.assets.Assets;
 
+/**
+ * Logica di spawning 2D basata sul concetto di corsia.
+ * @author Max
+ *
+ */
 public class SimpleJans2DSpawner implements SpawnLogic {
 	
 	private int width;
