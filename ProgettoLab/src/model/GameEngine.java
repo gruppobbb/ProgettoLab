@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
 
 import model.mobs.Mob;
 import model.movement.Moveable;

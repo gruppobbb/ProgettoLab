@@ -10,7 +10,7 @@ public class TestAudio {
 		   
 		   JFrame frame=new JFrame();
 		   
-		   AudioPlayer player = new AudioPlayer("res/bgm/win.wav");
+		   AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 		   player.playLoop();
 		   
 		  

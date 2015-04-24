@@ -29,6 +29,8 @@ public class SinglePlayer2D implements Game, Observer {
 	private Drawer2D mobDrawer;
 	private Controller2D controller;
 	private RGameCanvas gameCanvas;
+	private Ship2D ship;
+	private int shipHalfWidth;
 	
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = (WIDTH/16)*9;
@@ -37,16 +39,21 @@ public class SinglePlayer2D implements Game, Observer {
 	
 	public SinglePlayer2D() {
 
-		//istanzio gli elementi del gioco
-		shipDrawer = new SpriteDrawer(Assets.SPRITE_SHIP);
-		mobDrawer = new SpriteDrawer(Assets.SPRITE_MOB);
-		int shipHalfWidth = shipDrawer.getSpriteDimension().width/2;
-		int y = HEIGHT - shipDrawer.getSpriteDimension().height;
-		Ship2D ship = new Ship2D(new Coordinate( WIDTH/2, y, 0));
-		viewBounds = new Coordinate(HEIGHT+200, WIDTH, 0);
+		loadGameElements();	//carica gli elementi che servono per la partita
 		
-		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
+		createGameField();	//istanzia canvas + relativo controllo
 		
+		GameEngine engine = new GameEngine(mobsManager,ship, viewBounds);
+		engine.addObserver(this);
+		
+		threads.add(new Thread(engine));
+		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
+
+		playGameSound();
+
+	}
+
+	private void createGameField() {
 		//istanzio il canvas di gioco
 		gameCanvas = new RGameCanvas(WIDTH, HEIGHT, ship, mobsManager);
 		gameCanvas.setShipDrawer(shipDrawer);
@@ -55,17 +62,12 @@ public class SinglePlayer2D implements Game, Observer {
 		//istanzio il controllo
 		controller = new Controller2D(ship, WIDTH-shipHalfWidth, shipHalfWidth);
 		gameCanvas.addKeyListener(controller);
-		
-		GameEngine engine = new GameEngine(mobsManager,ship, viewBounds);
-		engine.addObserver(this);
-		
-		threads.add(new Thread(engine));
-		threads.add(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic())));	//Lo spawner
+	}
 
+	private void playGameSound() {
 		//istanzio BGM del gioco
 		AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 		player.playLoop();
-
 	}	
 	
 	@Override
@@ -96,5 +98,17 @@ public class SinglePlayer2D implements Game, Observer {
 	public void update(Observable arg0, Object arg1) {
 		gameOver();
 		
+	}
+	
+	private void loadGameElements() {
+		//istanzio gli elementi del gioco
+		shipDrawer = new SpriteDrawer(Assets.SPRITE_SHIP);
+		mobDrawer = new SpriteDrawer(Assets.SPRITE_MOB);
+		shipHalfWidth = shipDrawer.getSpriteDimension().width/2;
+		int y = HEIGHT - shipDrawer.getSpriteDimension().height;
+		ship = new Ship2D(new Coordinate( WIDTH/2, y, 0));
+		viewBounds = new Coordinate(HEIGHT+200, WIDTH, 0);
+		
+		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
 	}
 }
