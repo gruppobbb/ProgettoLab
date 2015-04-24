@@ -25,9 +25,8 @@ import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 
 /**
- * Classe per la renderizzazione a video dei Mob e della Ship.
+ * Classe per la visualizzazione dell'interfaccia grafica.
  * @author Jan
- *
  */
 public class RGameCanvas extends Canvas implements Runnable{
 	
@@ -100,7 +99,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	//Avvio del frame contenente il canva.
 	private void openGemePanel() {
 		JFrame frame = new JFrame();
-		//Per ora .. più in la facciamo che si torna al menu ...
+		//Per ora .. piï¿½ in la facciamo che si torna al menu ...
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().add(this);
 		frame.setResizable(false);

@@ -53,14 +53,13 @@ public class Assets {
 			images.put(IMAGE_BUTTON_OUT_FOCUS_B, ImageIO.read(new File ("res/menu/buttons/bounded/outFocusBoundedGreenButton.png")));
 			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonUnpressed.png")));
 			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonPressed.png")));
-			images.put(IMAGE_BUTTON_OUT_FOCUS_F, ImageIO.read(new File ("res/menu/buttons/fullGreen/outFocusFullGreenButton.png")));
+			images.put(IMAGE_BUTTON_OUT_FOCUS_F, ImageIO.read(new File ("res/menu/buttons/fullGreen/outFocusfullGreenButton.png")));
 			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonUnpressed.png")));
 			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonPressed.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	private void loadFonts(){
 		fonts.put(FONT_BUTTON_NAME, new BFont("res/fonts/origami.ttf"));
