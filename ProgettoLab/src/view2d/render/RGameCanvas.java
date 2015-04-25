@@ -92,7 +92,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 	public synchronized void start(){
 		running = true;
 		viewThread = new Thread(this);
-		openGemePanel();
+		//openGemePanel();					IL PANNELLO LO METTEREI IN SINGLEPLAYER, si gestisce meglio
 		viewThread.start();			
 	}
 
@@ -117,11 +117,11 @@ public class RGameCanvas extends Canvas implements Runnable{
 	 */
 	public synchronized void stop(){
 		running = false;
-		try {
-			viewThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			viewThread.join();
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	public void setMobDrawer(Drawer2D mobDrawer) {

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import model.Coordinate;
 import model.Game;
 import model.GameEngine;
@@ -17,6 +19,7 @@ import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
+import view2d.render.GameOverCanvas;
 import view2d.render.RGameCanvas;
 import audio.AudioPlayer;
 import control.Controller2D;
@@ -39,7 +42,9 @@ public class SinglePlayer2D implements Game, Observer {
 	private int shipHalfWidth;
 	private GameEngine engine;
 	private Spawner spawner;
-	ScoreCalculator scoreCalculator;
+	private ScoreCalculator scoreCalculator;
+	private JFrame gameFrame;
+	AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 	
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = (WIDTH/16)*9;
@@ -47,6 +52,8 @@ public class SinglePlayer2D implements Game, Observer {
 	public SinglePlayer2D() {
 
 		loadGameElements();	//carica gli elementi che servono per la partita
+		
+		gameFrame = createGameFrame();
 		
 		createGameField();	//istanzia canvas + relativo controllo
 		
@@ -58,7 +65,21 @@ public class SinglePlayer2D implements Game, Observer {
 		threads.add(new Thread(engine));
 		threads.add(new Thread(spawner));	//Lo spawner
 		scoreCalculator = new ScoreCalculator();
+	}
+	
+	private JFrame createGameFrame() {
+		JFrame frame = new JFrame();
+		//Per ora .. pi� in la facciamo che si torna al menu ...
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		return frame;
+	}
 
+	private void activateFrame(JFrame frame) {
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		gameFrame.validate();
 	}
 
 	private void createGameField() {
@@ -74,12 +95,13 @@ public class SinglePlayer2D implements Game, Observer {
 
 	private void playGameSound() {
 		//istanzio BGM del gioco
-		AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 		player.playLoop();
 	}	
 	
 	@Override
 	public void start() {
+		gameFrame.getContentPane().add(gameCanvas);
+		activateFrame(gameFrame);
 		engine.setToKill(false);
 		spawner.setToKill(false);
 		for (Thread thread : threads) {
@@ -103,6 +125,16 @@ public class SinglePlayer2D implements Game, Observer {
 		engine.setToKill(true);	
 		scoreCalculator.stop();
 		gameCanvas.removeKeyListener(controller);
+		gameCanvas.stop();
+		try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
+		gameFrame.getContentPane().removeAll();
+		gameFrame.repaint();	
+		GameOverCanvas gameOverCanvas = new GameOverCanvas(WIDTH, HEIGHT);
+		gameFrame.getContentPane().add(gameOverCanvas);
+		gameFrame.revalidate();
+		gameOverCanvas.drawScore(scoreCalculator.getScore());
+		activateFrame(gameFrame);
+		
 	}
 	
 	public Canvas getGameCanvas() {
