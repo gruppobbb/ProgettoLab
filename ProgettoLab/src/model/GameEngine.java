@@ -21,6 +21,7 @@ public class GameEngine extends Observable implements Runnable{
 	private Coordinate bounds;
 	private boolean collided = false;
 	private boolean toKill = false;	//il thread deve terminare?
+	private AudioPlayer player = new AudioPlayer("res/bgm/ship_explosion.wav");
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
@@ -70,7 +71,7 @@ public class GameEngine extends Observable implements Runnable{
 		double distance = Math.sqrt(	(mobX - shipX) * (mobX - shipX) +	
 										(mobY - shipY) * (mobY - shipY) +	
 										(mobZ - shipZ) * (mobZ - shipZ));
-		AudioPlayer player = new AudioPlayer("res/bgm/ship_explosion.wav");
+
 		if(distance < shipCollisionRay + mobCollisionRay) {
 			System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
 			
