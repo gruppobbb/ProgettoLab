@@ -8,7 +8,7 @@ public class SimpleButtonAnimation implements ButtonAnimator{
 	private MenuButton button;
 	private Timer timer;
 	private int delta = 1;
-	private int maxShift = 5, shift = 0;
+	private int maxShift, shift;
 	private int xStart, yStart;
 	private int buttonImageWidth, buttonImageHeight;
 	private boolean needSave;

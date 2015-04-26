@@ -24,14 +24,14 @@ public class TestMenu04 {
 		for (int i = 0; i < 3; i++) {
 			buttons[i] = new GameMenuButton(null, null, "Nuova Partita", imageSet);
 			buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],i+1));
-			buttons[i].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
+			buttons[i].setBFont(Assets.FONT_GENERAL, 32.f);
 		}
 		menu.addButtons(buttons);
 		
 		for (int i = 0; i < 3; i++) {
 			buttons[i] = new GameMenuButton(null, null, "Nuova Partita", imageSet2);
 			//buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],5));
-			buttons[i].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
+			buttons[i].setBFont(Assets.FONT_GENERAL, 32.f);
 			menu.addButton(buttons[i]);
 		}
 		

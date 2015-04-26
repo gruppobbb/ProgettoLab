@@ -62,7 +62,7 @@ public class Assets {
 	}
 	
 	private void loadFonts(){
-		fonts.put(FONT_BUTTON_NAME, new BFont("res/fonts/origami.ttf"));
+		fonts.put(FONT_GENERAL, new BFont("res/fonts/origami.ttf"));
 	}
 	
 	
@@ -79,6 +79,6 @@ public class Assets {
 	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED_F = 5;
 	
 	
-	public static final int FONT_BUTTON_NAME = 0;
+	public static final int FONT_GENERAL = 0;
 
 }

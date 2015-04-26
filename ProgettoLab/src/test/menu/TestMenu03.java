@@ -26,7 +26,7 @@ public class TestMenu03 {
 		for (int i = 0; i < 5; i++) {
 			MenuButton newGameButton = new GameMenuButton(null, null, "Nuova Partita", imageSet);
 			newGameButton.setButtonAnimator(new SimpleButtonAnimation(newGameButton,5));
-			newGameButton.setBFont(Assets.FONT_BUTTON_NAME, 32.f);
+			newGameButton.setBFont(Assets.FONT_GENERAL, 32.f);
 			menuPanel.add(newGameButton);
 		}
 		

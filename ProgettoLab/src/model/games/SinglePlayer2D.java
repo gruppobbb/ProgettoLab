@@ -71,7 +71,6 @@ public class SinglePlayer2D implements Game, Observer {
 		threads.clear();
 		threads.add(new Thread(engine));
 		threads.add(new Thread(spawner));	//Lo spawner
-		scoreCalculator = new ScoreCalculator();
 	}
 	
 	private JFrame createGameFrame() {
@@ -91,10 +90,9 @@ public class SinglePlayer2D implements Game, Observer {
 
 	private void createGameField() {
 		//istanzio il canvas di gioco
-		gameCanvas = new RGameCanvas(WIDTH, HEIGHT, ship, mobsManager);
+		gameCanvas = new RGameCanvas(WIDTH, HEIGHT, ship, mobsManager, scoreCalculator);
 		gameCanvas.setShipDrawer(shipDrawer);
 		gameCanvas.setMobDrawer(mobDrawer);
-		
 		//istanzio il controllo
 		controller = new Controller2D(ship, WIDTH-shipHalfWidth, shipHalfWidth);
 		gameCanvas.addKeyListener(controller);
@@ -168,5 +166,6 @@ public class SinglePlayer2D implements Game, Observer {
 		viewBounds = new Coordinate(HEIGHT+200, WIDTH, 0);
 		
 		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
+		scoreCalculator = new ScoreCalculator();
 	}
 }
