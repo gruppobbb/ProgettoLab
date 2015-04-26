@@ -26,12 +26,9 @@ public class NavigationMenuButton extends MenuButton{
 
 	@Override
 	public void action() {
-		if(parentMenu!= null ){
-			parentMenu.setEnabled(false);
-			//parentFrame.setVisible(false);
-		}
 		if(nextMenu != null){
-			nextMenu.setVisible(true);
+			parentMenu.hideMenu();
+			nextMenu.showMenu();
 		}
 	}
 }

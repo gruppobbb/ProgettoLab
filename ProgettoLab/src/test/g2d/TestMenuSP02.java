@@ -11,7 +11,7 @@ import view2d.menu.button.ExitMenuButton;
 import view2d.menu.button.GameMenuButton;
 import view2d.menu.button.NavigationMenuButton;
 
-public class OfTestMenuSP02 {
+public class TestMenuSP02 {
 	
 	public static void main(String[] args) {
 				
@@ -48,7 +48,7 @@ public class OfTestMenuSP02 {
 		buttons[1].setButtonAnimator(new SimpleButtonAnimation(buttons[1],3));
 		buttons[1].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 
-		buttons[2] = new ExitMenuButton(menu, "Esci", imageSet);
+		buttons[2] = new ExitMenuButton("Esci", imageSet);
 		buttons[2].setButtonAnimator(new SimpleButtonAnimation(buttons[2],3));
 		buttons[2].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 		

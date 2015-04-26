@@ -34,5 +34,8 @@ public class TestMenu04 {
 			buttons[i].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 			menu.addButton(buttons[i]);
 		}
+		
+		//#### NOTATEMI ###
+		menu.showMenu();
 	}
 }

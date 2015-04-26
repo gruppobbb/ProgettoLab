@@ -45,14 +45,16 @@ public class BMenu extends JFrame {
 	
 	
 	public void showMenu(){
-		
-		
-		
 		setResizable(false);
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	
+	public void hideMenu(){
+		setVisible(false);
 	}
 	
 	
