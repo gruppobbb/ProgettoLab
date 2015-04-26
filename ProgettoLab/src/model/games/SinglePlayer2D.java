@@ -18,10 +18,10 @@ import model.spawning.SimpleJans2DSpawner;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
+import view2d.GameOverCanvas;
+import view2d.RGameCanvas;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
-import view2d.render.GameOverCanvas;
-import view2d.render.RGameCanvas;
 import audio.AudioPlayer;
 import control.Controller2D;
 

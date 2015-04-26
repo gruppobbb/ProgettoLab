@@ -9,9 +9,9 @@ import model.movement.MobMovingLogic2D;
 import model.ships.Ship2D;
 import model.spawning.SimpleJans2DSpawner;
 import model.spawning.Spawner;
+import view2d.RGameCanvas;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
-import view2d.render.RGameCanvas;
 import control.Controller2D;
 
 public class GameEngineTest {

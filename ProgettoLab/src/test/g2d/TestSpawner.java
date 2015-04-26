@@ -9,9 +9,9 @@ import model.movement.MobMovingLogic2D;
 import model.ships.Ship2D;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
+import view2d.RGameCanvas;
 import view2d.drawers.CircleDrawer;
 import view2d.drawers.SquareDrawer;
-import view2d.render.RGameCanvas;
 import control.Controller2D;
 
 public class TestSpawner {

@@ -10,10 +10,10 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
+import view2d.RGameCanvas;
+import view2d.RGameCanvas.RenderInfo;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
-import view2d.render.RGameCanvas;
-import view2d.render.RGameCanvas.RenderInfo;
 import control.Controller2D;
 
 public class SpriteTest {

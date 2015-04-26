@@ -1,4 +1,4 @@
-package view2d.render;
+package view2d;
 
 import java.awt.AlphaComposite;
 import java.awt.Canvas;
@@ -21,7 +21,6 @@ import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
-import view2d.Drawer2D;
 import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 

@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
+import view2d.RGameCanvas;
 import view2d.drawers.SquareDrawer;
-import view2d.render.RGameCanvas;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 

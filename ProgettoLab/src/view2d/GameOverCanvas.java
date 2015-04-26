@@ -1,4 +1,4 @@
-package view2d.render;
+package view2d;
 
 import java.awt.Canvas;
 import java.awt.Color;

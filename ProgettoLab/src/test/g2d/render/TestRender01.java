@@ -15,8 +15,8 @@ import model.mobs.Mob2D;
 import model.movement.MobMovingLogic2D;
 import model.movement.MovingLogic2D;
 import model.ships.Ship2D;
-import view2d.render.RGameCanvas;
-import view2d.render.RGameCanvas.RenderInfo;
+import view2d.RGameCanvas;
+import view2d.RGameCanvas.RenderInfo;
 import control.Controller2D;
 
 //Test del controllo 2d della ship. 
