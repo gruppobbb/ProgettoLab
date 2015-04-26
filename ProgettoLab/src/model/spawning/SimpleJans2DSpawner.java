@@ -31,8 +31,8 @@ public class SimpleJans2DSpawner implements SpawnLogic {
 		mobWidth = Assets.getLoader().getSprite(Assets.SPRITE_MOB).getWidth();
 		N = (int)(width/mobWidth);
 
-		randX = rand.nextInt(N)*mobWidth + mobWidth/2 ;
-		Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	10, mobMover);
+		randX = rand.nextInt(N+1)*mobWidth + mobWidth/2 ;
+		Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	7, mobMover);
 		return mob;
 	}
 

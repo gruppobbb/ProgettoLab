@@ -14,6 +14,7 @@ import model.MobsManager;
 import model.movement.MobMovingLogic2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
+import model.spawning.SimpleJans2DSpawner;
 import model.spawning.SimpleRandom2DSpawnLogic;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
@@ -44,13 +45,18 @@ public class SinglePlayer2D implements Game, Observer {
 	private Spawner spawner;
 	private ScoreCalculator scoreCalculator;
 	private JFrame gameFrame;
+	private JFrame menuFrame;
 	AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
 	
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = (WIDTH/16)*9;
 	
-	public SinglePlayer2D() {
+	public SinglePlayer2D(JFrame menuFrame) {
+		this.menuFrame = menuFrame;
+	}
 
+	public void reset(JFrame menuFrame) {
+		
 		loadGameElements();	//carica gli elementi che servono per la partita
 		
 		gameFrame = createGameFrame();
@@ -60,8 +66,9 @@ public class SinglePlayer2D implements Game, Observer {
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
 		
-		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic());
+		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleJans2DSpawner(WIDTH));
 
+		threads.clear();
 		threads.add(new Thread(engine));
 		threads.add(new Thread(spawner));	//Lo spawner
 		scoreCalculator = new ScoreCalculator();
@@ -70,7 +77,7 @@ public class SinglePlayer2D implements Game, Observer {
 	private JFrame createGameFrame() {
 		JFrame frame = new JFrame();
 		//Per ora .. pi� in la facciamo che si torna al menu ...
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.setResizable(false);
 		return frame;
 	}
@@ -100,6 +107,7 @@ public class SinglePlayer2D implements Game, Observer {
 	
 	@Override
 	public void start() {
+		reset(menuFrame);
 		gameFrame.getContentPane().add(gameCanvas);
 		activateFrame(gameFrame);
 		engine.setToKill(false);
@@ -127,13 +135,17 @@ public class SinglePlayer2D implements Game, Observer {
 		gameCanvas.removeKeyListener(controller);
 		gameCanvas.stop();
 		try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
-		gameFrame.getContentPane().removeAll();
-		gameFrame.repaint();	
-		GameOverCanvas gameOverCanvas = new GameOverCanvas(WIDTH, HEIGHT);
-		gameFrame.getContentPane().add(gameOverCanvas);
-		gameFrame.revalidate();
-		gameOverCanvas.drawScore(scoreCalculator.getScore());
-		activateFrame(gameFrame);
+		gameFrame.dispose();
+		menuFrame.setEnabled(true);
+		menuFrame.toFront();
+        menuFrame.repaint();
+//		gameFrame.getContentPane().removeAll();
+//		gameFrame.repaint();	
+//		GameOverCanvas gameOverCanvas = new GameOverCanvas(WIDTH, HEIGHT);
+//		gameFrame.getContentPane().add(gameOverCanvas);
+//		gameFrame.revalidate();
+//		gameOverCanvas.drawScore(scoreCalculator.getScore());
+//		activateFrame(gameFrame);
 		
 	}
 	

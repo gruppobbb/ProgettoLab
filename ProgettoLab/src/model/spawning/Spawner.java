@@ -10,7 +10,7 @@ import model.movement.MovingLogic2D;
  */
 public class Spawner implements Runnable {
 	
-	public static final int SLEEP_TIME = 1000;
+	public static final int SLEEP_TIME = 500;
 	private MobsManager manager;
 	private MovingLogic2D mobMover;
 	private SpawnLogic spawnLogic;

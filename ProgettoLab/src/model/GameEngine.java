@@ -15,7 +15,7 @@ import audio.AudioPlayer;
  */
 public class GameEngine extends Observable implements Runnable{
 	
-	private final long SLEEP_TIME = 20;
+	private final long SLEEP_TIME = 10;
 	private MobsManager mobsManager;
 	private Ship ship;
 	private Coordinate bounds;

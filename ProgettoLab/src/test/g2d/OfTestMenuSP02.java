@@ -8,7 +8,7 @@ import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 import view2d.menu.SimpleButtonAnimation;
 
-public class TestMenuSP01 {
+public class OfTestMenuSP02 {
 	
 	public static void main(String[] args) {
 				
