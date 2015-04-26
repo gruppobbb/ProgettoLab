@@ -4,21 +4,14 @@ import java.io.IOException;
 import java.net.Socket;
 
 /**
- * 
+ * Servizi per mandare richieste HTTP.
  * @author Giulia
- *
  */
 
 public interface IService {
 	
 	/**
-	 * TODO: fissare il 'filename', sostituirlo con il
-	 * componente 'RichiestaHTTP'
-	 * 
-	 * @param clientSocket
-	 * @param uri
-	 * @return
-	 * @throws IOException
+	 * Manda una richiesta HTTP personalizzata in base al servizio istanziato.
 	 */
 
 	public void sendHTTP(final Socket clientSocket, HttpRequest request)

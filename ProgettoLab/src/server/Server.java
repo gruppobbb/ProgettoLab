@@ -9,7 +9,6 @@ import java.util.HashMap;
 /**
  * Classe che gestisce la connessione col server locale.
  * @author Giulia
- *
  */
 
 public class Server {
@@ -38,12 +37,12 @@ public class Server {
 					public void run() {
 						try {
 							HttpRequest request = new HttpRequest(clientSocket);
-														
+							
 							System.err.println(request.getUri());
 							
 							IService service = services.get(request.getUri());
 							if(service==null){
-								service = new FileService();
+								service = new ScoreService();
 							}
 							
 							service.sendHTTP(clientSocket, request);

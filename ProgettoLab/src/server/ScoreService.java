@@ -9,11 +9,15 @@ import java.net.Socket;
 
 import model.scores.ScoreKeeper;
 
+/**
+ * Service per il caricamento di una pagina con la lista degli High Score.
+ * @author Giulia
+ *
+ */
 
 public class ScoreService implements IService{
 	
 	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
-	private static final String filename = "web/highscores.html";
 	
 	public void sendHTTP(final Socket clientSocket,
 			HttpRequest request) throws IOException,
@@ -21,15 +25,17 @@ public class ScoreService implements IService{
 		
 		HttpMessage message = new HttpMessage();
 		message.openHttpAnswer(clientSocket);
-		copyFile(filename, message.getOut());
+		copyFile(message.getOut());
 		message.closeHttpAnswer();
 	}
-
-	private void copyFile(String filename,
-			OutputStreamWriter out)
+	
+	/**
+	 * Carica il file HTML, sostituendo "$SCORES$" con la lista dei punteggi.
+	 */
+	private void copyFile(OutputStreamWriter out)
 			throws FileNotFoundException, IOException {
 		BufferedReader fileReader = new BufferedReader(
-				new FileReader(filename)
+				new FileReader("web/highschores.html")
 				);
 		String fileLine=fileReader.readLine();
 		while(fileLine!=null){
@@ -38,6 +44,7 @@ public class ScoreService implements IService{
 				for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
 					out.write("<li>");
 					out.write(scores.getHighScores().get(i).toString());
+					out.write("");
 					out.write("</li>\n");
 				}
 				out.write("</ol>");
@@ -48,6 +55,9 @@ public class ScoreService implements IService{
 		}
 	}
 	
+	/**
+	 * Controlla che l'URI sia corretto e il file esista.
+	 */
 	private String checkURI(String uri) {
 		String filename = "web" + uri;
 		File file = new File(filename);

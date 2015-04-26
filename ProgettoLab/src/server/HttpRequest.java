@@ -6,6 +6,12 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.LinkedList;
 
+/**
+ * Gestisce le richieste HTTP e ne ricava l'URI.
+ * @author Giulia
+ *
+ */
+
 public class HttpRequest {
 	
 	private String uri;

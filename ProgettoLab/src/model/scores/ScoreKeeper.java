@@ -1,34 +1,29 @@
 package model.scores;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
- * Classe che gestisce gli High Score. E' un Singleton.
+ * Classe che gestisce gli High Score. E' un singleton.
  * @author Giulia
- *
  */
-
 public class ScoreKeeper {
 	
 	private static ScoreKeeper scoreKeeper;
 	private static ArrayList<Long> highScores;
 	public static final int MAX_SCORES = 10;
+	private IScoreManager scoreManager;
 	
-	private ScoreKeeper() {
+	private ScoreKeeper(IScoreManager scoreManager) {
+		this.scoreManager = scoreManager;
 		highScores = new ArrayList<Long>(MAX_SCORES);
-		for (int i = 0; i < MAX_SCORES; i++) {
-			highScores.add(0l);
-		}
-		
+		updateList();
 	}
-	/**
-	 * Per recuperare il Singleton.
-	 * @return Il singleton yo
-	 */
+	
 	public static ScoreKeeper getScoreKeeper(){
 		if(scoreKeeper == null){
-			scoreKeeper = new ScoreKeeper();
+			scoreKeeper = new ScoreKeeper(new LocalScoreManager());
 		}
 		return scoreKeeper;
 	}
@@ -37,13 +32,7 @@ public class ScoreKeeper {
 	 * Metodo che restituisce i primi 10 punteggi ordinati numericamente.
 	 * @return Lista dei 10 punteggi piu' alti
 	 */
-	
 	public ArrayList<Long> getHighScores(){
-		Collections.sort(highScores);
-		Collections.reverse(highScores);
-		if (highScores.size() > MAX_SCORES) {
-			highScores.subList(MAX_SCORES, highScores.size()).clear();
-		}
 		return highScores;
 	}
 	
@@ -52,7 +41,28 @@ public class ScoreKeeper {
 	 * @param score Nuovo punteggio
 	 */
 	public void addScore(long score){
+		updateList();
 		highScores.add(score);
+		try {
+			scoreManager.saveScores(highScores);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Aggiorna la lista dei punteggi.
+	 */
+	public void updateList(){
+		try {
+			scoreManager.loadScores(highScores);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

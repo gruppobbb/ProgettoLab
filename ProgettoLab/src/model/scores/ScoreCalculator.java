@@ -26,7 +26,7 @@ public class ScoreCalculator {
 				System.out.println(score);
 			}
 		};
-		timer.scheduleAtFixedRate(task, 0, 500);
+		timer.scheduleAtFixedRate(task, 0, 200);
 	}
 	
 	public void stop(){
