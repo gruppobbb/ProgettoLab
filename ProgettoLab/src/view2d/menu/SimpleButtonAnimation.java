@@ -35,9 +35,9 @@ public class SimpleButtonAnimation implements ButtonAnimator{
 			timer.scheduleAtFixedRate(new TimerTask() {
 				@Override
 				public void run() {
-					if(shift==0){
+					if(shift<=0){
 						delta = 1;
-					}else if(shift == maxShift-1){
+					}else if(shift <= maxShift){
 						delta = -1;
 					}
 					shift += delta;
