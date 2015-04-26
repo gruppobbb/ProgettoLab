@@ -21,13 +21,7 @@ public class BMenu extends JFrame {
 		menuPanel = new JPanel();
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 		menuPanel.setBackground(Color.BLACK);
-		
 		getContentPane().add(menuPanel);
-		setResizable(false);
-		setVisible(true);
-		pack();
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	/**
@@ -48,5 +42,18 @@ public class BMenu extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
+	
+	
+	public void showMenu(){
+		
+		
+		
+		setResizable(false);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
 	
 }

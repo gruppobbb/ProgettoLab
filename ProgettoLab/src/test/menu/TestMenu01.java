@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import view2d.assets.Assets;
 import view2d.menu.ButtonImageSet;
-import view2d.menu.MenuButton;
+import view2d.menu.button.GameMenuButton;
 
 public class TestMenu01 {
 	
@@ -23,7 +23,7 @@ public class TestMenu01 {
 				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_B,
 				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_B);
 		
-		menuPanel.add(new MenuButton(null, null, "Nuova Partita",  imageSet));
+		menuPanel.add(new GameMenuButton(null, null, "Nuova Partita",  imageSet));
 		
 		frame.getContentPane().add(menuPanel);
 		

@@ -15,15 +15,14 @@ import view2d.menu.ButtonImageSet.ButtonStatus;
 
 /**
  * Pulsante castomizzato per un menu B\.
+ * Reso astratto e non cocreto piu' interfaccia 
+ * per farlo rimanere un JComponent e poterlo aggiungere ad un JPanel.
  * @author Jan
  */
-public class MenuButton extends JComponent{
+public abstract class MenuButton extends JComponent{
 	
 	private static final long serialVersionUID = -2037901012226328052L;
 	
-	private Game game;
-	private JFrame parentMenu;
-
 	private BFont bFont;
 	private String buttonName;
 	private BufferedImage buttonImage;
@@ -44,10 +43,8 @@ public class MenuButton extends JComponent{
 	 * @param buttonName nome del pulsante
 	 * @param imageSet set di immagini
 	 */
-	public MenuButton(BMenu parentMenu, Game game, String buttonName, ButtonImageSet imageSet) {
+	public MenuButton(String buttonName, ButtonImageSet imageSet) {
 		super();
-		this.parentMenu = parentMenu;
-		this.game = game;
 		this.imageSet = imageSet;
 		setButtonName(buttonName);
 		enableInputMethods(true);
@@ -64,8 +61,8 @@ public class MenuButton extends JComponent{
 	 * @param fontID nuovo font @see BFont
 	 * @param fontSize dimensione nuovo font
 	 */
-	public MenuButton(BMenu parentMenu, Game game, String buttonName, ButtonImageSet imageSet, int fontID, float fontSize) {
-		this(parentMenu, game, buttonName, imageSet);
+	public MenuButton(String buttonName, ButtonImageSet imageSet, int fontID, float fontSize) {
+		this(buttonName, imageSet);
 		setBFont(fontID, fontSize);
 	}
 	
@@ -92,21 +89,7 @@ public class MenuButton extends JComponent{
 		g.drawString(buttonName, xButtonName, yButtonName);
 	}
 	
-	/**
-	 * Metodo per l'apertura di una modalita'.
-	 */
-	public void openPanel(){
-		if(parentMenu!= null ){
-			//Per ora metto disable, ma l'idea è di fare sparire... o di fare un morph del panel :3
-			parentMenu.setEnabled(false);
-			//parentFrame.setVisible(false);
-			
-		}
-		
-		if(game != null){
-			game.start();
-		}
-	}
+	public abstract void action();
 	
 	/**
 	 * Permette di centrare il nome del bottone, usando la metrics del font impostato e la dimensione del bottone.

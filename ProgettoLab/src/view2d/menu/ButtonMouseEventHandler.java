@@ -48,7 +48,7 @@ public class ButtonMouseEventHandler implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		button.setButtonStatus(ButtonStatus.STATUS_ON_FOCUS_UNPRESSED);
 		button.repaint();
-		button.openPanel();
+		button.action();
 	}
 	
 	@Override

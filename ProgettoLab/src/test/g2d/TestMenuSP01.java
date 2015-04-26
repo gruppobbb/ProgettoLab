@@ -7,6 +7,9 @@ import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 import view2d.menu.SimpleButtonAnimation;
+import view2d.menu.button.ExitMenuButton;
+import view2d.menu.button.GameMenuButton;
+import view2d.menu.button.NavigationMenuButton;
 
 public class TestMenuSP01 {
 	
@@ -38,15 +41,15 @@ public class TestMenuSP01 {
 	
 	private static void initMenu(Game singlePlayerGame, BMenu menu,
 			ButtonImageSet imageSet, MenuButton[] buttons) {
-		buttons[0] = new MenuButton(menu, singlePlayerGame, "Nuova Partita", imageSet);
+		buttons[0] = new GameMenuButton(menu, singlePlayerGame, "Nuova Partita", imageSet);
 		buttons[0].setButtonAnimator(new SimpleButtonAnimation(buttons[0],3));
 		buttons[0].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 		
-		buttons[1] = new MenuButton(menu, null, "Highscore", imageSet);
+		buttons[1] = new NavigationMenuButton(menu, null, "Highscore", imageSet);
 		buttons[1].setButtonAnimator(new SimpleButtonAnimation(buttons[1],3));
 		buttons[1].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 
-		buttons[2] = new MenuButton(menu, null, "Esci", imageSet);
+		buttons[2] = new ExitMenuButton(menu, "Esci", imageSet);
 		buttons[2].setButtonAnimator(new SimpleButtonAnimation(buttons[2],3));
 		buttons[2].setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 		

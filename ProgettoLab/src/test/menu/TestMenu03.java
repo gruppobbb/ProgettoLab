@@ -10,6 +10,7 @@ import view2d.assets.Assets;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 import view2d.menu.SimpleButtonAnimation;
+import view2d.menu.button.GameMenuButton;
 
 public class TestMenu03 {
 	public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class TestMenu03 {
 														Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_B);
 		
 		for (int i = 0; i < 5; i++) {
-			MenuButton newGameButton = new MenuButton(null, null, "Nuova Partita", imageSet);
+			MenuButton newGameButton = new GameMenuButton(null, null, "Nuova Partita", imageSet);
 			newGameButton.setButtonAnimator(new SimpleButtonAnimation(newGameButton,5));
 			newGameButton.setBFont(Assets.FONT_BUTTON_NAME, 32.f);
 			menuPanel.add(newGameButton);

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import model.games.SinglePlayer2D;
 import view2d.assets.Assets;
 import view2d.menu.ButtonImageSet;
-import view2d.menu.MenuButton;
+import view2d.menu.button.GameMenuButton;
 
 public class TestMenu02 {
 	
@@ -25,7 +25,7 @@ public class TestMenu02 {
 				Assets.IMAGE_BUTTON_ONFOCUS_PRESSED_B);
 		
 		for (int i = 0; i < 5; i++) {
-			menuPanel.add(new MenuButton(null, new SinglePlayer2D(frame), "Nuova Partita", imageSet,  Assets.FONT_BUTTON_NAME, 36f));
+			menuPanel.add(new GameMenuButton(null, new SinglePlayer2D(frame), "Nuova Partita", imageSet,  Assets.FONT_BUTTON_NAME, 36f));
 		}
 		
 		frame.getContentPane().add(menuPanel);

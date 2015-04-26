@@ -1,8 +1,8 @@
 package view2d.menu.button;
 
 import view2d.menu.BMenu;
+import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
-import view2d.menu.button.interaction.ButtonImageSet;
 import model.Game;
 
 public class GameMenuButton extends MenuButton{
