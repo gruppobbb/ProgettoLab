@@ -14,19 +14,18 @@ import model.MobsManager;
 import model.movement.MobMovingLogic2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
-import model.spawning.SimpleJans2DSpawner;
+import model.spawning.SimpleLanes2DSpawner;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;
 import assetsPc.Assets;
-import assetsPc.audio.AudioPlayer;
+import assetsPc.audio.LoopedPlayer;
 import control.Controller2D;
 
 /**
- * Componente che si occupa dell'assemblaggio di tutto ciò che serve per giocare una partita in single player, in 2D.
+ * Componente che si occupa dell'assemblaggio di tutto ciò che serve per giocare una partita in single player in 2D.
  * @author Max
- *
  */
 public class SinglePlayer2D implements Game, Observer {
 
@@ -44,7 +43,7 @@ public class SinglePlayer2D implements Game, Observer {
 	private ScoreCalculator scoreCalculator;
 	private JFrame gameFrame;
 	private JFrame menuFrame;
-	AudioPlayer player = new AudioPlayer("res/bgm/singleplayer.wav");
+	private LoopedPlayer bgmPlayer;
 	
 	private static final int WIDTH = 1280;
 	private static final int HEIGHT = (WIDTH/16)*9;
@@ -53,7 +52,7 @@ public class SinglePlayer2D implements Game, Observer {
 		this.menuFrame = menuFrame;
 	}
 
-	public void reset(JFrame menuFrame) {
+	public void setup() {
 		
 		loadGameElements();	//carica gli elementi che servono per la partita
 		
@@ -64,7 +63,7 @@ public class SinglePlayer2D implements Game, Observer {
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
 		
-		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleJans2DSpawner(WIDTH));
+		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleLanes2DSpawner(WIDTH));
 
 		threads.clear();
 		threads.add(new Thread(engine));
@@ -96,14 +95,9 @@ public class SinglePlayer2D implements Game, Observer {
 		gameCanvas.addKeyListener(controller);
 	}
 
-	private void playGameSound() {
-		//istanzio BGM del gioco
-		player.playLoop();
-	}	
-	
 	@Override
 	public void start() {
-		reset(menuFrame);
+		setup();
 		gameFrame.getContentPane().add(gameCanvas);
 		activateFrame(gameFrame);
 		engine.setToKill(false);
@@ -113,7 +107,7 @@ public class SinglePlayer2D implements Game, Observer {
 		}
 		gameCanvas.start();
 		scoreCalculator.start();
-		playGameSound();
+		bgmPlayer.play();
 	}
 	
 	@Override
@@ -124,7 +118,7 @@ public class SinglePlayer2D implements Game, Observer {
 	
 	@Override
 	public void gameOver() {
-		System.out.println("GAME OVER");
+		//TODO:bgmPlayer.stop(); ...
 		spawner.setToKill(true);	
 		engine.setToKill(true);	
 		scoreCalculator.stop();
@@ -135,14 +129,6 @@ public class SinglePlayer2D implements Game, Observer {
 		menuFrame.setEnabled(true);
 		menuFrame.toFront();
         menuFrame.repaint();
-//		gameFrame.getContentPane().removeAll();
-//		gameFrame.repaint();	
-//		GameOverCanvas gameOverCanvas = new GameOverCanvas(WIDTH, HEIGHT);
-//		gameFrame.getContentPane().add(gameOverCanvas);
-//		gameFrame.revalidate();
-//		gameOverCanvas.drawScore(scoreCalculator.getScore());
-//		activateFrame(gameFrame);
-		
 	}
 	
 	public Canvas getGameCanvas() {
@@ -162,7 +148,7 @@ public class SinglePlayer2D implements Game, Observer {
 		int y = HEIGHT - shipDrawer.getSpriteDimension().height;
 		ship = new Ship2D(new Coordinate( WIDTH/2, y, 0));
 		viewBounds = new Coordinate(HEIGHT+200, WIDTH, 0);
-		
+		bgmPlayer = new LoopedPlayer(Assets.AUDIO_BGM);
 		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
 		scoreCalculator = new ScoreCalculator();
 	}

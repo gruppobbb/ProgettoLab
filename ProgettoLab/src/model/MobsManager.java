@@ -43,7 +43,7 @@ public class MobsManager {
 	}
 	
 	/**
-	 * Elimina il mob specificato tramite reference dalla lista.
+	 * Elimina un {@link Mob} specificato tramite reference.
 	 * @param mobToRemove
 	 */
 	public void removeMob(Mob mobToRemove) {
@@ -52,6 +52,9 @@ public class MobsManager {
 		}
 	}
 	
+	/**
+	 * Elimina tutti i {@link Mob}
+	 */
 	public void removeAllMobs(){
 		synchronized (mobs) {
 			mobs.clear();

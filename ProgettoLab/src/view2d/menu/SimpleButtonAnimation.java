@@ -3,6 +3,11 @@ package view2d.menu;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Animazione che effettua lo zoom-in e zoom-out del {@link MenuButton}
+ *  quando il mouse vi si posiziona sopra.
+ * @author Jancarlos
+ */
 public class SimpleButtonAnimation implements ButtonAnimator{
 
 	private MenuButton button;
@@ -19,7 +24,6 @@ public class SimpleButtonAnimation implements ButtonAnimator{
 		this.maxShift = maxShift;
 		needSave = true;
 	}
-	
 	
 	@Override
 	public void runAnimation(boolean running) {
@@ -57,6 +61,4 @@ public class SimpleButtonAnimation implements ButtonAnimator{
 			timer.cancel();
 		}
 	}
-
-	
 }

@@ -10,7 +10,6 @@ import model.movement.MovingLogic2D;
 /**
  * Logica di spawning 2D elementare, basata su variabili casuali uniformi.
  * @author Max
- *
  */
 public class SimpleRandom2DSpawnLogic implements SpawnLogic {
 	
@@ -21,6 +20,4 @@ public class SimpleRandom2DSpawnLogic implements SpawnLogic {
 		Mob newMob = new Mob2D(new Coordinate(randX, 20, 0), 10, mobMover);
 		return newMob;
 	}
-	
-
 }

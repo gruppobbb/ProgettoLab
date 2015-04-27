@@ -79,6 +79,11 @@ public abstract class MenuButton extends JComponent{
 		addMouseListener(new ButtonMouseEventHandler(this));
 	}
 	
+	/**
+	 * Definisce l'azione che il pulsante deve eseguire.
+	 */
+	public abstract void action();
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -89,10 +94,6 @@ public abstract class MenuButton extends JComponent{
 		g.drawString(buttonName, xButtonName, yButtonName);
 	}
 	
-	/**
-	 * Definisce l'azione che il pulsante deve eseguire.
-	 */
-	public abstract void action();
 	
 	/**
 	 * Permette di centrare il nome del bottone, usando la metrics del font impostato e la dimensione del bottone.

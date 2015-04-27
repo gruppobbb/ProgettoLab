@@ -13,17 +13,17 @@ import java.util.Collections;
  * Memorizza i punteggi in un file in locale.
  * @author Giulia
  */
-
 public class LocalScoreManager implements IScoreManager{
 	
 	String scoreList;
 	
 	
 	public LocalScoreManager() {
+		//... bruttissimo ... 
 		scoreList = "web/scorelist.txt";
 	}
 	
-
+	@Override
 	public void loadScores(ArrayList<Long> highScores) throws FileNotFoundException, IOException{
 		BufferedReader reader = new BufferedReader(new FileReader(scoreList));
 		highScores.clear();
@@ -35,6 +35,7 @@ public class LocalScoreManager implements IScoreManager{
 		
 	}
 	
+	@Override
 	public void saveScores(ArrayList<Long> highScores) throws IOException{
 		BufferedWriter writer = new BufferedWriter(new FileWriter(scoreList));
 		trimScoreList(highScores);

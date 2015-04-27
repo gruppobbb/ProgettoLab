@@ -37,6 +37,4 @@ public class Mob2D extends Mob implements Moveable {
 	public void move() {
 		mobMover.move(this);		
 	}
-	
-
 }

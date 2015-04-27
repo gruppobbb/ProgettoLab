@@ -11,14 +11,17 @@ import model.movement.MovingLogic2D;
 /**
  * Logica di spawning 2D basata sul concetto di corsia.
  * @author Max
- *
  */
-public class SimpleJans2DSpawner implements SpawnLogic {
+public class SimpleLanes2DSpawner implements SpawnLogic {
 	
 	private int width;
 	private Random rand;
 	
-	public SimpleJans2DSpawner(int width) {
+	/**
+	 * Spawner che crea un {@link Mob} all'interno di width, un una corsia casuale.
+	 * @param width
+	 */
+	public SimpleLanes2DSpawner(int width) {
 		this.width = width;
 		rand = new Random();
 	}
@@ -37,5 +40,4 @@ public class SimpleJans2DSpawner implements SpawnLogic {
 		Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	7, mobMover);
 		return mob;
 	}
-
 }

@@ -30,6 +30,7 @@ public class ButtonMouseEventHandler implements MouseListener {
 		button.setButtonStatus(ButtonStatus.STATUS_ON_FOCUS_UNPRESSED);
 		button.repaint();
 	}
+	
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if(button.getButtonAnimator()!= null){
@@ -53,6 +54,6 @@ public class ButtonMouseEventHandler implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		//Do nothing
 	}
-	
 }

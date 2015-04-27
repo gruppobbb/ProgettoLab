@@ -14,9 +14,9 @@ public class ButtonImageSet {
 	
 	public static final int STATUS_ON_FOCUS_UNPRESSED = 1;
 	public static final int STATUS_ON_FOCUS_PRESSED = 2;
-	
 	private ArrayList<BufferedImage> buttonImageset;
 
+	
 	/**
 	 * Costruzione di un set di immagini per un {@link MenuButton}.
 	 * @see ButtonStatus
@@ -47,7 +47,6 @@ public class ButtonImageSet {
 	/**
 	 * Interfaccia per la definizione degli statuso di un {@link MenuButton}.
 	 * @author Jan
-	 *
 	 */
 	public interface ButtonStatus{
 		

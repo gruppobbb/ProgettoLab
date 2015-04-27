@@ -21,6 +21,10 @@ public class ScoreKeeper {
 		updateList();
 	}
 	
+	/**
+	 * Restituisce l'istanza dello ScoreKeeper.
+	 * @return
+	 */
 	public static ScoreKeeper getScoreKeeper(){
 		if(scoreKeeper == null){
 			scoreKeeper = new ScoreKeeper(new LocalScoreManager());
@@ -64,5 +68,4 @@ public class ScoreKeeper {
 			e.printStackTrace();
 		}
 	}
-	
 }

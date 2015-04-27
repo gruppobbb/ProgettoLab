@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.Clip;
+
+import assetsPc.audio.AudioLoader;
 
 /**
  * Classe per la gestone degli Assets del gioco.
@@ -18,12 +21,14 @@ public class Assets {
 	private HashMap<Integer,Sprite> sprites = new HashMap<Integer, Sprite>();
 	private HashMap<Integer, BufferedImage> images = new HashMap<Integer, BufferedImage>();
 	private HashMap<Integer,BFont> fonts = new HashMap<Integer,BFont>();
+	private HashMap<Integer, Clip> clips = new HashMap<Integer, Clip>();
 	
 	
 	private Assets(){
 		loadSprites();
 		loadImages();
 		loadFonts();
+		loadClips();
 	}
 	
 	public static Assets getLoader(){
@@ -40,6 +45,10 @@ public class Assets {
 	
 	public BFont getFont(int fontID){
 		return fonts.get(fontID);
+	}
+	
+	public Clip getClip(int clipID){
+		return clips.get(clipID);
 	}
 	
 	private void loadSprites(){
@@ -65,6 +74,12 @@ public class Assets {
 		fonts.put(FONT_GENERAL, new BFont("res/fonts/origami.ttf"));
 	}
 	
+	private void loadClips(){
+		AudioLoader loader = new AudioLoader();
+		clips.put(AUDIO_EXPLOSION, loader.loadClip("res/bgm/ship_explosion.wav"));
+		clips.put(AUDIO_BGM, loader.loadClip("res/bgm/theme.wav"));
+	}
+	
 	
 	public static final int SPRITE_DEFAULT = 0;
 	public static final int SPRITE_SHIP = 1;
@@ -78,7 +93,9 @@ public class Assets {
 	public static final int IMAGE_BUTTON_ONFOCUS_PRESSED_F = 4;
 	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED_F = 5;
 	
-	
 	public static final int FONT_GENERAL = 0;
+	
+	public static final int AUDIO_BGM = 0;
+	public static final int AUDIO_EXPLOSION = 1;
 
 }

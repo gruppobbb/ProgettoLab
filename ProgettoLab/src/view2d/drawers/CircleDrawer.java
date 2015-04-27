@@ -10,7 +10,6 @@ import view2d.Drawer2D;
 /**
  * Drawer che rappresenta l'elemento come un cerchio.
  * @author Max
- *
  */
 public class CircleDrawer implements Drawer2D {
 	

@@ -9,15 +9,19 @@ import model.Coordinate;
 import view2d.Drawer2D;
 
 /**
- * Drawer che rappresenta l'elemento attraverso la sprite specificata.
+ * Drawer che rappresenta l'elemento attraverso lo sprite specificato.
  * @author Jan
- *
  */
 public class SpriteDrawer implements Drawer2D{
 	
 	private Sprite sprite;
 	private Dimension spriteDim;
 	
+	/**
+	 * Drawer che usa lo sprite indicato tramite spriteID.
+	 * @see Assets
+	 * @param spriteID
+	 */
 	public SpriteDrawer(int spriteID) {
 		sprite = Assets.getLoader().getSprite(spriteID);
 		spriteDim = new Dimension(sprite.getWidth(), sprite.getHeight());

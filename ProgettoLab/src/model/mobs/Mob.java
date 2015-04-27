@@ -5,7 +5,6 @@ import model.Coordinate;
 /**
  * Modello di un generico mob. Contiene metodi e attributi comuni a tutti i mob.
  * @author Max
- *
  */
 public class Mob {
 	
@@ -13,6 +12,11 @@ public class Mob {
 	private int shiftAmount;
 	private double collisionRay;
 	
+	/**
+	 * Crea un {@link Mob} nelle {@link Coordinate} specificate.
+	 * @param coordinate
+	 * @param shiftAmount
+	 */
 	public Mob(Coordinate coordinate, int shiftAmount) {
 		super();
 		this.coordinate = coordinate;
@@ -42,7 +46,6 @@ public class Mob {
 	public void setCollisionRay(double collisionRay) {
 		this.collisionRay = collisionRay;
 	}
-	
 	
 	@Override
 	public String toString() {

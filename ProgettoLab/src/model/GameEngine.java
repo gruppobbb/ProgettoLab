@@ -89,14 +89,24 @@ public class GameEngine extends Observable implements Runnable{
 
 	//rimuove i mob che sono fuori dai confini specificati (da bounds)
 	private void removeOutOfBoundsMobs(Mob mob) {
-		if(mob.getCoordinate().getY() > bounds.getY() || mob.getCoordinate().getX() > bounds.getX() || mob.getCoordinate().getX() > bounds.getX()) {
-			//DEBUG CODE
-			System.out.println("X Mob " + mob.toString() + " has to be killed");
-			//
+		if(	mob.getCoordinate().getY() > bounds.getY() || 
+			mob.getCoordinate().getX() > bounds.getX() || 
+			mob.getCoordinate().getX() > bounds.getX()) {
+			if(debugMode){
+				System.out.println("X Mob " + mob.toString() + " has to be killed");
+			}
 			mobsManager.removeMob(mob);
 		}
 	}
 
+	/**
+	 * Abilita la visualizzazione su console di informazioni sull'andamento.
+	 * @param debugMode
+	 */
+	public void setDebugMode(boolean debugMode) {
+		this.debugMode = debugMode;
+	}
+	
 	/**
 	 * Ritorna true se è stata rilevata una collisione.
 	 * @return
@@ -121,9 +131,4 @@ public class GameEngine extends Observable implements Runnable{
 	public void setToKill(boolean toKill) {
 		this.toKill = toKill;
 	}
-
-	
-	
-	
-
 }

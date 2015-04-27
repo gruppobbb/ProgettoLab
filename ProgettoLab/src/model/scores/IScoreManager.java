@@ -10,9 +10,20 @@ import java.util.ArrayList;
  */
 public interface IScoreManager {
 	
-
+	/**
+	 * Carica gli i punteggi.
+	 * @param highScores
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void loadScores(ArrayList<Long> highScores) throws FileNotFoundException, IOException;
 	
+	/**
+	 * Salva i punteggi.
+	 * @param highScores
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void saveScores(ArrayList<Long> highScores) throws FileNotFoundException, IOException;
 
 }

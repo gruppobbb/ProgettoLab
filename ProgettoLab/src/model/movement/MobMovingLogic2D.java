@@ -6,7 +6,6 @@ import model.mobs.Mob2D;
 /**
  * Muove un mob in 2D.
  * @author Max
- *
  */
 public class MobMovingLogic2D implements MovingLogic2D {
 	

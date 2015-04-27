@@ -6,7 +6,6 @@ import model.movement.MovingLogic2D;
 /**
  * Componente che si occupa della gestione dello spawning dei mob.
  * @author Max
- *
  */
 public class Spawner implements Runnable {
 	
@@ -16,6 +15,14 @@ public class Spawner implements Runnable {
 	private SpawnLogic spawnLogic;
 	private boolean toKill;
 	
+	/**
+	 * Crea uno spawner, che inserisce nel {@link MobsManager} il {@link Mob} creato,
+	 * a cui viene assegnato {@link MovingLogic2D} per determianre come vuoversi,
+	 * il tutto secondo l'algoritmo definito in {@link SpawnLogic}.
+	 * @param manager
+	 * @param mobMover
+	 * @param spawnLogic
+	 */
 	public Spawner(MobsManager manager, MovingLogic2D mobMover, SpawnLogic spawnLogic) {
 		super();
 		this.manager = manager;
@@ -47,7 +54,4 @@ public class Spawner implements Runnable {
 		this.toKill = toKill;
 	}
 	
-	
-	
-
 }

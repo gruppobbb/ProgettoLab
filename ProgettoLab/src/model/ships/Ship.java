@@ -5,7 +5,6 @@ import model.Coordinate;
 /**
  * Modello di una generica ship. Contiene metodi e attributi comuni a tutte le ship.
  * @author Max
- *
  */
 public class Ship {
 	
@@ -41,6 +40,4 @@ public class Ship {
 	public void setCollisionRay(double collisionRay) {
 		this.collisionRay = collisionRay;
 	}
-	
-	
 }

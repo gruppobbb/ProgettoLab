@@ -4,12 +4,26 @@ import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
+/**
+ * {@link MenuButton} per il passaggio da un menu ad un altro.
+ * @author Jancarlos
+ *
+ */
 public class NavigationMenuButton extends MenuButton{
 	
+	private static final long serialVersionUID = -7833156248543889287L;
 	private BMenu parentMenu;
 	private BMenu nextMenu;
 	
-	
+	/**
+	 * Crea un pulsante per il passaggio verso nextMenu.
+	 * @param parentMenu
+	 * @param nextMenu
+	 * @param buttonName
+	 * @param imageSet
+	 * @param fontID
+	 * @param fontSize
+	 */
 	public NavigationMenuButton(BMenu parentMenu, BMenu nextMenu, String buttonName,
 			ButtonImageSet imageSet, int fontID, float fontSize) {
 		super(buttonName, imageSet, fontID, fontSize);
@@ -27,8 +41,8 @@ public class NavigationMenuButton extends MenuButton{
 	@Override
 	public void action() {
 		if(nextMenu != null){
-			parentMenu.hideMenu();
 			nextMenu.showMenu();
+			parentMenu.hideMenu();
 		}
 	}
 }

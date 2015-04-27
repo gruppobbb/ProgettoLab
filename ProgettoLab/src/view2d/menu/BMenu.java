@@ -15,6 +15,10 @@ public class BMenu extends JFrame {
 	private static final long serialVersionUID = -3982137563997527873L;
 	private JPanel menuPanel;
 	
+	/**
+	 * Creare un menu con come titolo menuTitle.
+	 * @param menuTitle
+	 */
 	public BMenu(String menuTitle) {
 		super();
 		this.setTitle(menuTitle);
@@ -22,6 +26,11 @@ public class BMenu extends JFrame {
 		menuPanel.setLayout(new BoxLayout(menuPanel, BoxLayout.Y_AXIS));
 		menuPanel.setBackground(Color.BLACK);
 		getContentPane().add(menuPanel);
+		
+		setResizable(false);
+		pack();
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	/**
@@ -43,16 +52,16 @@ public class BMenu extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
-	
+	/**
+	 * Mostra il menu.
+	 */
 	public void showMenu(){
-		setResizable(false);
-		pack();
-		setLocationRelativeTo(null);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	
+	/**
+	 * Rende invisibile il menu.
+	 */
 	public void hideMenu(){
 		setVisible(false);
 	}

@@ -6,7 +6,6 @@ import java.util.TimerTask;
 /**
  * Componente che si occupa del calcolo del punteggio.
  * @author Bianca
- *
  */
 public class ScoreCalculator {
 	
@@ -15,6 +14,9 @@ public class ScoreCalculator {
 	private static final int COEFF = 50;
 	Timer timer;
 	
+	/**
+	 * Avvia il calcolatore dei punteggi.
+	 */
 	public void start(){
 		timer = new Timer();
 		TimerTask task = new TimerTask() {
@@ -29,13 +31,19 @@ public class ScoreCalculator {
 		timer.scheduleAtFixedRate(task, 0, 200);
 	}
 	
+	/**
+	 * Ferma il calcolatore dei punteggi.
+	 */
 	public void stop(){
 		scores.addScore(score);
 		timer.cancel();
 	}
 
+	/**
+	 * Restituisce il punteggio attuale.
+	 * @return
+	 */
 	public long getScore() {
 		return score;
 	}
-
 }

@@ -10,7 +10,6 @@ import view2d.Drawer2D;
 /**
  * Drawer che rappresenta l'elemento come un quadrato.
  * @author Max
- *
  */
 public class SquareDrawer implements Drawer2D {
 	

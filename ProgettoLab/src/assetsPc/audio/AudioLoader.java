@@ -12,15 +12,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * Componente che carica una clip audio .wav
  * @author Bianca
- *
  */
 public class AudioLoader {
 	
 private Clip clip;
-	
-	public AudioLoader(String filename) {
+
+	public Clip loadClip(String soundPath) {
 		try {
-	         File file = new File(filename);
+	         File file = new File(soundPath);
 	         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
 	         
 	         clip = AudioSystem.getClip();
@@ -32,13 +31,6 @@ private Clip clip;
 	      } catch (LineUnavailableException e) {
 	         e.printStackTrace();
 	      }
-	   }
-
-	public Clip getClip() {
 		return clip;
 	}
-	
-	
-		
-
 }

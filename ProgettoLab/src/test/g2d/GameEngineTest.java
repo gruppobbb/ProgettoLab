@@ -8,7 +8,7 @@ import model.GameEngine;
 import model.MobsManager;
 import model.movement.MobMovingLogic2D;
 import model.ships.Ship2D;
-import model.spawning.SimpleJans2DSpawner;
+import model.spawning.SimpleLanes2DSpawner;
 import model.spawning.Spawner;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;
@@ -35,7 +35,7 @@ public class GameEngineTest {
 		MobsManager mobsManager = new MobsManager();
 		MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
-		(new Thread( new Spawner(mobsManager, mobMover, new SimpleJans2DSpawner(width)))).start();
+		(new Thread( new Spawner(mobsManager, mobMover, new SimpleLanes2DSpawner(width)))).start();
 		
 		Coordinate bounds = new Coordinate(width,height+200, 0);
 		

@@ -7,12 +7,15 @@ import model.Coordinate;
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
  * @author Max
- *
  */
 public class Ship2D extends Ship{
 
 	private Dimension dimension;
 	
+	/**
+	 * Crea una Ship nelle {@link Coordinate} indicate.
+	 * @param coordinates
+	 */
 	public Ship2D(Coordinate coordinates) {
 		super(coordinates);
 		setDimension(new Dimension(50,50));
@@ -28,5 +31,4 @@ public class Ship2D extends Ship{
 		double halfWidth = (dimension.getWidth()/2);
 		setCollisionRay(Math.sqrt(halfHeight * halfHeight + halfWidth * halfWidth));		
 	}
-
 }

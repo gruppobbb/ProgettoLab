@@ -8,7 +8,6 @@ import model.Coordinate;
 /**
  * Interfaccia che astrae sul modo in cui viene rappresentato un elemento in 2D.
  * @author Max
- *
  */
 public interface Drawer2D {
 	
