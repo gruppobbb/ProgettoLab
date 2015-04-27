@@ -21,4 +21,10 @@ public class UnloopedPlayer implements IAudioPlayer {
 		clip.setFramePosition(0);
 		clip.start();
     }
+	
+	
+	@Override
+	public void stop() {
+		clip.stop();
+	}
 }

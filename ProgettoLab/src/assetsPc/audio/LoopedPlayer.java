@@ -21,5 +21,10 @@ public class LoopedPlayer implements IAudioPlayer{
 		clip.setFramePosition(0);
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
+	
+	@Override
+	public void stop() {
+		clip.stop();
+	}
 
 }

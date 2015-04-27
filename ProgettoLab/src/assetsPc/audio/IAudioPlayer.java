@@ -10,5 +10,9 @@ public interface IAudioPlayer {
 	 * Avvia il suono.
 	 */
 	public void play();
-	//TODO:Aggiungere lo stop...
+	
+	/**
+	 * Interrompe il suono.
+	 */
+	public void stop();
 }
