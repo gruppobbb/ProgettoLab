@@ -6,7 +6,7 @@ import java.util.Observable;
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.ships.Ship;
-import audio.IAudioPlayer;
+import assets.IAudioPlayer;
 
 /**
  * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.

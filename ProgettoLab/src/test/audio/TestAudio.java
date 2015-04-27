@@ -2,7 +2,7 @@ package test.audio;
 
 import javax.swing.JFrame;
 
-import audio.AudioPlayer;
+import assets.AudioPlayer;
 
 public class TestAudio {
 	

@@ -9,8 +9,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 
 import assets.Assets;
+import assets.BFont;
 import model.Game;
-import view2d.assets.BFont;
 import view2d.menu.ButtonImageSet.ButtonStatus;
 
 /**

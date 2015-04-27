@@ -7,9 +7,6 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import view2d.assets.BFont;
-import view2d.assets.Sprite;
-
 /**
  * Classe per la gestone degli Assets del gioco.
  * @author Jan

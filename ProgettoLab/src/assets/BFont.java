@@ -1,4 +1,4 @@
-package view2d.assets;
+package assets;
 
 import java.awt.Font;
 import java.awt.FontFormatException;

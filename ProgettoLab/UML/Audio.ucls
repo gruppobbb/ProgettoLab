@@ -10,8 +10,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="audio.IAudioPlayer" project="ProgettoLab" 
-    file="/ProgettoLab/src/audio/IAudioPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="2" language="java" name="assets.IAudioPlayer" project="ProgettoLab" 
+    file="/ProgettoLab/src/assets/IAudioPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="548" y="351"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="3" language="java" name="audio.UnloopedPlayer" project="ProgettoLab" 
-    file="/ProgettoLab/src/audio/UnloopedPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="assets.UnloopedPlayer" project="ProgettoLab" 
+    file="/ProgettoLab/src/assets/UnloopedPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="474" y="473"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="audio.LoopedPlayer" project="ProgettoLab" 
-    file="/ProgettoLab/src/audio/LoopedPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="assets.LoopedPlayer" project="ProgettoLab" 
+    file="/ProgettoLab/src/assets/LoopedPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="670" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

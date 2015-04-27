@@ -1,4 +1,4 @@
-package audio;
+package assets;
 
 /**
  * Interfaccia per componenti dedicati all'esecuzione dei suoni.

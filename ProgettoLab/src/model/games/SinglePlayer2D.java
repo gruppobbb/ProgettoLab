@@ -22,7 +22,7 @@ import view2d.GameOverCanvas;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;
 import assets.Assets;
-import audio.AudioPlayer;
+import assets.AudioPlayer;
 import control.Controller2D;
 
 /**

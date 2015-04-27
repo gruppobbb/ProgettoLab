@@ -1,4 +1,4 @@
-package view2d.assets;
+package assets;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
