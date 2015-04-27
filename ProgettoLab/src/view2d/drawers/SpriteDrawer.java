@@ -3,9 +3,9 @@ package view2d.drawers;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import assets.Assets;
 import model.Coordinate;
 import view2d.Drawer2D;
-import view2d.assets.Assets;
 import view2d.assets.Sprite;
 
 /**

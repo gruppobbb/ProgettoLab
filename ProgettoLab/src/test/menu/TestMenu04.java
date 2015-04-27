@@ -1,6 +1,6 @@
 package test.menu;
 
-import view2d.assets.Assets;
+import assets.Assets;
 import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;

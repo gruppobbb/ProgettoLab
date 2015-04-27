@@ -1,4 +1,4 @@
-package view2d.assets;
+package assets;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+
+import view2d.assets.BFont;
+import view2d.assets.Sprite;
 
 /**
  * Classe per la gestone degli Assets del gioco.

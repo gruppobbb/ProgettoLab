@@ -7,12 +7,12 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
+import assets.Assets;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;
 import view2d.RGameCanvas;
 import view2d.RGameCanvas.RenderInfo;
-import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 import control.Controller2D;
 

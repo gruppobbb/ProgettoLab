@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import assets.Assets;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
-import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
 
 /**

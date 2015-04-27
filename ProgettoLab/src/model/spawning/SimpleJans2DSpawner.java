@@ -2,11 +2,11 @@ package model.spawning;
 
 import java.util.Random;
 
+import assets.Assets;
 import model.Coordinate;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.movement.MovingLogic2D;
-import view2d.assets.Assets;
 
 /**
  * Logica di spawning 2D basata sul concetto di corsia.

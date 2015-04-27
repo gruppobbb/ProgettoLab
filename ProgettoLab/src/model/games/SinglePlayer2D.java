@@ -20,8 +20,8 @@ import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.GameOverCanvas;
 import view2d.RGameCanvas;
-import view2d.assets.Assets;
 import view2d.drawers.SpriteDrawer;
+import assets.Assets;
 import audio.AudioPlayer;
 import control.Controller2D;
 

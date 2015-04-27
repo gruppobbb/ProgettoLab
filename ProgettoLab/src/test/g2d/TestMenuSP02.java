@@ -1,8 +1,8 @@
 package test.g2d;
 
+import assets.Assets;
 import model.Game;
 import model.games.SinglePlayer2D;
-import view2d.assets.Assets;
 import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
