@@ -6,12 +6,11 @@ import java.util.Observable;
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.ships.Ship;
-import audio.AudioPlayer;
+import audio.IAudioPlayer;
 
 /**
  * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.
  * @author Max
- *
  */
 public class GameEngine extends Observable implements Runnable{
 	
@@ -19,15 +18,21 @@ public class GameEngine extends Observable implements Runnable{
 	private MobsManager mobsManager;
 	private Ship ship;
 	private Coordinate bounds;
-	private boolean collided = false;
-	private boolean toKill = false;	//il thread deve terminare?
-	private AudioPlayer player = new AudioPlayer("res/bgm/ship_explosion.wav");
+	private boolean collided;
+	private boolean toKill; //il thread deve terminare?
+	private IAudioPlayer explosionPlayer;
+	private boolean debugMode;
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
 		this.ship = ship;
 		this.bounds = viewBounds;
 	}	
+	
+	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
+		this.explosionPlayer = explosionPlayer;
+	}
+	
 	
 	public void run() {
 		while(toKill == false) {
@@ -54,7 +59,6 @@ public class GameEngine extends Observable implements Runnable{
 			try {
 				Thread.sleep(SLEEP_TIME);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -73,9 +77,12 @@ public class GameEngine extends Observable implements Runnable{
 										(mobZ - shipZ) * (mobZ - shipZ));
 
 		if(distance < shipCollisionRay + mobCollisionRay) {
-			System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
-			
-			player.play();
+			if(debugMode){
+				System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
+			}
+			if(explosionPlayer != null ){
+				explosionPlayer.play();
+			}
 			setCollided(true);
 		}
 	}

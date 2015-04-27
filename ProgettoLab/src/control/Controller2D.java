@@ -11,10 +11,9 @@ import model.ships.Ship2D;
 
 
 /**
- * Controllo di una ship in uno spazio bidimensionale.
+ * Controllo per una ship in uno spazio bidimensionale.
  * In questo caso non viene considerata la Z.
  * @author Jancarlos
- *
  */
 public class Controller2D implements KeyListener{
 	
@@ -22,44 +21,52 @@ public class Controller2D implements KeyListener{
 	private Ship2D userShip;
 	private int directionPressed;
 	private Timer timer;
-	private boolean started = false;
-	private boolean debug = false;
-	private int right_bound, left_bound;
+	private boolean started;
+	private boolean debug;
+	private int rightBound, leftBound;
 	
 	//costanti, aiutano la leggibilità
 	private static final int SX = -1;
 	private static final int DX = 1;
 	
-
-	public Controller2D(Ship2D userShip, int right_bound, int left_bound) {
+	/**
+	 * Costruisce un controller 2D per una {@link Ship2D}, limitando i movimenti tra leftBound e rightBound.
+	 * @param userShip ship da controllare
+	 * @param rightBound limite detro
+	 * @param leftBound limite sinistro
+	 */
+	public Controller2D(Ship2D userShip, int rightBound, int leftBound) {
 		this.userShip = userShip;
-		this.right_bound = right_bound;
-		this.left_bound = left_bound;
+		this.rightBound = rightBound;
+		this.leftBound = leftBound;
 	}
 	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-			directionPressed =  getDirection( e.getKeyCode()  );
+		directionPressed =  getDirection( e.getKeyCode()  );
+		if(!started){
+			started = true;
+			timer = new Timer();
 			
-			if(!started){
-				started = true;
-				timer = new Timer();
-				
-				TimerTask moveTask = new TimerTask() {
-					@Override
-					public void run() {
-						moveXAxis();
-					}
-				};
-				timer.scheduleAtFixedRate( moveTask, 0, 10);
-			}
+			TimerTask moveTask = new TimerTask() {
+				@Override
+				public void run() {
+					moveXAxis();
+				}
+			};
+			timer.scheduleAtFixedRate( moveTask, 0, 10);
 		}
+	}
 	
-	public void setBound( int left_bound, int right_bound ){
-		this.left_bound = left_bound;
-		this.right_bound = right_bound;
+	/**
+	 * Set del limite destro e sinistro all'interno del quale il controllo muove la nave.
+	 * @param leftBound limite sinistro
+	 * @param rightBound lmite destro
+	 */
+	public void setBound( int leftBound, int rightBound ){
+		this.leftBound = leftBound;
+		this.rightBound = rightBound;
 	}
 	
 	@Override
@@ -75,15 +82,13 @@ public class Controller2D implements KeyListener{
 	public void moveXAxis() {
 		Coordinate coo= userShip.getCoordinate();
 		int newX = coo.getX() + Ship.SHIFT_AMOUNT*directionPressed;
-		if(directionPressed == SX && userShip.getCoordinate().getX() > left_bound || directionPressed == DX && userShip.getCoordinate().getX() < right_bound) {
+		if(directionPressed == SX && userShip.getCoordinate().getX() > leftBound || directionPressed == DX && userShip.getCoordinate().getX() < rightBound) {
 			userShip.setCoordinate(new Coordinate(newX, coo.getY(), 0));
 			if(debug){
 				System.out.println(coo);
 			}
 		}
 	}
-	
-	
 	
 	//Metodo utilizzato per la selezione della direzione verso cui muoversi.
 	private int getDirection( int keyCode ){
@@ -97,6 +102,4 @@ public class Controller2D implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	
-	
 }

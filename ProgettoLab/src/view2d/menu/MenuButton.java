@@ -89,6 +89,9 @@ public abstract class MenuButton extends JComponent{
 		g.drawString(buttonName, xButtonName, yButtonName);
 	}
 	
+	/**
+	 * Definisce l'azione che il pulsante deve eseguire.
+	 */
 	public abstract void action();
 	
 	/**

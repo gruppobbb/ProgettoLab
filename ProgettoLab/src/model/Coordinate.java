@@ -3,7 +3,6 @@ package model;
 /**
  * Classe che rappresenta le coordinate a 3 dimensioni.
  * @author Jan
- *
  */
 public class Coordinate {
 
@@ -16,7 +15,6 @@ public class Coordinate {
 		this.y = y;
 		this.z = z;
 	}
-	
 	
 	public int getX() {
 		return x;
@@ -41,7 +39,4 @@ public class Coordinate {
 	public String toString() {
 		return String.format("x: %s y: %s z: %s", x,y,z);
 	}
-	
-	
-	
 }
