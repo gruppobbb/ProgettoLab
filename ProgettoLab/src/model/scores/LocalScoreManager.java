@@ -10,23 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Memorizza i punteggi in locale.
+ * Memorizza i punteggi in un file in locale.
  * @author Giulia
  */
 
 public class LocalScoreManager implements IScoreManager{
 	
-//	public final static int PORT = 8080;
-//	private Server server;
 	String scoreList;
 	
 	
 	public LocalScoreManager() {
 		scoreList = "web/scorelist.txt";
-		//TODO: Interazione server locale
-//		this.server = new Server(PORT);
-//		server.addService("/highscores", new ScoreService());
-//		server.launch();
 	}
 	
 

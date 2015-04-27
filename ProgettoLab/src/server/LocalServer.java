@@ -11,13 +11,13 @@ import java.util.HashMap;
  * @author Giulia
  */
 
-public class Server {
+public class LocalServer implements IServer{
 	
 	private HashMap<String, IService> services = new HashMap<String, IService>();
 	public int port;
 	private static ServerSocket socket;
 	
-	public Server(int port) {
+	public LocalServer(int port) {
 		this.port = port;
 	}
 	

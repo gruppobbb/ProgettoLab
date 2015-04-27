@@ -1,6 +1,5 @@
 package server;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,7 +34,7 @@ public class ScoreService implements IService{
 	private void copyFile(OutputStreamWriter out)
 			throws FileNotFoundException, IOException {
 		BufferedReader fileReader = new BufferedReader(
-				new FileReader("web/highschores.html")
+				new FileReader("web/highscores.html")
 				);
 		String fileLine=fileReader.readLine();
 		while(fileLine!=null){
@@ -53,18 +52,7 @@ public class ScoreService implements IService{
 			}
 			fileLine=fileReader.readLine();
 		}
-	}
-	
-	/**
-	 * Controlla che l'URI sia corretto e il file esista.
-	 */
-	private String checkURI(String uri) {
-		String filename = "web" + uri;
-		File file = new File(filename);
-		if(!file.exists()){
-			filename = "web/error.html";
-		}
-		return filename;
+		fileReader.close();
 	}
 
 }
