@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 import javax.swing.JFrame;
 
-import assets.Assets;
+import assetsPc.Assets;
 import model.Coordinate;
 import model.MobsManager;
 import model.ships.Ship2D;

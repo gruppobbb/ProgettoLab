@@ -1,4 +1,4 @@
-package assets;
+package assetsPc.audio;
 
 /**
  * Interfaccia per componenti dedicati all'esecuzione dei suoni.

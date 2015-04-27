@@ -2,7 +2,7 @@ package model.spawning;
 
 import java.util.Random;
 
-import assets.Assets;
+import assetsPc.Assets;
 import model.Coordinate;
 import model.mobs.Mob;
 import model.mobs.Mob2D;

@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import assets.Assets;
+import assetsPc.Assets;
 import model.games.SinglePlayer2D;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.button.GameMenuButton;

@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import assets.Assets;
-import assets.BFont;
+import assetsPc.Assets;
+import assetsPc.BFont;
 import model.Game;
 import view2d.menu.ButtonImageSet.ButtonStatus;
 

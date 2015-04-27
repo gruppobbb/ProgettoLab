@@ -3,7 +3,7 @@ package view2d.menu;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import assets.Assets;
+import assetsPc.Assets;
 
 /**
  * Classe per la definizione del set di immagini per un {@link MenuButton} dato uno status.

@@ -1,4 +1,4 @@
-package assets;
+package assetsPc;
 
 import java.awt.Font;
 import java.awt.FontFormatException;

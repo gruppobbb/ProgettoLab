@@ -1,4 +1,4 @@
-package assets;
+package assetsPc.audio;
 
 import javax.sound.sampled.Clip;
 

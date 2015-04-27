@@ -1,4 +1,4 @@
-package assets;
+package assetsPc;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

@@ -1,6 +1,6 @@
 package test.g2d;
 
-import assets.Assets;
+import assetsPc.Assets;
 import model.Game;
 import model.games.SinglePlayer2D;
 import view2d.menu.BMenu;

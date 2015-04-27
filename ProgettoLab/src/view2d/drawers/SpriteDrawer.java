@@ -3,8 +3,8 @@ package view2d.drawers;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-import assets.Assets;
-import assets.Sprite;
+import assetsPc.Assets;
+import assetsPc.Sprite;
 import model.Coordinate;
 import view2d.Drawer2D;
 

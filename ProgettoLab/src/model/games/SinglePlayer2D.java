@@ -21,8 +21,8 @@ import view2d.Drawer2D;
 import view2d.GameOverCanvas;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;
-import assets.Assets;
-import assets.AudioPlayer;
+import assetsPc.Assets;
+import assetsPc.audio.AudioPlayer;
 import control.Controller2D;
 
 /**

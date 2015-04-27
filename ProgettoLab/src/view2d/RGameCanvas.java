@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import assets.Assets;
+import assetsPc.Assets;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
