@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import assetsPc.Assets;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.mobs.Mob2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
 import view2d.drawers.SpriteDrawer;
+import assetsPc.Assets;
 
 /**
  * Classe per la visualizzazione dell'interfaccia grafica.
@@ -197,8 +197,10 @@ public class RGameCanvas extends Canvas implements Runnable{
 		for (Mob mob : mobsToDraw) {
 			Mob2D mob2d = (Mob2D) mob;
 			mobDrawer.draw(g, mob2d.getCoordinate());
+
 		}
-		shipDrawer.draw(g, ship.getCoordinate());
+			shipDrawer.draw(g, ship.getCoordinate());
+	
 	}
 	
 	

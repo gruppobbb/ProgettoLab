@@ -15,33 +15,33 @@ import model.movement.MovingLogic2D;
  */
 public class SimpleLanes2DSpawnerM implements SpawnLogic {
 	
-	private int width;
 	private Random rand;
+	private Mob[] mobs;
+	private int randX;
+	private int N;
+	private int mobWidth;
+	private int laneWidth;
 	
 	/**
 	 * Spawner che crea un {@link Mob} all'interno di width, un una corsia casuale.
 	 * @param width
 	 */
 	public SimpleLanes2DSpawnerM(int width) {
-		this.width = width;
 		rand = new Random();
-	}
-	
-	@Override
-	public Mob spawnMob(MovingLogic2D mobMover) {
-		
-		int randX;
-		int N = 0;
-		int mobWidth;
-		int laneWidth;
-		
 		mobWidth = Assets.getLoader().getSprite(Assets.SPRITE_MOB).getWidth();
 		N = (int)(width/mobWidth);
 		laneWidth = width / N;	// N è già intero
+	}
+	
+	@Override
+	public Mob[] spawnMob(MovingLogic2D mobMover) {
 		
-		randX =(int)(laneWidth/2  + (rand.nextInt(N) * laneWidth)) ;
-		System.out.println("SRFF"+randX);
-		Mob mob = new Mob2D(new Coordinate(randX, -200, 0),	7, mobMover);
-		return mob;
+		mobs = new Mob[rand.nextInt(N-1) + 1];
+		for (int i = 0; i < mobs.length; i++) {
+			randX =(int)(laneWidth/2  + (rand.nextInt(N) * laneWidth)) ;
+			mobs[i] = new Mob2D(new Coordinate(randX, -200, 0),	7, mobMover);
+		}
+				
+		return mobs;
 	}
 }

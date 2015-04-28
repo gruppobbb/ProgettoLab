@@ -12,6 +12,6 @@ public interface SpawnLogic {
 	/**
 	 * Spawna un elemento.
 	 */
-	public Mob spawnMob(MovingLogic2D mobMover);
+	public Mob[] spawnMob(MovingLogic2D mobMover);
 
 }

@@ -1,6 +1,7 @@
 package model.spawning;
 
 import model.MobsManager;
+import model.mobs.Mob;
 import model.movement.MovingLogic2D;
 
 /**
@@ -9,7 +10,7 @@ import model.movement.MovingLogic2D;
  */
 public class Spawner implements Runnable {
 	
-	public static final int SLEEP_TIME = 500;
+	public static final int SLEEP_TIME = 400;
 	private MobsManager manager;
 	private MovingLogic2D mobMover;
 	private SpawnLogic spawnLogic;
@@ -31,7 +32,10 @@ public class Spawner implements Runnable {
 	}
 	
 	private void spawn() {
-		manager.addMob(spawnLogic.spawnMob(mobMover));
+		Mob[] mobs = spawnLogic.spawnMob(mobMover);
+		for (int i = 0; i < mobs.length; i++) {
+			manager.addMob(mobs[i]);
+		}		
 	}
 	
 	@Override
