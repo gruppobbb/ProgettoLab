@@ -14,7 +14,7 @@ import model.MobsManager;
 import model.movement.MobMovingLogic2D;
 import model.scores.ScoreCalculator;
 import model.ships.Ship2D;
-import model.spawning.SimpleLanes2DSpawner;
+import model.spawning.SimpleLanes2DSpawnerM;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.RGameCanvas;
@@ -45,8 +45,8 @@ public class SinglePlayer2D implements Game, Observer {
 	private JFrame menuFrame;
 	private LoopedPlayer bgmPlayer;
 	
-	private static final int WIDTH = 1280;
-	private static final int HEIGHT = (WIDTH/16)*9;
+	private static final int WIDTH = 900;
+	private static final int HEIGHT = (WIDTH/7)*8;
 	
 	public SinglePlayer2D(JFrame menuFrame) {
 		this.menuFrame = menuFrame;
@@ -63,7 +63,7 @@ public class SinglePlayer2D implements Game, Observer {
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
 		
-		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleLanes2DSpawner(WIDTH));
+		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleLanes2DSpawnerM(WIDTH));
 
 		threads.clear();
 		threads.add(new Thread(engine));
@@ -73,7 +73,7 @@ public class SinglePlayer2D implements Game, Observer {
 	private JFrame createGameFrame() {
 		JFrame frame = new JFrame();
 		//Per ora .. pi� in la facciamo che si torna al menu ...
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		return frame;
 	}
@@ -102,12 +102,18 @@ public class SinglePlayer2D implements Game, Observer {
 		activateFrame(gameFrame);
 		engine.setToKill(false);
 		spawner.setToKill(false);
+		gameCanvas.start();
+		bgmPlayer.play();
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		scoreCalculator.start();
 		for (Thread thread : threads) {
 			thread.start();
 		}
-		gameCanvas.start();
-		scoreCalculator.start();
-		bgmPlayer.play();
 	}
 	
 	@Override
@@ -147,7 +153,7 @@ public class SinglePlayer2D implements Game, Observer {
 		shipHalfWidth = shipDrawer.getSpriteDimension().width/2;
 		int y = HEIGHT - shipDrawer.getSpriteDimension().height;
 		ship = new Ship2D(new Coordinate( WIDTH/2, y, 0));
-		viewBounds = new Coordinate(HEIGHT+200, WIDTH, 0);
+		viewBounds = new Coordinate(WIDTH, HEIGHT+200, 0);
 		bgmPlayer = new LoopedPlayer(Assets.AUDIO_BGM);
 		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
 		scoreCalculator = new ScoreCalculator();
