@@ -1,4 +1,4 @@
-package model.games;
+package model2D;
 
 import java.awt.Canvas;
 import java.util.ArrayList;
@@ -11,10 +11,7 @@ import model.Coordinate;
 import model.Game;
 import model.GameEngine;
 import model.MobsManager;
-import model.movement.MobMovingLogic2D;
 import model.scores.ScoreCalculator;
-import model.ships.Ship2D;
-import model.spawning.SimpleLanes2DSpawnerM;
 import model.spawning.Spawner;
 import view2d.Drawer2D;
 import view2d.RGameCanvas;
@@ -64,6 +61,7 @@ public class SinglePlayer2D implements Game, Observer {
 		engine.addObserver(this);
 		
 		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleLanes2DSpawnerM(WIDTH));
+		spawner.setSleepTime(400);
 
 		threads.clear();
 		threads.add(new Thread(engine));

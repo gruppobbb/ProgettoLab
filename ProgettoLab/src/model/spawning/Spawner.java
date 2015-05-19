@@ -2,7 +2,7 @@ package model.spawning;
 
 import model.MobsManager;
 import model.mobs.Mob;
-import model.movement.MovingLogic2D;
+import model2D.MovingLogic2D;
 
 /**
  * Componente che si occupa della gestione dello spawning dei mob.
@@ -10,7 +10,7 @@ import model.movement.MovingLogic2D;
  */
 public class Spawner implements Runnable {
 	
-	public static final int SLEEP_TIME = 400;
+	public int sleepTime = 200;
 	private MobsManager manager;
 	private MovingLogic2D mobMover;
 	private SpawnLogic spawnLogic;
@@ -43,7 +43,7 @@ public class Spawner implements Runnable {
 		while(toKill == false) {
 			spawn();
 			try {
-				Thread.sleep(SLEEP_TIME);
+				Thread.sleep(sleepTime);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,5 +57,15 @@ public class Spawner implements Runnable {
 	public void setToKill(boolean toKill) {
 		this.toKill = toKill;
 	}
+
+	public int getSleepTime() {
+		return sleepTime;
+	}
+
+	public void setSleepTime(int sleepTime) {
+		this.sleepTime = sleepTime;
+	}
+	
+	
 	
 }

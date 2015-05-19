@@ -2,7 +2,7 @@ package test.g2d;
 
 import javax.swing.JFrame;
 
-import model.games.SinglePlayer2D;
+import model2D.SinglePlayer2D;
 
 public class TestSinglePlayer01 {
 	

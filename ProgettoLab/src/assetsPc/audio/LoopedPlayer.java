@@ -2,6 +2,7 @@ package assetsPc.audio;
 
 import javax.sound.sampled.Clip;
 
+import model.audio.IAudioPlayer;
 import assetsPc.Assets;
 
 /**

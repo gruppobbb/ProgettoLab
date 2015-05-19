@@ -8,21 +8,13 @@ import model.Coordinate;
  */
 public class Ship {
 	
-	private int ammo = 3;
+
 	private Coordinate coordinate;
-	public static final int SHIFT_AMOUNT = 10;
+	public int shiftAmt = 10;
 	private double collisionRay;
 	
 	public Ship(Coordinate coordinate) {
 		this.coordinate = coordinate;
-	}
-
-	public int getAmmo() {
-		return ammo;
-	}
-
-	public void setAmmo(int ammo) {
-		this.ammo = ammo;
 	}
 
 	public Coordinate getCoordinate() {
@@ -40,4 +32,14 @@ public class Ship {
 	public void setCollisionRay(double collisionRay) {
 		this.collisionRay = collisionRay;
 	}
+
+	public int getShiftAmt() {
+		return shiftAmt;
+	}
+
+	public void setShiftAmt(int shiftAmt) {
+		this.shiftAmt = shiftAmt;
+	}
+	
+	
 }

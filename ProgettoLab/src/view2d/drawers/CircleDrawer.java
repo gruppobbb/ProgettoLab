@@ -19,7 +19,7 @@ public class CircleDrawer implements Drawer2D {
 	public void draw(Graphics g, Coordinate mobCoordinates) {
 		
 		g.setColor(Color.RED);
-		g.fillOval(mobCoordinates.getX()-25, mobCoordinates.getY()-25, (int) dimension.getWidth(), (int) dimension.getHeight());
+		g.fillOval((int)mobCoordinates.getX()-25, (int) mobCoordinates.getY()-25, (int) dimension.getWidth(), (int) dimension.getHeight());
 		
 	}
 	

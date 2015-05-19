@@ -1,7 +1,6 @@
-package model.movement;
+package model2D;
 
 import model.Coordinate;
-import model.mobs.Mob2D;
 
 /**
  * Muove un mob in 2D.

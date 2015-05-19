@@ -1,11 +1,10 @@
-package model.spawning;
+package model2D;
 
 import java.util.Random;
 
 import model.Coordinate;
 import model.mobs.Mob;
-import model.mobs.Mob2D;
-import model.movement.MovingLogic2D;
+import model.spawning.SpawnLogic;
 
 /**
  * Logica di spawning 2D elementare, basata su variabili casuali uniformi.

@@ -11,7 +11,7 @@ public class ScoreCalculator {
 	
 	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
 	private long score = 0;
-	private static final int COEFF = 50;
+	private int coeff = 50;
 	Timer timer;
 	
 	/**
@@ -24,7 +24,7 @@ public class ScoreCalculator {
 			@Override
 			public void run() {
 
-				score = score+COEFF;
+				score = score+coeff;
 				System.out.println(score);
 			}
 		};
@@ -46,4 +46,14 @@ public class ScoreCalculator {
 	public long getScore() {
 		return score;
 	}
+
+	public int getCoeff() {
+		return coeff;
+	}
+
+	public void setCoeff(int coeff) {
+		this.coeff = coeff;
+	}
+	
+	
 }

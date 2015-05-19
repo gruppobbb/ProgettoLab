@@ -18,7 +18,7 @@ public class SquareDrawer implements Drawer2D {
 	@Override
 	public void draw(Graphics g, Coordinate shipCoordinates) {
 		g.setColor(Color.BLACK);
-		g.fillRect(shipCoordinates.getX()-25, shipCoordinates.getY()-25, (int) dimension.getWidth(), (int) dimension.getHeight());
+		g.fillRect((int) shipCoordinates.getX()-25, (int) shipCoordinates.getY()-25, (int) dimension.getWidth(), (int) dimension.getHeight());
 	}
 	
 	@Override

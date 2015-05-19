@@ -1,10 +1,10 @@
-package model.mobs;
+package model2D;
 
 import java.awt.Dimension;
 
 import model.Coordinate;
+import model.mobs.Mob;
 import model.movement.Moveable;
-import model.movement.MovingLogic2D;
 
 /**
  * Modello di un mob che deve essere rappresentato in 2D.

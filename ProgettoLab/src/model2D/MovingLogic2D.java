@@ -1,6 +1,5 @@
-package model.movement;
+package model2D;
 
-import model.mobs.Mob2D;
 
 /** 
  * Astrazione dell'algoritmo secondo cui si muove un mob in 2D.

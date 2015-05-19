@@ -1,7 +1,7 @@
 package test.g2d;
 
 import model.Game;
-import model.games.SinglePlayer2D;
+import model2D.SinglePlayer2D;
 import server.IServer;
 import server.LocalServer;
 import server.ScoreService;
@@ -22,6 +22,8 @@ public class AlphaGameTest01 {
 		
 		IServer server = new LocalServer(PORT);
 		server.addService("/highscores", new ScoreService());
+		
+		
 		
 		BMenu menu = new BMenu("Test");
 		Game singlePlayerGame = new SinglePlayer2D(menu);		

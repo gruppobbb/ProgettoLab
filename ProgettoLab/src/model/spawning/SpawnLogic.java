@@ -1,7 +1,7 @@
 package model.spawning;
 
 import model.mobs.Mob;
-import model.movement.MovingLogic2D;
+import model2D.MovingLogic2D;
 
 /**
  * Logica secondo cui vengono spawnati i {@link Mob}.

@@ -29,7 +29,7 @@ public class SpriteDrawer implements Drawer2D{
 	
 	@Override
 	public void draw(Graphics g, Coordinate coo){
-		g.drawImage(sprite.getImage(), coo.getX()-sprite.getWidth()/2, coo.getY()-sprite.getHeight()/2, null);
+		g.drawImage(sprite.getImage(), (int)coo.getX()-sprite.getWidth()/2,(int) coo.getY()-sprite.getHeight()/2, null);
 	}
 	
 	@Override

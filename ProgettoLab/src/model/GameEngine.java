@@ -3,10 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import model.audio.IAudioPlayer;
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.ships.Ship;
-import assetsPc.audio.IAudioPlayer;
 
 /**
  * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.
@@ -14,7 +14,7 @@ import assetsPc.audio.IAudioPlayer;
  */
 public class GameEngine extends Observable implements Runnable{
 	
-	private final long SLEEP_TIME = 10;
+	private long sleepTime;
 	private MobsManager mobsManager;
 	private Ship ship;
 	private Coordinate bounds;
@@ -27,6 +27,7 @@ public class GameEngine extends Observable implements Runnable{
 		this.mobsManager = mobsManager;
 		this.ship = ship;
 		this.bounds = viewBounds;
+		this.sleepTime = 10; //default
 	}	
 	
 	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
@@ -38,9 +39,9 @@ public class GameEngine extends Observable implements Runnable{
 		while(toKill == false) {
 			ArrayList<Mob> mobs = mobsManager.getMobsList();
 			
-			int shipX = ship.getCoordinate().getX();
-			int shipY = ship.getCoordinate().getY();
-			int shipZ = ship.getCoordinate().getZ();
+			float shipX = ship.getCoordinate().getX();
+			float shipY = ship.getCoordinate().getY();
+			float shipZ = ship.getCoordinate().getZ();
 			double shipCollisionRay = ship.getCollisionRay();
 			
 			for (Mob mob : mobs) {
@@ -57,7 +58,7 @@ public class GameEngine extends Observable implements Runnable{
 			}
 			
 			try {
-				Thread.sleep(SLEEP_TIME);
+				Thread.sleep(sleepTime);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -66,11 +67,11 @@ public class GameEngine extends Observable implements Runnable{
 	
 	
 	//controlla la collisione con la ship
-	private void checkCollisionWithShip(int shipX, int shipY, int shipZ,
+	private void checkCollisionWithShip(float shipX, float shipY, float shipZ,
 			double shipCollisionRay, Mob mob) {
-		int mobX = mob.getCoordinate().getX();
-		int mobY = mob.getCoordinate().getY();
-		int mobZ = mob.getCoordinate().getZ();
+		float mobX = mob.getCoordinate().getX();
+		float mobY = mob.getCoordinate().getY();
+		float mobZ = mob.getCoordinate().getZ();
 		double mobCollisionRay = mob.getCollisionRay();
 		double distance = Math.sqrt(	(mobX - shipX) * (mobX - shipX) +	
 										(mobY - shipY) * (mobY - shipY) +	
@@ -131,4 +132,14 @@ public class GameEngine extends Observable implements Runnable{
 	public void setToKill(boolean toKill) {
 		this.toKill = toKill;
 	}
+
+	public long getSleepTime() {
+		return sleepTime;
+	}
+
+	public void setSleepTime(long sleepTime) {
+		this.sleepTime = sleepTime;
+	}
+	
+	
 }

@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 
 import model.Coordinate;
 import model.MobsManager;
-import model.mobs.Mob2D;
-import model.movement.MobMovingLogic2D;
-import model.movement.MovingLogic2D;
-import model.ships.Ship2D;
+import model2D.Mob2D;
+import model2D.MobMovingLogic2D;
+import model2D.MovingLogic2D;
+import model2D.Ship2D;
 import view2d.RGameCanvas;
 import view2d.drawers.CircleDrawer;
 import view2d.drawers.SquareDrawer;

@@ -1,8 +1,9 @@
-package model.ships;
+package model2D;
 
 import java.awt.Dimension;
 
 import model.Coordinate;
+import model.ships.Ship;
 
 /**
  * Modello di una ship che deve essere rappresentata in 2D.
