@@ -8,8 +8,6 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.MobsManager;
 import model2D.Mob2D;
-import model2D.MobMovingLogic2D;
-import model2D.MovingLogic2D;
 import model2D.Ship2D;
 import view2d.RGameCanvas;
 import view2d.RGameCanvas.RenderInfo;
@@ -27,7 +25,6 @@ public class TestRender00 {
 		final Ship2D ship = new Ship2D(new Coordinate(250, 250, 0));
 		Controller2D controller = new Controller2D(ship, 400, 100);
 		final MobsManager mobsManager = new MobsManager();
-		final MovingLogic2D mobsMover = new MobMovingLogic2D();
 		
 		JFrame frame = new JFrame();
 		RGameCanvas gameCanvas = new RGameCanvas(width,height,ship, mobsManager);
@@ -37,7 +34,7 @@ public class TestRender00 {
 		
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
-				mobsManager.addMob(new Mob2D(new Coordinate(25+j*gap,25+ i*gap, 0),	10, mobsMover));
+				mobsManager.addMob(new Mob2D(new Coordinate(25+j*gap,25+ i*gap, 0),	10));
 			}
 		}
 				

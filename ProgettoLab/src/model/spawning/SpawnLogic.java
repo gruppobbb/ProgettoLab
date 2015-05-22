@@ -1,7 +1,6 @@
 package model.spawning;
 
 import model.mobs.Mob;
-import model2D.MovingLogic2D;
 
 /**
  * Logica secondo cui vengono spawnati i {@link Mob}.
@@ -10,8 +9,8 @@ import model2D.MovingLogic2D;
 public interface SpawnLogic {
 	
 	/**
-	 * Spawna un elemento.
+	 * Spawna un array di elemento.
 	 */
-	public Mob[] spawnMob(MovingLogic2D mobMover);
+	public Mob[] spawnMob();
 
 }

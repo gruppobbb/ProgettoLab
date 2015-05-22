@@ -2,7 +2,6 @@ package model.spawning;
 
 import model.MobsManager;
 import model.mobs.Mob;
-import model2D.MovingLogic2D;
 
 /**
  * Componente che si occupa della gestione dello spawning dei mob.
@@ -10,9 +9,8 @@ import model2D.MovingLogic2D;
  */
 public class Spawner implements Runnable {
 	
-	public int sleepTime = 200;
+	public int sleepTime;
 	private MobsManager manager;
-	private MovingLogic2D mobMover;
 	private SpawnLogic spawnLogic;
 	private boolean toKill;
 	
@@ -24,15 +22,15 @@ public class Spawner implements Runnable {
 	 * @param mobMover
 	 * @param spawnLogic
 	 */
-	public Spawner(MobsManager manager, MovingLogic2D mobMover, SpawnLogic spawnLogic) {
+	public Spawner(MobsManager manager, SpawnLogic spawnLogic) {
 		super();
 		this.manager = manager;
-		this.mobMover = mobMover;
 		this.spawnLogic = spawnLogic;
+		this.sleepTime = 200; //default
 	}
 	
 	private void spawn() {
-		Mob[] mobs = spawnLogic.spawnMob(mobMover);
+		Mob[] mobs = spawnLogic.spawnMob();
 		for (int i = 0; i < mobs.length; i++) {
 			manager.addMob(mobs[i]);
 		}		

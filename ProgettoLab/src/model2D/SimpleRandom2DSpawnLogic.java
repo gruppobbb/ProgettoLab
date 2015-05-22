@@ -13,11 +13,11 @@ import model.spawning.SpawnLogic;
 public class SimpleRandom2DSpawnLogic implements SpawnLogic {
 	
 	@Override
-	public Mob[] spawnMob(MovingLogic2D mobMover) {
+	public Mob[] spawnMob() {
 		Mob[] mobs = new Mob[1];
 		Random rand = new Random();
 		int randX = rand.nextInt((700 - 200) +1) +200;
-		mobs[0] = new Mob2D(new Coordinate(randX, 20, 0), 10, mobMover);
+		mobs[0] = new Mob2D(new Coordinate(randX, 20, 0), 10);
 		return mobs;
 	}
 }

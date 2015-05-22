@@ -36,13 +36,13 @@ public class SimpleLanes2DSpawnerJ implements SpawnLogic {
 	}
 	
 	@Override
-	public Mob[] spawnMob(MovingLogic2D mobMover) {
+	public Mob[] spawnMob() {
 		
 		spawnArea = N*mobWidth;
 
 		randX =(int)((width - spawnArea) / 2 + mobWidth / 2 + rand.nextInt(N) * mobWidth) ;
 		
-		mobs[0] = new Mob2D(new Coordinate(randX, -200, 0),	7, mobMover);
+		mobs[0] = new Mob2D(new Coordinate(randX, -200, 0),	7);
 		
 		return mobs;
 	}

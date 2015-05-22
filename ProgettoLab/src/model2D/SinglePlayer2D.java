@@ -60,7 +60,7 @@ public class SinglePlayer2D implements Game, Observer {
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
 		
-		spawner = new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleLanes2DSpawnerM(WIDTH));
+		spawner = new Spawner(mobsManager, new SimpleLanes2DSpawnerM(WIDTH));
 		spawner.setSleepTime(400);
 
 		threads.clear();

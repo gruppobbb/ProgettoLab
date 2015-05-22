@@ -12,8 +12,6 @@ import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
 import model2D.Mob2D;
-import model2D.MobMovingLogic2D;
-import model2D.MovingLogic2D;
 import model2D.Ship2D;
 import view2d.RGameCanvas;
 import view2d.RGameCanvas.RenderInfo;
@@ -30,7 +28,6 @@ public class TestRender01 {
 		final Ship2D ship = new Ship2D(new Coordinate(250, 250, 0));
 		Controller2D controller = new Controller2D(ship, 400, 100);
 		final MobsManager mobsManager = new MobsManager();
-		final MovingLogic2D mobsMover = new MobMovingLogic2D();
 		
 		Coordinate bounds = new Coordinate(height+200, width, 0);
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
@@ -44,7 +41,7 @@ public class TestRender01 {
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10, mobsMover));
+				this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10));
 				ship.setCoordinate(new Coordinate(e.getX(), e.getY(), 0));
 			}
 			
@@ -54,7 +51,7 @@ public class TestRender01 {
 					mobsManager.removeAllMobs();
 					this.mobs = new ArrayList<Mob2D>();
 				}else{
-					this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10, mobsMover));
+					this.mobs.add(new Mob2D(new Coordinate(e.getX(), e.getY(), 0), 10));
 				}
 				ship.setCoordinate(new Coordinate(e.getX(), e.getY(), 0));
 			}

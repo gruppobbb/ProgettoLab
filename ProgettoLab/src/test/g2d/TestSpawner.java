@@ -6,7 +6,6 @@ import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
 import model.spawning.Spawner;
-import model2D.MobMovingLogic2D;
 import model2D.Ship2D;
 import model2D.SimpleRandom2DSpawnLogic;
 import view2d.RGameCanvas;
@@ -28,7 +27,7 @@ public class TestSpawner {
 		Coordinate bounds = new Coordinate(width,height+200, 0);
 		
 		(new Thread(new GameEngine(mobsManager,ship, bounds))).start();
-		(new Thread(new Spawner(mobsManager, new MobMovingLogic2D(), new SimpleRandom2DSpawnLogic()))).start();		
+		(new Thread(new Spawner(mobsManager, new SimpleRandom2DSpawnLogic()))).start();		
 		
 		JFrame frame = new JFrame();
 		

@@ -2,16 +2,15 @@ package test.g2d;
 
 import javax.swing.JFrame;
 
-import assetsPc.Assets;
 import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
 import model.spawning.Spawner;
-import model2D.MobMovingLogic2D;
 import model2D.Ship2D;
 import model2D.SimpleLanes2DSpawnerJ;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;
+import assetsPc.Assets;
 import control.Controller2D;
 
 public class GameEngineTest {
@@ -33,9 +32,8 @@ public class GameEngineTest {
 		Controller2D control = new Controller2D(ship, width-shipHalfWidth, shipHalfWidth);
 		
 		MobsManager mobsManager = new MobsManager();
-		MobMovingLogic2D mobMover = new MobMovingLogic2D();
 		
-		(new Thread( new Spawner(mobsManager, mobMover, new SimpleLanes2DSpawnerJ(width)))).start();
+		(new Thread( new Spawner(mobsManager, new SimpleLanes2DSpawnerJ(width)))).start();
 		
 		Coordinate bounds = new Coordinate(width,height+200, 0);
 		

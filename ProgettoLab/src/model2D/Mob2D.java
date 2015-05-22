@@ -14,11 +14,9 @@ import model.movement.Moveable;
 public class Mob2D extends Mob implements Moveable {
 	
 	private Dimension dimension;
-	private MovingLogic2D mobMover;
 	
-	public Mob2D(Coordinate coordinates, int shiftAmount, MovingLogic2D mobsMover) {
-		super(coordinates, shiftAmount);
-		this.mobMover = mobsMover;
+	public Mob2D(Coordinate coordinates, int shiftAmount) {
+		super(coordinates, (float) shiftAmount);
 		setDimension(new Dimension(50,50));
 	}
 
@@ -35,6 +33,6 @@ public class Mob2D extends Mob implements Moveable {
 	
 	@Override
 	public void move() {
-		mobMover.move(this);		
+		getCoordinate().setY(getCoordinate().getY() + getShiftAmount());
 	}
 }

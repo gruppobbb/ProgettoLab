@@ -10,7 +10,7 @@ public class Ship {
 	
 
 	private Coordinate coordinate;
-	public int shiftAmt = 10;
+	public float shiftAmt = 10;
 	private double collisionRay;
 	
 	public Ship(Coordinate coordinate) {
@@ -33,7 +33,7 @@ public class Ship {
 		this.collisionRay = collisionRay;
 	}
 
-	public int getShiftAmt() {
+	public float getShiftAmt() {
 		return shiftAmt;
 	}
 

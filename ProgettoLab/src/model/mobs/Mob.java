@@ -9,7 +9,7 @@ import model.Coordinate;
 public class Mob {
 	
 	private Coordinate coordinate;
-	private int shiftAmount;
+	private float shiftAmount;
 	private double collisionRay;
 	
 	/**
@@ -17,7 +17,7 @@ public class Mob {
 	 * @param coordinate
 	 * @param shiftAmount
 	 */
-	public Mob(Coordinate coordinate, int shiftAmount) {
+	public Mob(Coordinate coordinate, float shiftAmount) {
 		super();
 		this.coordinate = coordinate;
 		this.shiftAmount = shiftAmount;
@@ -31,7 +31,7 @@ public class Mob {
 		this.coordinate = coordinate;
 	}
 
-	public int getShiftAmount() {
+	public float getShiftAmount() {
 		return shiftAmount;
 	}
 
