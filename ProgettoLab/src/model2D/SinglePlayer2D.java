@@ -13,6 +13,8 @@ import model.GameEngine;
 import model.MobsManager;
 import model.scores.ScoreCalculator;
 import model.spawning.Spawner;
+import model2D.ship.Ship2D;
+import model2D.spawner.SimpleLanes2DSpawnerM;
 import view2d.Drawer2D;
 import view2d.RGameCanvas;
 import view2d.drawers.SpriteDrawer;

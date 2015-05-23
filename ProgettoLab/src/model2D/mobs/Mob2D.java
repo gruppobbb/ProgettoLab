@@ -1,4 +1,4 @@
-package model2D;
+package model2D.mobs;
 
 import java.awt.Dimension;
 

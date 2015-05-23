@@ -1,4 +1,4 @@
-package model2D;
+package model2D.ship;
 
 import java.awt.Dimension;
 
