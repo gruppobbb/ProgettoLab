@@ -12,7 +12,9 @@ public class Spawner implements Runnable {
 	public int sleepTime;
 	private MobsManager manager;
 	private SpawnLogic spawnLogic;
-	private boolean toKill;
+	private Object mPauseLock;
+    private boolean mPaused;
+    private boolean mFinished;
 	
 	/**
 	 * Crea uno spawner, che inserisce nel {@link MobsManager} il {@link Mob} creato,
@@ -27,6 +29,11 @@ public class Spawner implements Runnable {
 		this.manager = manager;
 		this.spawnLogic = spawnLogic;
 		this.sleepTime = 200; //default
+		
+		//proprietà iniziali del runnable
+		mPauseLock = new Object();
+        mPaused = false;
+        mFinished = false;
 	}
 	
 	private void spawn() {
@@ -38,7 +45,7 @@ public class Spawner implements Runnable {
 	
 	@Override
 	public void run() {
-		while(toKill == false) {
+		while(mFinished == false) {
 			spawn();
 			try {
 				Thread.sleep(sleepTime);
@@ -46,14 +53,37 @@ public class Spawner implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			
+			synchronized (mPauseLock) {
+                while (mPaused) {
+                    try {
+                        mPauseLock.wait();
+                    } catch (InterruptedException e) {
+                    }
+                }
+            }			
 		}
 	}
+	
+	public void onPause() {
+        synchronized (mPauseLock) {
+            mPaused = true;
+        }
+    }
+	 
+	public void onResume() {
+        synchronized (mPauseLock) {
+            mPaused = false;
+            mPauseLock.notifyAll();
+        }
+    }
 	
 	/**
 	 * Imposta il flag che indica se il thread è da terminare.
 	 */
 	public void setToKill(boolean toKill) {
-		this.toKill = toKill;
+		this.mFinished = toKill;
 	}
 
 	public int getSleepTime() {

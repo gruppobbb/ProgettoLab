@@ -19,15 +19,22 @@ public class GameEngine extends Observable implements Runnable{
 	private Ship ship;
 	private Coordinate bounds;
 	private boolean collided;
-	private boolean toKill; //il thread deve terminare?
 	private IAudioPlayer explosionPlayer;
 	private boolean debugMode;
+	private Object mPauseLock;
+    private boolean mPaused;
+    private boolean mFinished;
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
 		this.ship = ship;
 		this.bounds = viewBounds;
 		this.sleepTime = 10; //default
+		
+		//proprietà iniziali del runnable
+		mPauseLock = new Object();
+        mPaused = false;
+        mFinished = false;
 	}	
 	
 	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
@@ -36,7 +43,7 @@ public class GameEngine extends Observable implements Runnable{
 	
 	
 	public void run() {
-		while(toKill == false) {
+		while(mFinished == false) {
 			ArrayList<Mob> mobs = mobsManager.getMobsList();
 			
 			float shipX = ship.getCoordinate().getX();
@@ -62,8 +69,30 @@ public class GameEngine extends Observable implements Runnable{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
+			synchronized (mPauseLock) {
+	            while (mPaused) {
+	                try {
+	                    mPauseLock.wait();
+	                } catch (InterruptedException e) {
+	                }
+	            }
+	        }			
 		}
 	}
+	
+	public void onPause() {
+        synchronized (mPauseLock) {
+            mPaused = true;
+        }
+    }
+	 
+	public void onResume() {
+        synchronized (mPauseLock) {
+            mPaused = false;
+            mPauseLock.notifyAll();
+        }
+    }
 	
 	
 	//controlla la collisione con la ship
@@ -130,7 +159,7 @@ public class GameEngine extends Observable implements Runnable{
 	 * Imposta il flag che indica se il thread è da terminare.
 	 */
 	public void setToKill(boolean toKill) {
-		this.toKill = toKill;
+		this.mFinished = toKill;
 	}
 
 	public long getSleepTime() {
