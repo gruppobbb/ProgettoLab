@@ -11,7 +11,6 @@ import model.Coordinate;
 import model.Game;
 import model.GameEngine;
 import model.MobsManager;
-import model.scores.ScoreCalculator;
 import model.spawning.Spawner;
 import model2D.ship.Ship2D;
 import model2D.spawner.SimpleLanes2DSpawnerM;
@@ -39,7 +38,6 @@ public class SinglePlayer2D implements Game, Observer {
 	private int shipHalfWidth;
 	private GameEngine engine;
 	private Spawner spawner;
-	private ScoreCalculator scoreCalculator;
 	private JFrame gameFrame;
 	private JFrame menuFrame;
 	private LoopedPlayer bgmPlayer;
@@ -57,10 +55,10 @@ public class SinglePlayer2D implements Game, Observer {
 		
 		gameFrame = createGameFrame();
 		
-		createGameField();	//istanzia canvas + relativo controllo
-		
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
+		
+		createGameField();	//istanzia canvas + relativo controllo
 		
 		spawner = new Spawner(mobsManager, new SimpleLanes2DSpawnerM(WIDTH));
 		spawner.setSleepTime(400);
@@ -87,7 +85,7 @@ public class SinglePlayer2D implements Game, Observer {
 
 	private void createGameField() {
 		//istanzio il canvas di gioco
-		gameCanvas = new RGameCanvas(WIDTH, HEIGHT, ship, mobsManager, scoreCalculator);
+		gameCanvas = new RGameCanvas(WIDTH, HEIGHT, ship, mobsManager, engine.getScoreCalculator());
 		gameCanvas.setShipDrawer(shipDrawer);
 		gameCanvas.setMobDrawer(mobDrawer);
 		//istanzio il controllo
@@ -110,7 +108,6 @@ public class SinglePlayer2D implements Game, Observer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		scoreCalculator.start();
 		for (Thread thread : threads) {
 			thread.start();
 		}
@@ -127,7 +124,6 @@ public class SinglePlayer2D implements Game, Observer {
 		//TODO:bgmPlayer.stop(); ...
 		spawner.setToKill(true);	
 		engine.setToKill(true);	
-		scoreCalculator.stop();
 		gameCanvas.removeKeyListener(controller);
 		gameCanvas.stop();
 		try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
@@ -156,6 +152,5 @@ public class SinglePlayer2D implements Game, Observer {
 		viewBounds = new Coordinate(WIDTH, HEIGHT+200, 0);
 		bgmPlayer = new LoopedPlayer(Assets.AUDIO_BGM);
 		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
-		scoreCalculator = new ScoreCalculator();
 	}
 }

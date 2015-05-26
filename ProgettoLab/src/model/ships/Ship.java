@@ -7,7 +7,6 @@ import model.Coordinate;
  * @author Max
  */
 public class Ship {
-	
 
 	private Coordinate coordinate;
 	public float shiftAmt = 10;

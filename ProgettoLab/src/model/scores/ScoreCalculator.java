@@ -1,7 +1,5 @@
 package model.scores;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Componente che si occupa del calcolo del punteggio.
@@ -12,33 +10,11 @@ public class ScoreCalculator {
 	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
 	private long score = 0;
 	private int coeff = 50;
-	Timer timer;
 	
-	/**
-	 * Avvia il calcolatore dei punteggi.
-	 */
-	public void start(){
-		timer = new Timer();
-		TimerTask task = new TimerTask() {
-			
-			@Override
-			public void run() {
-
-				score = score+coeff;
-				System.out.println(score);
-			}
-		};
-		timer.scheduleAtFixedRate(task, 0, 200);
+	public void updateScore() {
+		score += coeff;		
 	}
 	
-	/**
-	 * Ferma il calcolatore dei punteggi.
-	 */
-	public void stop(){
-		scores.addScore(score);
-		timer.cancel();
-	}
-
 	/**
 	 * Restituisce il punteggio attuale.
 	 * @return
@@ -53,6 +29,10 @@ public class ScoreCalculator {
 
 	public void setCoeff(int coeff) {
 		this.coeff = coeff;
+	}
+	
+	public void convalidateScore() {
+		scores.addScore(score);
 	}
 	
 	

@@ -19,8 +19,8 @@ import java.util.Observer;
 import model.MobsManager;
 import model.mobs.Mob;
 import model.scores.ScoreCalculator;
-import model2D.Mob2D;
-import model2D.Ship2D;
+import model2D.mobs.Mob2D;
+import model2D.ship.Ship2D;
 import view2d.drawers.SpriteDrawer;
 import assetsPc.Assets;
 

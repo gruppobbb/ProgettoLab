@@ -6,13 +6,15 @@ import java.util.Observable;
 import model.audio.IAudioPlayer;
 import model.mobs.Mob;
 import model.movement.Moveable;
+import model.scores.ScoreCalculator;
 import model.ships.Ship;
 
 /**
- * Componente che si occupa di far progredire il gioco, muovendo i mob e controllando le collisioni dei mob con la ship.
+ * Componente che si occupa di far progredire il gioco, muovendo i mob, calcolando il punteggio e controllando le collisioni dei mob con la ship.
+ * Le collisioni sono gestite attraverso un pattern Observer, secondo cui gli osservatori di @GameEngine vengono informati in seguito ad un'avvenuta collisione.
  * @author Max
  */
-public class GameEngine extends Observable implements Runnable{
+public class GameEngine extends Observable implements Runnable {
 	
 	private long sleepTime;
 	private MobsManager mobsManager;
@@ -20,16 +22,19 @@ public class GameEngine extends Observable implements Runnable{
 	private Coordinate bounds;
 	private boolean collided;
 	private IAudioPlayer explosionPlayer;
+	private ScoreCalculator scoreCalculator;
 	private boolean debugMode;
 	private Object mPauseLock;
     private boolean mPaused;
     private boolean mFinished;
+   
 	
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
 		this.ship = ship;
 		this.bounds = viewBounds;
 		this.sleepTime = 10; //default
+		this.scoreCalculator = new ScoreCalculator();
 		
 		//proprietà iniziali del runnable
 		mPauseLock = new Object();
@@ -64,6 +69,8 @@ public class GameEngine extends Observable implements Runnable{
 						mob);
 			}
 			
+			scoreCalculator.updateScore();
+			
 			try {
 				Thread.sleep(sleepTime);
 			} catch (InterruptedException e) {
@@ -94,7 +101,6 @@ public class GameEngine extends Observable implements Runnable{
         }
     }
 	
-	
 	//controlla la collisione con la ship
 	private void checkCollisionWithShip(float shipX, float shipY, float shipZ,
 			double shipCollisionRay, Mob mob) {
@@ -119,9 +125,9 @@ public class GameEngine extends Observable implements Runnable{
 
 	//rimuove i mob che sono fuori dai confini specificati (da bounds)
 	private void removeOutOfBoundsMobs(Mob mob) {
-		if(	mob.getCoordinate().getY() > bounds.getY() || 
-			mob.getCoordinate().getX() > bounds.getX() || 
-			mob.getCoordinate().getX() > bounds.getX()) {
+		if(	mob.getCoordinate().getX() > bounds.getX() || 
+			mob.getCoordinate().getY() > bounds.getY() || 
+			mob.getCoordinate().getZ() > bounds.getZ()) {
 			if(debugMode){
 				System.out.println("X Mob " + mob.toString() + " has to be killed");
 			}
@@ -170,5 +176,8 @@ public class GameEngine extends Observable implements Runnable{
 		this.sleepTime = sleepTime;
 	}
 	
+	public ScoreCalculator getScoreCalculator() {
+		return scoreCalculator;
+	}
 	
 }

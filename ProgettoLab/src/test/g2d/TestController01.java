@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 import model.Coordinate;
 import model.MobsManager;
-import model2D.Ship2D;
+import model2D.ship.Ship2D;
 import view2d.RGameCanvas;
 import view2d.drawers.SquareDrawer;
 import control.Controller2D;
