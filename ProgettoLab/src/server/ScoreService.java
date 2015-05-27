@@ -16,7 +16,7 @@ import model.scores.ScoreKeeper;
 
 public class ScoreService implements IService{
 	
-	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
+	private ScoreKeeper scores = ScoreKeeper.getInstance();
 	
 	public void sendHTTP(final Socket clientSocket,
 			HttpRequest request) throws IOException,

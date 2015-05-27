@@ -7,7 +7,7 @@ package model.scores;
  */
 public class ScoreCalculator {
 	
-	private ScoreKeeper scores = ScoreKeeper.getScoreKeeper();
+	private ScoreKeeper scores = ScoreKeeper.getInstance();
 	private long score = 0;
 	private int coeff = 50;
 	
