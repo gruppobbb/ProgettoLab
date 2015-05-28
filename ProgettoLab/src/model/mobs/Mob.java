@@ -13,14 +13,25 @@ public class Mob {
 	private double collisionRay;
 	
 	/**
-	 * Crea un {@link Mob} nelle {@link Coordinate} specificate.
-	 * @param coordinate
-	 * @param shiftAmount
+	 * @param coordinate Coordinate iniziali del {@link Mob} 
+	 * @param shiftAmount Spostamento effettuato dal {@link Mob} ad ogni ciclo
 	 */
 	public Mob(Coordinate coordinate, float shiftAmount) {
 		super();
 		this.coordinate = coordinate;
 		this.shiftAmount = shiftAmount;
+	}
+	
+	/**
+	 * @param coordinate Coordinate iniziali del {@link Mob} 
+	 * @param shiftAmount Spostamento effettuato dal {@link Mob} ad ogni ciclo
+	 * @param collisionRay Raggio di collisione del {@link Mob} 
+	 */
+	public Mob(Coordinate coordinate, float shiftAmount, double collisionRay) {
+		super();
+		this.coordinate = coordinate;
+		this.shiftAmount = shiftAmount;
+		this.collisionRay = collisionRay;
 	}
 
 	public Coordinate getCoordinate() {

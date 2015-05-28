@@ -2,7 +2,7 @@ package model;
 
 /**
  * Classe che rappresenta le coordinate a 3 dimensioni.
- * @author Jan
+ * @author Jancarlos
  */
 public class Coordinate {
 

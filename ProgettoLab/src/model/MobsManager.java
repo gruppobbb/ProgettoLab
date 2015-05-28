@@ -8,19 +8,15 @@ import java.util.List;
 import model.mobs.Mob;
 
 /**
- * Manager per tutti i mob istanziati. Contiene e gestisce le istanze dei mob.
+ * Manager per i mob istanziati. Contiene e gestisce le istanze dei mob, garantendo la possibilità di accessi concorrenti.
  * @author Max
- *
  */
-
-//Questa classe dovrebbe gestire tutte le concorrenze per l'accesso alla lista dei mob.
 public class MobsManager {
 	
 	private List<Mob> mobs = Collections.synchronizedList(new LinkedList<Mob>());
 	
 	/**
 	 * Aggiunge un nuovo mob alla lista. 
-	 * NOTA: deve rimanere sincronizzato.
 	 * @param newMob
 	 */
 	public void addMob(Mob newMob) {
@@ -31,8 +27,7 @@ public class MobsManager {
 	
 	/**
 	 * Restituisce una copia della lista dei mob.
-	 * NOTA: deve rimanere sincronizzato.
-	 * @return
+	 * @return lista dei mob
 	 */
 	public ArrayList<Mob> getMobsList() {
 		ArrayList<Mob> copiedList;
@@ -43,7 +38,7 @@ public class MobsManager {
 	}
 	
 	/**
-	 * Elimina un {@link Mob} specificato tramite reference.
+	 * Elimina il {@link Mob} specificato.
 	 * @param mobToRemove
 	 */
 	public void removeMob(Mob mobToRemove) {
@@ -53,7 +48,7 @@ public class MobsManager {
 	}
 	
 	/**
-	 * Elimina tutti i {@link Mob}
+	 * Elimina tutti i {@link Mob} presenti della lista.
 	 */
 	public void removeAllMobs(){
 		synchronized (mobs) {

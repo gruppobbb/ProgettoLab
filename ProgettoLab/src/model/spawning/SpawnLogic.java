@@ -9,7 +9,7 @@ import model.mobs.Mob;
 public interface SpawnLogic {
 	
 	/**
-	 * Spawna un array di elemento.
+	 * Spawna un insieme di {@link Mob} e restituisce un vettore di reference ad essi.
 	 */
 	public Mob[] spawnMob();
 

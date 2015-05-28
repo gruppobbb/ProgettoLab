@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 /**
  * Classe per la definizione di un nuovo menu, nel quale inserire {@link MenuButton}.
- * @author Jan
+ * @author Jancarlos
  */
 public class BMenu extends JFrame {
 

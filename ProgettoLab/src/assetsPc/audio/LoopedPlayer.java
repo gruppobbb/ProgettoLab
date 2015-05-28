@@ -9,7 +9,7 @@ import assetsPc.Assets;
  * Classe che carica una traccia audio da path e la esegue in loop.
  * @author Bianca
  */
-public class LoopedPlayer implements IAudioPlayer{
+public class LoopedPlayer implements IAudioPlayer {
 	
 	private Clip clip;
 	

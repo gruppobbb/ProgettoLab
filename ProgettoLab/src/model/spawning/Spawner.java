@@ -4,7 +4,7 @@ import model.MobsManager;
 import model.mobs.Mob;
 
 /**
- * Componente che si occupa della gestione dello spawning dei mob.
+ * Componente che si occupa della gestione dello spawning dei {@link Mob}.
  * @author Max
  */
 public class Spawner implements Runnable {
@@ -17,12 +17,8 @@ public class Spawner implements Runnable {
     private boolean mFinished;
 	
 	/**
-	 * Crea uno spawner, che inserisce nel {@link MobsManager} il {@link Mob} creato,
-	 * a cui viene assegnato {@link MovingLogic2D} per determianre come vuoversi,
-	 * il tutto secondo l'algoritmo definito in {@link SpawnLogic}.
-	 * @param manager
-	 * @param mobMover
-	 * @param spawnLogic
+	 * @param manager {@link MobsManager} in cui porre i mob istanziati
+	 * @param spawnLogic logica di spawning da adottare
 	 */
 	public Spawner(MobsManager manager, SpawnLogic spawnLogic) {
 		super();
@@ -30,6 +26,19 @@ public class Spawner implements Runnable {
 		this.spawnLogic = spawnLogic;
 		this.sleepTime = 200; //default
 		
+		initialize();
+	}
+	
+	public Spawner(MobsManager manager, SpawnLogic spawnLogic, int sleepTime) {
+		super();
+		this.manager = manager;
+		this.spawnLogic = spawnLogic;
+		this.sleepTime = sleepTime;
+		
+		initialize();
+	}	
+
+	private void initialize() {
 		//proprietà iniziali del runnable
 		mPauseLock = new Object();
         mPaused = false;
@@ -43,6 +52,10 @@ public class Spawner implements Runnable {
 		}		
 	}
 	
+	/**
+	 * Algoritmo principale dell'engine. 
+	 * Non dovrebbe mai essere invocato direttamente, ma solo attraverso un {@link Thread}.
+	 */
 	@Override
 	public void run() {
 		while(mFinished == false) {
@@ -53,7 +66,6 @@ public class Spawner implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			
 			synchronized (mPauseLock) {
                 while (mPaused) {
@@ -66,12 +78,18 @@ public class Spawner implements Runnable {
 		}
 	}
 	
+	/**
+	 * Manda in pausa lo spawner.
+	 */
 	public void onPause() {
         synchronized (mPauseLock) {
             mPaused = true;
         }
     }
 	 
+	/**
+	 * Riattiva l'engine.
+	 */
 	public void onResume() {
         synchronized (mPauseLock) {
             mPaused = false;
@@ -86,10 +104,18 @@ public class Spawner implements Runnable {
 		this.mFinished = toKill;
 	}
 
+	/**
+	 * Ritorna il tempo di sleep del thread, in millisecondi.
+	 * @return tempo di sleep del thread, in ms
+	 */
 	public int getSleepTime() {
 		return sleepTime;
 	}
 
+	/**
+	 * Imposta il tempo di sleep del thread.
+	 * @param sleepTime
+	 */
 	public void setSleepTime(int sleepTime) {
 		this.sleepTime = sleepTime;
 	}

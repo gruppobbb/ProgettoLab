@@ -11,6 +11,7 @@ import model.Coordinate;
 import model.Game;
 import model.GameEngine;
 import model.MobsManager;
+import model.audio.IAudioPlayer;
 import model.spawning.Spawner;
 import model2D.ship.Ship2D;
 import model2D.spawner.SimpleLanes2DSpawnerM;
@@ -40,7 +41,7 @@ public class SinglePlayer2D implements Game, Observer {
 	private Spawner spawner;
 	private JFrame gameFrame;
 	private JFrame menuFrame;
-	private LoopedPlayer bgmPlayer;
+	private IAudioPlayer bgmPlayer;
 	
 	private static final int WIDTH = 900;
 	private static final int HEIGHT = (WIDTH/7)*8;
@@ -57,6 +58,7 @@ public class SinglePlayer2D implements Game, Observer {
 		
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.addObserver(this);
+		engine.getScoreCalculator().setCoeff(2);		
 		
 		createGameField();	//istanzia canvas + relativo controllo
 		
@@ -131,6 +133,7 @@ public class SinglePlayer2D implements Game, Observer {
 		menuFrame.setEnabled(true);
 		menuFrame.toFront();
         menuFrame.repaint();
+        engine.getScoreCalculator().convalidateScore();
 	}
 	
 	public Canvas getGameCanvas() {

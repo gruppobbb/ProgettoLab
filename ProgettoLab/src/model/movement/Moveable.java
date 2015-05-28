@@ -1,7 +1,9 @@
 package model.movement;
 
+import model.GameEngine;
+
 /**
- * Interfaccia per elementi che possono essere mossi da un {@link Mover}
+ * Interfaccia per elementi che possono essere mossi da un {@link GameEngine}
  * @author Max
  */
 public interface Moveable {

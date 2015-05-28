@@ -9,11 +9,26 @@ import model.Coordinate;
 public class Ship {
 
 	private Coordinate coordinate;
-	public float shiftAmt = 10;
+	public float shiftAmt;
 	private double collisionRay;
 	
+	/**
+	 * @param coordinate Coordinate iniziali della {@link Ship}
+	 */
 	public Ship(Coordinate coordinate) {
 		this.coordinate = coordinate;
+		shiftAmt = 10;  //default
+	}
+	
+	/**
+	 * @param coordinate Coordinate iniziali della {@link Ship}
+	 * @param collisionRay Raggio di collisione della {@link Ship}
+	 * @param shiftAmount Spostamento effettuato dalla {@link Ship} ad ogni ciclo
+	 */
+	public Ship(Coordinate coordinate, double collisionRay, float shiftAmount) {
+		this.coordinate = coordinate;
+		this.collisionRay = collisionRay;
+		this.shiftAmt = shiftAmount;
 	}
 
 	public Coordinate getCoordinate() {
