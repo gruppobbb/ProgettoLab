@@ -11,8 +11,8 @@ import model.scores.ScoreKeeper;
 import model.ships.Ship;
 
 /**
- * Componente che si occupa di far progredire il gioco, muovendo i mob, calcolando il punteggio e controllando le collisioni dei mob con la ship.
- * Le collisioni sono gestite attraverso un pattern Observer, secondo cui gli osservatori di @GameEngine vengono informati in seguito ad un'avvenuta collisione.
+ * Componente che si occupa di far progredire il gioco muovendo i mob, calcolando il punteggio e controllando le collisioni dei mob con la ship.
+ * Le collisioni sono gestite attraverso un pattern Observer, secondo cui gli osservatori di {@link GameEngine} vengono informati a seguito di un'avvenuta collisione.
  * @author Max
  */
 public class GameEngine extends Observable implements Runnable {
@@ -28,9 +28,13 @@ public class GameEngine extends Observable implements Runnable {
 	private boolean debugMode;
 	private Object mPauseLock;
     private boolean mPaused;
-    private boolean mFinished;
-   
+    private boolean mFinished;   
 	
+    /**
+     * @param mobsManager {@link MobsManager} che contiene i mob su cui il motore deve agire
+     * @param ship {@link Ship} dell'utente
+     * @param viewBounds {@link Coordinate} che specifica gli estremi, lungo i tre assi, al di fuori dei quali un mob deve essere eliminato
+     */
 	public GameEngine(MobsManager mobsManager, Ship ship, Coordinate viewBounds) {
 		this.mobsManager = mobsManager;
 		this.ship = ship;
@@ -45,11 +49,10 @@ public class GameEngine extends Observable implements Runnable {
         mFinished = false;
 	}	
 	
-	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
-		this.explosionPlayer = explosionPlayer;
-	}
-	
-	
+	/**
+	 * Algoritmo principale dell'engine. 
+	 * Non dovrebbe mai essere invocato direttamente, ma solo attraverso un {@link Thread}.
+	 */
 	public void run() {
 		while(mFinished == false) {
 			ArrayList<Mob> mobs = mobsManager.getMobsList();
@@ -91,12 +94,18 @@ public class GameEngine extends Observable implements Runnable {
 		}
 	}
 	
+	/**
+	 * Manda in pausa l'engine.
+	 */
 	public void onPause() {
         synchronized (mPauseLock) {
             mPaused = true;
         }
     }
 	 
+	/**
+	 * Riattiva l'engine.
+	 */
 	public void onResume() {
         synchronized (mPauseLock) {
             mPaused = false;
@@ -137,6 +146,14 @@ public class GameEngine extends Observable implements Runnable {
 			mobsManager.removeMob(mob);
 		}
 	}
+	
+	/**
+	 * Imposta il player per l'esplosione.
+	 * @param explosionPlayer
+	 */
+	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
+		this.explosionPlayer = explosionPlayer;
+	}
 
 	/**
 	 * Abilita la visualizzazione su console di informazioni sull'andamento.
@@ -155,7 +172,7 @@ public class GameEngine extends Observable implements Runnable {
 	}
 
 	/**
-	 * Imposta il flag che indica il rilevamento di una collisione.
+	 * Imposta il flag che indica il rilevamento di una collisione e informa gli osservatori.
 	 * @param collided
 	 */
 	public void setCollided(boolean collided) {
@@ -172,14 +189,27 @@ public class GameEngine extends Observable implements Runnable {
 		this.mFinished = toKill;
 	}
 
+	/**
+	 * Ritorna il tempo di sleep del thread, in millisecondi.
+	 * @return tempo di sleep del thread, in ms
+	 */
 	public long getSleepTime() {
 		return sleepTime;
 	}
 
+	/**
+	 * Imposta il tempo di sleep del thread.
+	 * @param sleepTime
+	 */
 	public void setSleepTime(long sleepTime) {
 		this.sleepTime = sleepTime;
 	}
 	
+	/**
+	 * Ritorna il reference allo @ScoreCalculator correntemente utilizzato.
+	 * @see ScoreCalculator
+	 * @return reference al calcolatore del punteggio attualmente in uso
+	 */
 	public ScoreCalculator getScoreCalculator() {
 		return scoreCalculator;
 	}
