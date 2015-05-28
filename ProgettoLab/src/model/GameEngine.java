@@ -3,12 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import model.audio.IAudioPlayer;
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.scores.ScoreCalculator;
 import model.scores.ScoreKeeper;
 import model.ships.Ship;
+import assetsPc.audio.AudioPlayer;
 
 /**
  * Componente che si occupa di far progredire il gioco muovendo i mob, calcolando il punteggio e controllando le collisioni dei mob con la ship.
@@ -22,7 +22,7 @@ public class GameEngine extends Observable implements Runnable {
 	private Ship ship;
 	private Coordinate bounds;
 	private boolean collided;
-	private IAudioPlayer explosionPlayer;
+	private AudioPlayer explosionPlayer;
 	private ScoreCalculator scoreCalculator;
 	private ScoreKeeper scoreKeeper;
 	private boolean debugMode;
@@ -151,7 +151,7 @@ public class GameEngine extends Observable implements Runnable {
 	 * Imposta il player per l'esplosione.
 	 * @param explosionPlayer
 	 */
-	public void setExplosionPlayer(IAudioPlayer explosionPlayer) {
+	public void setExplosionPlayer(AudioPlayer explosionPlayer) {
 		this.explosionPlayer = explosionPlayer;
 	}
 

@@ -1,7 +1,5 @@
 package model2D.mobs;
 
-import java.awt.Dimension;
-
 import model.Coordinate;
 import model.mobs.Mob;
 import model.movement.Moveable;
@@ -12,25 +10,22 @@ import model.movement.Moveable;
  * 
  */
 public class Mob2D extends Mob implements Moveable {
+		
+	public static final double COLLISION_RAY = 25;
 	
-	private Dimension dimension;
-	
+	/**
+	 * @see Mob
+	 * @param coordinates
+	 * @param shiftAmount
+	 */
 	public Mob2D(Coordinate coordinates, int shiftAmount) {
 		super(coordinates, (float) shiftAmount);
-		setDimension(new Dimension(50,50));
-	}
-
-	public Dimension getDimension() {
-		return dimension;
+		setCollisionRay(COLLISION_RAY);
 	}
 	
-	public void setDimension(Dimension dimension) {
-		this.dimension = dimension;
-		double halfHeight = (dimension.getHeight()/2);
-		double halfWidth = (dimension.getWidth()/2);
-		setCollisionRay(Math.sqrt(halfHeight * halfHeight + halfWidth * halfWidth));		
-	}
-	
+	/**
+	 * @see Moveable
+	 */
 	@Override
 	public void move() {
 		getCoordinate().setY(getCoordinate().getY() + getShiftAmount());

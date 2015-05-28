@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import assetsPc.Assets;
-import assetsPc.audio.LoopedPlayer;
+import assetsPc.audio.AudioPlayer;
 
 public class TestAudio {
 	
@@ -14,7 +14,7 @@ public class TestAudio {
 		   
 		   JFrame frame=new JFrame();
 		   
-		   final LoopedPlayer player = new LoopedPlayer(Assets.AUDIO_BGM);
+		   final AudioPlayer player = new AudioPlayer(Assets.AUDIO_BGM, true);
 		   
 		   frame.setFocusable(true);
 		   frame.addKeyListener(new KeyListener() {

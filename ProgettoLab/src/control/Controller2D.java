@@ -80,7 +80,7 @@ public class Controller2D implements KeyListener{
 	 */
 	public void moveXAxis() {
 		Coordinate coo= userShip.getCoordinate();
-		float newX = coo.getX() + userShip.getShiftAmt() *directionPressed;
+		float newX = coo.getX() + userShip.getShiftAmount() *directionPressed;
 		if(directionPressed == SX && userShip.getCoordinate().getX() > leftBound || directionPressed == DX && userShip.getCoordinate().getX() < rightBound) {
 			userShip.setCoordinate(new Coordinate(newX, coo.getY(), 0));
 			if(debug){

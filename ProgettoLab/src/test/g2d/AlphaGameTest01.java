@@ -24,7 +24,6 @@ public class AlphaGameTest01 {
 		server.addService("/highscores", new ScoreService());
 		
 		
-		
 		BMenu menu = new BMenu("Test");
 		Game singlePlayerGame = new SinglePlayer2D(menu);		
 		

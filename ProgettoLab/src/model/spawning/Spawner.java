@@ -29,6 +29,12 @@ public class Spawner implements Runnable {
 		initialize();
 	}
 	
+	/**
+	 * 
+	 * @param manager {@link MobsManager} in cui porre i mob istanziati
+	 * @param spawnLogic logica di spawning da adottare
+	 * @param sleepTime tempo di sleep del thread
+	 */
 	public Spawner(MobsManager manager, SpawnLogic spawnLogic, int sleepTime) {
 		super();
 		this.manager = manager;

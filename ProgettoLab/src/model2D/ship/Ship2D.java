@@ -11,25 +11,34 @@ import model.ships.Ship;
  */
 public class Ship2D extends Ship{
 
-	private Dimension dimension;
+	private int shiftAmount;
+	public static final double COLLISION_RAY = 30;
+	public static final int DEFAULT_SHIFT_AMOUNT = 10;
 	
 	/**
-	 * Crea una Ship nelle {@link Coordinate} indicate.
-	 * @param coordinates
+	 * Crea una Ship nelle {@link Coordinate} indicate. Lo shiftAmount è impostato al valore di default, ma può essere modificato tramite getShiftAmount().
+	 * @param coordinates Coordinate iniziali
 	 */
 	public Ship2D(Coordinate coordinates) {
 		super(coordinates);
-		setDimension(new Dimension(50,50));
+		setCollisionRay(COLLISION_RAY);
+		this.shiftAmount = DEFAULT_SHIFT_AMOUNT;
 	}
 	
-	public Dimension getDimension() {
-		return dimension;
+	/**
+	 * Restituisce lo shift amount corrente della ship.
+	 * @return shift amount
+	 */
+	public int getShiftAmount() {
+		return shiftAmount;
 	}
 
-	private void setDimension(Dimension dimension) {
-		this.dimension = dimension;
-		double halfHeight = (dimension.getHeight()/2);
-		double halfWidth = (dimension.getWidth()/2);
-		setCollisionRay(Math.sqrt(halfHeight * halfHeight + halfWidth * halfWidth));		
-	}
+	/**
+	 * Imposta lo shift amount della ship.
+	 * @param shiftAmount
+	 */
+	public void setShiftAmount(int shiftAmount) {
+		this.shiftAmount = shiftAmount;
+	}	
+	
 }

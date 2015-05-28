@@ -13,6 +13,9 @@ import model2D.mobs.Mob2D;
  */
 public class SimpleRandom2DSpawnLogic implements SpawnLogic {
 	
+	/**
+	 * @see SpawnLogic
+	 */
 	@Override
 	public Mob[] spawnMob() {
 		Mob[] mobs = new Mob[1];

@@ -9,9 +9,8 @@ import model.spawning.SpawnLogic;
 import model2D.mobs.Mob2D;
 
 /**
- * Logica di spawning 2D basata sul concetto di corsia.
+ * Logica di spawning 2D basata sul concetto di corsia, versione altrenativa che permette lo spawning di più {@link Mob} contemporaneamente.
  * @author Max
- * @author Jan
  */
 public class SimpleLanes2DSpawnerM implements SpawnLogic {
 	
@@ -23,8 +22,7 @@ public class SimpleLanes2DSpawnerM implements SpawnLogic {
 	private int laneWidth;
 	
 	/**
-	 * Spawner che crea un {@link Mob} all'interno di width, un una corsia casuale.
-	 * @param width
+	 * @param width Larghezza dell'area di gioco
 	 */
 	public SimpleLanes2DSpawnerM(int width) {
 		rand = new Random();
@@ -33,15 +31,16 @@ public class SimpleLanes2DSpawnerM implements SpawnLogic {
 		laneWidth = width / N;	// N è già intero
 	}
 	
+	/**
+	 * @see SpawnLogic
+	 */
 	@Override
-	public Mob[] spawnMob() {
-		
+	public Mob[] spawnMob() {		
 		mobs = new Mob[rand.nextInt(N-1) + 1];
 		for (int i = 0; i < mobs.length; i++) {
 			randX =(int)(laneWidth/2  + (rand.nextInt(N) * laneWidth)) ;
 			mobs[i] = new Mob2D(new Coordinate(randX, -200, 0),	7);
-		}
-				
+		}				
 		return mobs;
 	}
 }
