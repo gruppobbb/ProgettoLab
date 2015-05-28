@@ -1,5 +1,6 @@
 package model.scores;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,16 +12,18 @@ import java.util.Collections;
  */
 public class ScoreKeeper {
 	
+	public static final String SCOREFILENAME = "web/scorelist.xml";
+	public static final String LOCALFILENAME = "web/localstats.xml";
 	private static ScoreKeeper scoreKeeper;
-	private static ArrayList<Long> highScores;
+	private static ArrayList<ScoreEntry> highScores;
 	public static final int MAX_SCORES = 10;
 	private IScoreManager scoreManager;
-	private String playerName;
+	private ILocalStatsManager localStats;
 	
 	private ScoreKeeper() {
-		playerName = "Player";
-		highScores = new ArrayList<Long>(MAX_SCORES);
-		setScoreManager(new LocalScoreManager());
+		highScores = new ArrayList<ScoreEntry>(MAX_SCORES);
+		setScoreManager(new LocalScoreManager(SCOREFILENAME));
+		localStats = new XMLLocalStatsManager(new File(LOCALFILENAME));
 		updateList();
 	}
 	
@@ -35,19 +38,11 @@ public class ScoreKeeper {
 		return scoreKeeper;
 	}
 	
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
-	
-	public String getPlayerName() {
-		return playerName;
-	}
-	
 	/**
 	 * Metodo che restituisce i primi 10 punteggi ordinati numericamente.
 	 * @return Lista dei 10 punteggi piu' alti
 	 */
-	public ArrayList<Long> getHighScores(){
+	public ArrayList<ScoreEntry> getHighScores(){
 		return highScores;
 	}
 	
@@ -55,6 +50,9 @@ public class ScoreKeeper {
 		this.scoreManager = scoreManager;
 	}
 	
+	public ILocalStatsManager getLocalStats(){
+		return localStats;
+	}
 	
 	/**
 	 * Aggiorna la lista dei punteggi.
@@ -63,7 +61,6 @@ public class ScoreKeeper {
 		try {
 			highScores.clear();
 			scoreManager.loadScores(highScores);
-			playerName = scoreManager.getPlayerName();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -76,17 +73,19 @@ public class ScoreKeeper {
 	 * @param score Nuovo punteggio
 	 */
 	public void addScore(long score){
-		highScores.add(score);
+		if(score > localStats.getPersonalBest()){
+			localStats.setPersonalBest(score);
+		}
+		highScores.add(new ScoreEntry(localStats.getPlayerName(), score));
 		try {
 			trimScoreList();
-			scoreManager.saveScores(highScores, playerName);
+			scoreManager.saveScores(highScores, localStats.getPlayerName());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
 	
 	/**
 	 * Riduce la lista dei punteggi a 10 elementi ordinati per valore.

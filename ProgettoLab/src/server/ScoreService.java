@@ -42,7 +42,8 @@ public class ScoreService implements IService{
 				out.write("<ol>\n");
 				for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
 					out.write("<li>");
-					out.write(scores.getHighScores().get(i).toString());
+					out.write(scores.getHighScores().get(i).getPlayerName() + 
+							": " + scores.getHighScores().get(i).getScore());
 					out.write("");
 					out.write("</li>\n");
 				}

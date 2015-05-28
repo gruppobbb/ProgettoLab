@@ -29,35 +29,31 @@ import org.xml.sax.SAXException;
 public class LocalScoreManager implements IScoreManager{
 	
 	private File scoreFile;
-	private String playerName;
 	
-	public LocalScoreManager() {
-		scoreFile = new File("web/scorelist.xml");
-	}
-	
-	public String getPlayerName() {
-		return playerName;
+	public LocalScoreManager(String fileName) {
+		scoreFile = new File(fileName);
 	}
 	
 	@Override
-	public void saveScores(ArrayList<Long> highScores, String playerName) throws IOException{
+	public void saveScores(ArrayList<ScoreEntry> highScores, String playerName) throws IOException{
 		
 		try {
-			this.playerName = playerName;
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder;
 			builder = dbFactory.newDocumentBuilder();
 			Document xmlDoc = builder.parse(scoreFile);
-			NodeList scores = xmlDoc.getElementsByTagName("scores");
-			scores.item(0).getAttributes().item(0).setNodeValue(playerName);
-
+			
 			NodeList scoreNodesList = xmlDoc.getElementsByTagName("entry");
 			for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
 				Node scoreNode = scoreNodesList.item(i);				
 				NodeList scoreInfo = scoreNode.getChildNodes();
-				Node info = scoreInfo.item(1);
-				if(info.getNodeName() == "score"){
-					info.setTextContent(highScores.get(i).toString());
+				for (int j = 0; j < scoreInfo.getLength(); j++) {
+					Node info = scoreInfo.item(j);
+					if (info.getNodeName() == "score") {
+						info.setTextContent(Long.toString(highScores.get(i).getScore()));
+					} else if (info.getNodeName() == "player") {
+						info.setTextContent(highScores.get(i).getPlayerName());
+					}
 				}
 			}
 			
@@ -79,24 +75,26 @@ public class LocalScoreManager implements IScoreManager{
 	}
 	
 	@Override
-	public void loadScores(ArrayList<Long> highScores) throws FileNotFoundException, IOException{
+	public void loadScores(ArrayList<ScoreEntry> highScores) throws FileNotFoundException, IOException{
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = dbFactory.newDocumentBuilder();
 			Document xmlDoc = builder.parse(scoreFile);
-			NodeList scores = xmlDoc.getElementsByTagName("scores");
-			playerName = scores.item(0).getAttributes().item(0).getNodeValue();
 			
 			NodeList scoreNodesList = xmlDoc.getElementsByTagName("entry");
 			for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
 				Node scoreNode = scoreNodesList.item(i);				
 				NodeList scoreInfo = scoreNode.getChildNodes();
+				ScoreEntry scoreEntry = new ScoreEntry();
 				for (int j = 0; j < scoreInfo.getLength(); j++) {
 					Node info = scoreInfo.item(j);
-					if(info.getNodeName() == "score"){
-						highScores.add(Long.parseLong(info.getTextContent()));
+					if(info.getNodeName() == "player"){
+						scoreEntry.setPlayerName(info.getTextContent());
+					}else if(info.getNodeName() == "score"){
+						scoreEntry.setScore(Long.parseLong(info.getTextContent()));
 					}
 				}
+				highScores.add(scoreEntry);
 			}
 		} catch (DOMException e) {
 			e.printStackTrace();
