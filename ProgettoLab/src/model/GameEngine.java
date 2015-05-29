@@ -25,7 +25,6 @@ public class GameEngine extends Observable implements Runnable {
 	private AudioPlayer explosionPlayer;
 	private ScoreCalculator scoreCalculator;
 	private ScoreKeeper scoreKeeper;
-	private boolean debugMode;
 	private Object mPauseLock;
     private boolean mPaused;
     private boolean mFinished;   
@@ -125,9 +124,6 @@ public class GameEngine extends Observable implements Runnable {
 										(mobZ - shipZ) * (mobZ - shipZ));
 
 		if(distance < shipCollisionRay + mobCollisionRay) {
-			if(debugMode){
-				System.out.println("! COLLISION DETECTED @ " + System.currentTimeMillis());
-			}
 			if(explosionPlayer != null ){
 				explosionPlayer.play();
 			}
@@ -140,9 +136,6 @@ public class GameEngine extends Observable implements Runnable {
 		if(	mob.getCoordinate().getX() > bounds.getX() || 
 			mob.getCoordinate().getY() > bounds.getY() || 
 			mob.getCoordinate().getZ() > bounds.getZ()) {
-			if(debugMode){
-				System.out.println("X Mob " + mob.toString() + " has to be killed");
-			}
 			mobsManager.removeMob(mob);
 		}
 	}
@@ -155,14 +148,6 @@ public class GameEngine extends Observable implements Runnable {
 		this.explosionPlayer = explosionPlayer;
 	}
 
-	/**
-	 * Abilita la visualizzazione su console di informazioni sull'andamento.
-	 * @param debugMode
-	 */
-	public void setDebugMode(boolean debugMode) {
-		this.debugMode = debugMode;
-	}
-	
 	/**
 	 * Ritorna true se è stata rilevata una collisione.
 	 * @return

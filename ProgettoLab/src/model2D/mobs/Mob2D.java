@@ -5,9 +5,8 @@ import model.mobs.Mob;
 import model.movement.Moveable;
 
 /**
- * Modello di un mob che deve essere rappresentato in 2D.
+ * Modello di un {@link Mob} che deve essere rappresentato in 2D.
  * @author Max
- * 
  */
 public class Mob2D extends Mob implements Moveable {
 		
