@@ -1,7 +1,5 @@
 package model2D.ship;
 
-import java.awt.Dimension;
-
 import model.Coordinate;
 import model.ships.Ship;
 
@@ -12,7 +10,7 @@ import model.ships.Ship;
 public class Ship2D extends Ship{
 
 	private int shiftAmount;
-	public static final double COLLISION_RAY = 30;
+	public static final double COLLISION_RAY = 55;
 	public static final int DEFAULT_SHIFT_AMOUNT = 10;
 	
 	/**

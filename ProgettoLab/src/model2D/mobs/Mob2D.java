@@ -11,7 +11,7 @@ import model.movement.Moveable;
  */
 public class Mob2D extends Mob implements Moveable {
 		
-	public static final double COLLISION_RAY = 25;
+	public static final double COLLISION_RAY = 75;
 	
 	/**
 	 * @see Mob

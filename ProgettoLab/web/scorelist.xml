@@ -28,27 +28,15 @@
         <score>40000</score>
     </entry>
     <entry no="8">
-<<<<<<< .mine
         <player>AAA</player>
         <score>12950</score>
-=======
-        <score>4094</score>
->>>>>>> .r102
     </entry>
     <entry no="9">
-<<<<<<< .mine
         <player>Sascha</player>
         <score>8800</score>
-=======
-        <score>4094</score>
->>>>>>> .r102
     </entry>
     <entry no="10">
-<<<<<<< .mine
         <player>Player</player>
-        <score>4000</score>
-=======
         <score>4092</score>
->>>>>>> .r102
     </entry>
 </scores>
