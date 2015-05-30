@@ -13,7 +13,12 @@ import java.net.UnknownHostException;
 
 import model.scores.ScoreKeeper;
 
-public class LocalClient {
+/**
+ * Client che permette di comunicare col Server locale su PC.
+ * @author Giulia
+ *
+ */
+public class LocalClient implements IClient{
 	
 	private File file;
 	
@@ -22,32 +27,26 @@ public class LocalClient {
 	}
 	
 	
-	/**
-	 * Avvia il client.
-	 * @param port Porta della connessione
-	 * @param hostname Nome dell'host
-	 */
-	public void start(int port, String hostname) {
+	@Override
+	public void start(int port, String hostName) {
 		
-		try {
-			Socket clientSocket = new Socket(hostname, port);
-
-			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-			sendScores(out);
-			out.close();
+		try (
+				Socket clientSocket = new Socket(hostName, port);
+				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+				BufferedReader in = new BufferedReader(
+						new InputStreamReader(clientSocket.getInputStream()));
+				) {
 			
-//			BufferedReader in = new BufferedReader(
-//					new InputStreamReader(clientSocket.getInputStream()));
-//			saveScores(in);
-//			in.close();
+			sendScores(out);
+			out.println("SENDING SCORES ONLINE");
+			saveScores(in);
 
-			clientSocket.close();
 		} catch (UnknownHostException e) {
-			System.err.println("Impossibile connettersi all'host " + hostname);
+			System.err.println("Impossibile connettersi all'host " + hostName);
 			System.exit(1);
 		} catch (IOException e) {
 			System.err.println("Errore durante la comunicazione con l'host " +
-					hostname);
+					hostName);
 			System.exit(1);
 		}
 	}
@@ -64,7 +63,6 @@ public class LocalClient {
 			out.println(fromUser);
 		}
 		fileReader.close();
-		out.close();
 	}
 	
 	/**
@@ -81,7 +79,6 @@ public class LocalClient {
 			fileWriter.newLine();
 		}
 		fileWriter.close();
-		in.close();
 		
 	}
 	

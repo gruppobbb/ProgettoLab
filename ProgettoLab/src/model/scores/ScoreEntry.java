@@ -1,5 +1,10 @@
 package model.scores;
 
+/**
+ * Entry singola della lista dei punteggi: comprende di nome giocatore e rispettivo punteggio.
+ * @author Giulia
+ *
+ */
 public class ScoreEntry implements Comparable<ScoreEntry>{
 	
 	private String playerName;
@@ -8,6 +13,10 @@ public class ScoreEntry implements Comparable<ScoreEntry>{
 	public ScoreEntry() {
 	}
 	
+	/**
+	 * @param playerName Nome del giocatore
+	 * @param score Punteggio del giocatore
+	 */
 	public ScoreEntry(String playerName, long score) {
 		this.playerName = playerName;
 		this.score = score;

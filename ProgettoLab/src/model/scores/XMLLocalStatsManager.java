@@ -15,11 +15,17 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
+/**
+ * Classe per la gestione delle statistiche locali su file XML.
+ * @author Giulia
+ *
+ */
 public class XMLLocalStatsManager implements ILocalStatsManager{
 	
 	private File localFile;
-	
+	/**
+	 * @param localFile File in cui verranno memorizzate le informazioni
+	 */
 	XMLLocalStatsManager(File localFile){
 		this.localFile = localFile;
 	}
@@ -94,6 +100,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		return playerName;
 	}
 	
+	/**
+	 * Apre il documento specificato nel costruttore.
+	 */
 	private Document openDoc() throws ParserConfigurationException, SAXException, IOException{
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = dbFactory.newDocumentBuilder();
@@ -101,6 +110,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		return xmlDoc;
 	}
 	
+	/**
+	 * Salva il documento aperto con openDoc().
+	 */
 	private void saveDoc(Document xmlDoc) throws TransformerException{
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();

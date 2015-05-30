@@ -1,4 +1,6 @@
-package server;
+package test.client;
+
+import server.LocalClient;
 
 public class TestClient {
 	
