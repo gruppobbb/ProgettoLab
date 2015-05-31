@@ -1,6 +1,5 @@
 package model.scores;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,18 +11,18 @@ import java.util.Collections;
  */
 public class ScoreKeeper {
 	
-	public static final String SCOREFILENAME = "web/scorelist.xml";
-	public static final String LOCALFILENAME = "web/localstats.xml";
 	private static ScoreKeeper scoreKeeper;
-	private static ArrayList<ScoreEntry> highScores;
 	public static final int MAX_SCORES = 10;
+	private static ArrayList<ScoreEntry> highScores = new ArrayList<ScoreEntry>(MAX_SCORES);
 	private IScoreManager scoreManager;
 	private ILocalStatsManager localStats;
 	
 	private ScoreKeeper() {
-		highScores = new ArrayList<ScoreEntry>(MAX_SCORES);
-		setScoreManager(new LocalScoreManager(SCOREFILENAME));
-		localStats = new XMLLocalStatsManager(new File(LOCALFILENAME));
+
+		
+		scoreManager = ManagerKeeper.getInstance().getScoreManager();
+		localStats = ManagerKeeper.getInstance().getLocalStats();
+		
 		updateList();
 	}
 	
@@ -45,15 +44,7 @@ public class ScoreKeeper {
 	public ArrayList<ScoreEntry> getHighScores(){
 		return highScores;
 	}
-	
-	public void setScoreManager(IScoreManager scoreManager) {
-		this.scoreManager = scoreManager;
-	}
-	
-	public ILocalStatsManager getLocalStats(){
-		return localStats;
-	}
-	
+
 	/**
 	 * Aggiorna la lista dei punteggi.
 	 */

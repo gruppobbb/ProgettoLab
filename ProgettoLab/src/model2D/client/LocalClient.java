@@ -1,4 +1,4 @@
-package server;
+package model2D.client;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,7 +11,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import model.scores.ScoreKeeper;
+import model.scores.IClient;
+import model.scores.ManagerKeeper;
 
 /**
  * Client che permette di comunicare col Server locale su PC.
@@ -23,7 +24,7 @@ public class LocalClient implements IClient{
 	private File file;
 	
 	public LocalClient() {
-		this.file = new File(ScoreKeeper.SCOREFILENAME);
+		this.file = ManagerKeeper.getInstance().getScoreManager().getScoreFile();
 	}
 	
 	

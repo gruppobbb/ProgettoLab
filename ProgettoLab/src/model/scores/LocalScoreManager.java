@@ -108,4 +108,11 @@ public class LocalScoreManager implements IScoreManager{
 		
 	}
 
+	@Override
+	public File getScoreFile() {
+		return scoreFile;
+	}
+
+
+
 }

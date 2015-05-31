@@ -1,6 +1,6 @@
 package test.client;
 
-import server.LocalClient;
+import model2D.client.LocalClient;
 
 public class TestClient {
 	

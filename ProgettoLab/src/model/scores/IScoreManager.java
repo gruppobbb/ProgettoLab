@@ -1,5 +1,6 @@
 package model.scores;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,5 +27,12 @@ public interface IScoreManager {
 	 * @throws IOException
 	 */
 	public void loadScores(ArrayList<ScoreEntry> highScores) throws FileNotFoundException, IOException;
+	
+	
+	/**
+	 * Ritorna il file utilizzato per memorizzare i punteggi
+	 * @return
+	 */
+	public File getScoreFile();
 
 }

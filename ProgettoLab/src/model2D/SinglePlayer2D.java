@@ -42,7 +42,7 @@ public class SinglePlayer2D implements Game, Observer {
 	private JFrame menuFrame;
 	private AudioPlayer bgmPlayer;
 	
-	private static final int WIDTH = 900;
+	private static final int WIDTH = 700;
 	private static final int HEIGHT = (WIDTH/7)*8;
 	
 	/**

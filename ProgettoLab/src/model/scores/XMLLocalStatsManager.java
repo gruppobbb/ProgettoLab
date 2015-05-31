@@ -26,8 +26,8 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 	/**
 	 * @param localFile File in cui verranno memorizzate le informazioni
 	 */
-	XMLLocalStatsManager(File localFile){
-		this.localFile = localFile;
+	public XMLLocalStatsManager(String localFileName){
+		this.localFile = new File(localFileName);
 	}
 
 	@Override

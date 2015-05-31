@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
 public class WebLauncherMenuButton extends MenuButton{
-	
+
+	private static final long serialVersionUID = 1L;
 	private String url;
 	
 	public WebLauncherMenuButton(String url, String buttonName,
