@@ -1,4 +1,4 @@
-package test.g2d;
+package main;
 
 import model.Game;
 import model.scores.LocalScoreManager;
@@ -14,7 +14,7 @@ import view2d.menu.button.GameMenuButton;
 import view2d.menu.button.HighscoresButton;
 import assetsPc.Assets;
 
-public class AlphaGameTest01 {
+public class AlphaGame {
 	
 	public final static int PORT = 8080;
 	

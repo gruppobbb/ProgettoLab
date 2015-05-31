@@ -36,7 +36,7 @@ public class SimpleLanes2DSpawnerM implements SpawnLogic {
 	 */
 	@Override
 	public Mob[] spawnMob() {		
-		mobs = new Mob[rand.nextInt(N-1) + 1];
+		mobs = new Mob[rand.nextInt(N-2) + 1];
 		for (int i = 0; i < mobs.length; i++) {
 			randX =(int)(laneWidth/2  + (rand.nextInt(N) * laneWidth)) ;
 			mobs[i] = new Mob2D(new Coordinate(randX, -200, 0),	7);
