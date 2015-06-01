@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
+import model.scores.LocalScoreManager;
+import model.scores.ManagerKeeper;
+import model.scores.XMLLocalStatsManager;
 import model2D.mobs.Mob2D;
 import model2D.ship.Ship2D;
 import view2d.RGameCanvas;
@@ -21,6 +24,8 @@ import control.Controller2D;
 public class TestRender01 {
 	
 	public static void main(String[] args) {
+		ManagerKeeper.getInstance().setLocalStats(new XMLLocalStatsManager("web/localstats.xml"));
+		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
 		
 		int width = 500;
 		int height = 500;
