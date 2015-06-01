@@ -42,6 +42,7 @@ public class ScoreKeeper {
 	 * @return Lista dei 10 punteggi piu' alti
 	 */
 	public ArrayList<ScoreEntry> getHighScores(){
+		trimScoreList();
 		return highScores;
 	}
 
@@ -49,14 +50,17 @@ public class ScoreKeeper {
 	 * Aggiorna la lista dei punteggi.
 	 */
 	public void updateList(){
-		try {
+		if (scoreManager != null) {
+			try {
+				highScores.clear();
+				scoreManager.loadScores(highScores);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else
 			highScores.clear();
-			scoreManager.loadScores(highScores);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	/**
@@ -64,17 +68,21 @@ public class ScoreKeeper {
 	 * @param score Nuovo punteggio
 	 */
 	public void addScore(long score){
-		if(score > localStats.getPersonalBest()){
-			localStats.setPersonalBest(score);
-		}
-		highScores.add(new ScoreEntry(localStats.getPlayerName(), score));
-		try {
-			trimScoreList();
-			scoreManager.saveScores(highScores, localStats.getPlayerName());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (localStats != null && scoreManager != null) {
+			if (score > localStats.getPersonalBest()) {
+				localStats.setPersonalBest(score);
+			}
+			highScores.add(new ScoreEntry(localStats.getPlayerName(), score));
+			try {
+				trimScoreList();
+				scoreManager.saveScores(highScores, localStats.getPlayerName());
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			highScores.add(new ScoreEntry("Player", score));
 		}
 	}
 	
@@ -86,6 +94,24 @@ public class ScoreKeeper {
 		Collections.reverse(highScores);
 		if (highScores.size() > MAX_SCORES) {
 			highScores.subList(MAX_SCORES, highScores.size()).clear();
+		}
+	}
+	
+	public String getPlayerName(){
+		if(localStats != null){
+			return localStats.getPlayerName();
+		}
+		else
+			return "Player";	
+	}
+	
+	public long getPersonalBest(){
+		if(localStats != null){
+			return localStats.getPersonalBest();
+		}else{
+			Collections.sort(highScores);
+			Collections.reverse(highScores);
+			return highScores.get(0).getScore();
 		}
 	}
 	

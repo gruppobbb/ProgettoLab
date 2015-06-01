@@ -6,10 +6,7 @@ import java.awt.TextArea;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.scores.IClient;
-import model.scores.ManagerKeeper;
 import model.scores.ScoreKeeper;
-import model2D.client.LocalClient;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
@@ -37,9 +34,9 @@ public class HighscoresButton extends MenuButton{
 		
 		TextArea personalArea = new TextArea(
 				"Hello, " +
-				ManagerKeeper.getInstance().getLocalStats().getPlayerName() + "!\n" +
+				scores.getPlayerName() + "!\n" +
 				"Your Personal Best is " + 
-				ManagerKeeper.getInstance().getLocalStats().getPersonalBest()
+				scores.getPersonalBest()
 		);
 		personalArea.setEditable(false);
 		
@@ -51,10 +48,10 @@ public class HighscoresButton extends MenuButton{
 	
 	private String getScoreText(){
 		String scoreText = "Highscores\n";
-		for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
-			scoreText = scoreText +
-					(i+1) + ") " +  scores.getHighScores().get(i).getPlayerName() +
-					" - " + scores.getHighScores().get(i).getScore() + "\n";
+		
+		for (int i = 0; i < scores.getHighScores().size()-1; i++) {
+			scoreText = scoreText+((i+1) + ") " +  scores.getHighScores().get(i).getPlayerName() +
+					" - " + scores.getHighScores().get(i).getScore() + "\n");
 		}
 		return scoreText;
 	}

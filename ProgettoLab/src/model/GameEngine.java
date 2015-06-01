@@ -6,7 +6,6 @@ import java.util.Observable;
 import model.mobs.Mob;
 import model.movement.Moveable;
 import model.scores.ScoreCalculator;
-import model.scores.ScoreKeeper;
 import model.ships.Ship;
 import assetsPc.audio.AudioPlayer;
 
@@ -24,7 +23,6 @@ public class GameEngine extends Observable implements Runnable {
 	private boolean collided;
 	private AudioPlayer explosionPlayer;
 	private ScoreCalculator scoreCalculator;
-	private ScoreKeeper scoreKeeper;
 	private Object mPauseLock;
     private boolean mPaused;
     private boolean mFinished;   
@@ -40,7 +38,6 @@ public class GameEngine extends Observable implements Runnable {
 		this.bounds = viewBounds;
 		this.sleepTime = 10; //default
 		this.scoreCalculator = new ScoreCalculator();
-		this.scoreKeeper = ScoreKeeper.getInstance();
 		
 		//proprietà iniziali del runnable
 		mPauseLock = new Object();
@@ -162,7 +159,7 @@ public class GameEngine extends Observable implements Runnable {
 	 */
 	public void setCollided(boolean collided) {
 		this.collided = collided;
-		scoreKeeper.addScore(scoreCalculator.getScore());
+		scoreCalculator.convalidateScore();
 		setChanged();
 		notifyObservers();
 	}
