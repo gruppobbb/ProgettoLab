@@ -29,34 +29,34 @@ public class HighscoresButton extends MenuButton{
 	 */
 	@Override
 	public void action() {
-		// Fa partire il client per aggiornare i punteggi
-//		IClient client = new LocalClient();
-//		client.start(8080, "127.0.0.1");
-		JFrame frame = new JFrame("Highscores");
-		JPanel panel = new JPanel(new GridLayout(2, 1));
-		frame.getContentPane().add(panel);
+			// Fa partire il client per aggiornare i punteggi
+			//		IClient client = new LocalClient();
+			//		client.start(8080, "127.0.0.1");
+					JFrame frame = new JFrame("Highscores");
+					JPanel panel = new JPanel(new GridLayout(2, 1));
+					frame.getContentPane().add(panel);
+					
+					TextArea scoreArea = new TextArea(getScoreText());
+					scoreArea.setEditable(false);
+					
+					TextArea personalArea = new TextArea(
+							"Hello, " +
+							scores.getPlayerName() + "!\n" +
+							"Your Personal Best is " + 
+							scores.getPersonalBest()
+					);
+					personalArea.setEditable(false);
+					
+					panel.add(personalArea);
+					panel.add(scoreArea);
+					frame.setSize(400, 600);
+					frame.setVisible(true);
 		
-		TextArea scoreArea = new TextArea(getScoreText());
-		scoreArea.setEditable(false);
-		
-		TextArea personalArea = new TextArea(
-				"Hello, " +
-				scores.getPlayerName() + "!\n" +
-				"Your Personal Best is " + 
-				scores.getPersonalBest()
-		);
-		personalArea.setEditable(false);
-		
-		panel.add(personalArea);
-		panel.add(scoreArea);
-		frame.setSize(400, 600);
-		frame.setVisible(true);
 	}
 	
 	private String getScoreText(){
 		String scoreText = "Highscores\n";
-		
-		for (int i = 0; i < scores.getHighScores().size()-1; i++) {
+		for (int i = 0; i < scores.getHighScores().size(); i++) {
 			scoreText = scoreText+((i+1) + ") " +  scores.getHighScores().get(i).getPlayerName() +
 					" - " + scores.getHighScores().get(i).getScore() + "\n");
 		}
