@@ -59,12 +59,14 @@ public class Assets {
 	
 	private void loadImages(){
 		try {
-			images.put(IMAGE_BUTTON_OUT_FOCUS_B, ImageIO.read(new File ("res/menu/buttons/bounded/outFocusBoundedGreenButton.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonUnpressed.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_B, ImageIO.read(new File("res/menu/buttons/bounded/onFocusBoundedGreenButtonPressed.png")));
-			images.put(IMAGE_BUTTON_OUT_FOCUS_F, ImageIO.read(new File ("res/menu/buttons/fullGreen/outFocusfullGreenButton.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonUnpressed.png")));
-			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_F, ImageIO.read(new File("res/menu/buttons/fullGreen/onFocusFullGreenButtonPressed.png")));
+			images.put(IMAGE_BUTTON_OUT_FOCUS_B, ImageIO.read(new File ("res/images/buttons/bounded/outFocusBoundedGreenButton.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_B, ImageIO.read(new File("res/images/buttons/bounded/onFocusBoundedGreenButtonUnpressed.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_B, ImageIO.read(new File("res/images/buttons/bounded/onFocusBoundedGreenButtonPressed.png")));
+			images.put(IMAGE_BUTTON_OUT_FOCUS_F, ImageIO.read(new File ("res/images/buttons/fullGreen/outFocusfullGreenButton.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_UNPRESSED_F, ImageIO.read(new File("res/images/buttons/fullGreen/onFocusFullGreenButtonUnpressed.png")));
+			images.put(IMAGE_BUTTON_ONFOCUS_PRESSED_F, ImageIO.read(new File("res/images/buttons/fullGreen/onFocusFullGreenButtonPressed.png")));
+			
+			images.put(IMAGE_BACKGROUND, ImageIO.read(new File("res/images/background/space.jpg")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +94,7 @@ public class Assets {
 	public static final int IMAGE_BUTTON_OUT_FOCUS_F = 3;
 	public static final int IMAGE_BUTTON_ONFOCUS_PRESSED_F = 4;
 	public static final int IMAGE_BUTTON_ONFOCUS_UNPRESSED_F = 5;
+	public static final int IMAGE_BACKGROUND = 6;
 	
 	public static final int FONT_GENERAL = 0;
 	

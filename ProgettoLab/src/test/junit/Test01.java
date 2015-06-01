@@ -6,7 +6,11 @@ import model.MobsManager;
 import model.mobs.Mob;
 
 import org.junit.Test;
-
+/**
+ * 
+ * @author Alberto
+ *
+ */
 public class Test01{
 
 	@Test

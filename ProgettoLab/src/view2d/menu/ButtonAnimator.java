@@ -6,6 +6,10 @@ package view2d.menu;
  */
 public interface ButtonAnimator {
 	
+	/**
+	 * Metodo per l'esecuzione dell'animazione.
+	 * @param running
+	 */
 	public void runAnimation(boolean running);
 
 }

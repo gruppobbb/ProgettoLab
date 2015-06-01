@@ -32,7 +32,6 @@ public class RGameCanvas extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 2871408762813611270L;
 	
-	
 	private int width, height;
 	
 	private Ship2D ship;
@@ -49,18 +48,14 @@ public class RGameCanvas extends Canvas implements Runnable{
 	private BufferStrategy buffer;
 	private int bufferStrategySize;
 	private Graphics2D g;
-	private Color bgColor = new Color(43,62,84);
+	private Color bgColor;
 	
 	private BufferedImage background;
-	private BufferedImage gameScene;
-	private Graphics2D gameSceneGraphics;
 	private BufferedImage hud;
 	private Graphics2D hudGraphics;
 	
 	private boolean debug;
-	private GraphicsConfiguration config = GraphicsEnvironment.getLocalGraphicsEnvironment()
-    														  .getDefaultScreenDevice() 
-    														  .getDefaultConfiguration();
+	private GraphicsConfiguration config;
 	
 	private Drawer2D mobDrawer;
 	private Drawer2D shipDrawer;
@@ -72,7 +67,12 @@ public class RGameCanvas extends Canvas implements Runnable{
 		this.height = height;
 		this.ship = ship;
 		this.mobsManager = mobsManager;
-		setBackground(Color.red);
+		config = GraphicsEnvironment.getLocalGraphicsEnvironment()
+				  .getDefaultScreenDevice() 
+				  .getDefaultConfiguration();
+		
+		
+		
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
@@ -84,11 +84,12 @@ public class RGameCanvas extends Canvas implements Runnable{
 		mobDrawer = new SpriteDrawer(Assets.SPRITE_DEFAULT);
 		shipDrawer = new SpriteDrawer(Assets.SPRITE_DEFAULT);
 		
-		gameScene = create(width, height, true);
-		gameSceneGraphics = (Graphics2D)gameScene.getGraphics();
 		hud = create(width, height, true);
 		hudGraphics = (Graphics2D) hud.getGraphics();
-		
+		bgColor = new Color(43,62,84);
+		setBackground(bgColor);
+		scoreColor = new Color(255,255,255,255);
+		transparetColor = new Color(0,0,0,0);
 	}
 	
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager, ScoreCalculator scoreCalculator) {
@@ -160,26 +161,22 @@ public class RGameCanvas extends Canvas implements Runnable{
 		}
 	}
 	
-	//Refresh del video.
 	private void refresh(){
 		buffer.show();
 		g = (Graphics2D)buffer.getDrawGraphics();
 	}
 	
-	// create a hardware accelerated image 
-    public final BufferedImage create(final int width, final int height,
+    private final BufferedImage create(final int width, final int height,
     		final boolean alpha) {
     	return config.createCompatibleImage(width, height, alpha
     			? Transparency.TRANSLUCENT : Transparency.OPAQUE); 
     }
 	
-	//Aggiornamento del frame da mandare a video.
 	private void tick(Graphics2D g){
 		drawBackground(g);
 		drawEntities(g);
 		drawHUD(g);
 	}
-	
 	
 	private void drawBackground(Graphics2D g){
 		if(background == null){
@@ -202,12 +199,11 @@ public class RGameCanvas extends Canvas implements Runnable{
 			shipDrawer.draw(g, ship.getCoordinate());
 	
 	}
-	
-	
-	
-	
-	
 
+	/**
+	 * Metodo per il setting di una immagine per il background.
+	 * @param background
+	 */
 	public void setBackground(BufferedImage background) {
 		this.background = background;
 	}
@@ -236,7 +232,13 @@ public class RGameCanvas extends Canvas implements Runnable{
 	    yScoreDraw = (fm.getAscent() + ( scoreAreaHeight - fm.getAscent() + fm.getDescent() ) / 2);
 	}
 	
-	
+	/**
+	 * Metodo per il setting della posizione dell'area in cui disegnare lo score e la sua dimensione.
+	 * @param xScoreArea
+	 * @param yScoreArea
+	 * @param scoreAreaWidth
+	 * @param scoreAreaHeight
+	 */
 	public void setScoreMetrics(int xScoreArea, int yScoreArea, int scoreAreaWidth, int scoreAreaHeight){
 		this.xScoreArea = xScoreArea;
 		this.yScoreArea = yScoreArea;
@@ -244,7 +246,7 @@ public class RGameCanvas extends Canvas implements Runnable{
 		this.scoreAreaHeight = scoreAreaHeight;
 	}
 	
-	private Color scoreColor = new Color(255,255,255,255);
+	private Color scoreColor;
 	private int xScoreArea, yScoreArea;
 	private void drawHUD(Graphics2D g){
 		clearGraphics(hudGraphics);
@@ -263,43 +265,23 @@ public class RGameCanvas extends Canvas implements Runnable{
 		graphics2d.drawString(formattedScore, xScoreArea+xScoreDraw, yScoreArea+ yScoreDraw);
 	}
 	
+	private Color transparetColor;
 	
 	private void clearGraphics(Graphics2D graphics2d){
 		graphics2d.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR)); 
-		graphics2d.setBackground(new Color(255,255,255,0));
+		graphics2d.setBackground(transparetColor);
 		graphics2d.clearRect(0, 0, width, height); 
 		graphics2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public RenderInfo getRenderinfo(){
 		return info;
 	}
 	
+	/**
+	 * Classe che permette di recuperare informazioni sullo stato del renderer.
+	 * @author jan
+	 */
 	public class RenderInfo extends Observable{
 		private int lastFPS;
 		private double renderTimeAVG;
@@ -310,6 +292,11 @@ public class RGameCanvas extends Canvas implements Runnable{
 			super.addObserver(o);
 		}
 		
+		/**
+		 * Caricamento dello stato.
+		 * @param lastFPS
+		 * @param renderTimeAVG
+		 */
 		public void setLastInfo(int lastFPS, double renderTimeAVG) {
 			this.lastFPS = lastFPS;
 			this.renderTimeAVG = renderTimeAVG;

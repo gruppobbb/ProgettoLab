@@ -22,7 +22,7 @@ import assetsPc.audio.AudioPlayer;
 import control.Controller2D;
 
 /**
- * Componente che si occupa dell'assemblaggio di tutto ciò che serve per giocare una partita single player in 2D.
+ * Componente che si occupa dell'assemblaggio di tutto ciï¿½ che serve per giocare una partita single player in 2D.
  * @author Max
  */
 public class SinglePlayer2D implements Game, Observer {
@@ -80,7 +80,7 @@ public class SinglePlayer2D implements Game, Observer {
 	 */
 	@Override
 	public void pause() {
-		//La pausa non è stata implementata nella versione 2D del gioco		
+		//La pausa non ï¿½ stata implementata nella versione 2D del gioco		
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class SinglePlayer2D implements Game, Observer {
 
 	/**
 	 * Fornisce il reference all'oggetto {@link GameCanvas} utilizzato nella seguente partita.
-	 * @return canvas su cui è rappresentata la partita corrente
+	 * @return canvas su cui ï¿½ rappresentata la partita corrente
 	 */
 	public Canvas getGameCanvas() {
 		return gameCanvas;
@@ -169,5 +169,6 @@ public class SinglePlayer2D implements Game, Observer {
 		//istanzio il controllo
 		controller = new Controller2D(ship, WIDTH-shipHalfWidth, shipHalfWidth);
 		gameCanvas.addKeyListener(controller);
+		gameCanvas.setBackground(Assets.getLoader().getImage(Assets.IMAGE_BACKGROUND));
 	}
 }
