@@ -47,7 +47,8 @@ public class ScoreKeeper {
 	}
 
 	/**
-	 * Aggiorna la lista dei punteggi.
+ * Aggiorna la lista dei punteggi. Qualora non fossero presente uno scoreManager, 
+ * si lavora solo in locale, con una lista di punteggi temporanea
 	 */
 	public void updateList(){
 		if (scoreManager != null) {
@@ -65,6 +66,8 @@ public class ScoreKeeper {
 	
 	/**
 	 * Metodo per aggiungere un nuovo punteggio, viene chiamato a fine partita.
+	 * Qualora non fossero presenti dei gestori di LocalStats e ScoreManager, 
+	 * si lavora solo in locale, con una lista di punteggi temporanea
 	 * @param score Nuovo punteggio
 	 */
 	public void addScore(long score){
@@ -97,6 +100,11 @@ public class ScoreKeeper {
 		}
 	}
 	
+	/**
+	 * Ritorna il nome del giocatore, settandone uno di default qualora non siano presenti i manager
+	 * @return
+	 */
+	
 	public String getPlayerName(){
 		if(localStats != null){
 			return localStats.getPlayerName();
@@ -105,6 +113,10 @@ public class ScoreKeeper {
 			return "Player";	
 	}
 	
+	/**
+	 * Ritorna il punteggio migliore del giocatore
+	 * @return
+	 */
 	public long getPersonalBest(){
 		if(localStats != null){
 			return localStats.getPersonalBest();

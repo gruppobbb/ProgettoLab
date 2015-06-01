@@ -20,6 +20,7 @@ public class AlphaGame {
 	
 	public static void main(String[] args) {
 
+		//OPZIONALI
 		ManagerKeeper.getInstance().setLocalStats(new XMLLocalStatsManager("web/localstats.xml"));
 		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
 		
@@ -42,7 +43,6 @@ public class AlphaGame {
 		buttons[0].setButtonAnimator(new SimpleButtonAnimation(buttons[0],3));
 		buttons[0].setBFont(Assets.FONT_GENERAL, 32.f);
 		
-//		buttons[1] = new WebLauncherMenuButton("http://localhost:8080/highscores", "Highscore", imageSet);
 		buttons[1] = new HighscoresButton("Highscores", imageSet);
 		buttons[1].setButtonAnimator(new SimpleButtonAnimation(buttons[1],3));
 		buttons[1].setBFont(Assets.FONT_GENERAL, 32.f);

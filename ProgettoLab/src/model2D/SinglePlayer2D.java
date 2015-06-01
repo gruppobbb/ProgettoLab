@@ -98,7 +98,6 @@ public class SinglePlayer2D implements Game, Observer {
 		menuFrame.setEnabled(true);
 		menuFrame.toFront();
         menuFrame.repaint();
-        engine.getScoreCalculator().convalidateScore();
 	}
 
 	/**
