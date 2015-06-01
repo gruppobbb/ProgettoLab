@@ -12,6 +12,10 @@ import java.io.IOException;
  */
 public class BFont {
 	private Font myFont;
+	
+	/**
+	 * @param path Path del font
+	 */
 	public BFont(String path) {
 		File f = new File(path);
 		try {
@@ -23,6 +27,11 @@ public class BFont {
 		}
 	}
 	
+	/**
+	 * Restituisce il font ridimensionato alla dimensione size.
+	 * @param size dimensione del font
+	 * @return font con dimensione size
+	 */
 	public Font getSizedFont(float size){
 		return myFont.deriveFont(size);
 	}

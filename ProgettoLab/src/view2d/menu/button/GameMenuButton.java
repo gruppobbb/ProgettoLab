@@ -46,6 +46,9 @@ public class GameMenuButton extends MenuButton{
 		this.game = game;
 	}
 
+	/**
+	 * @see MenuButton
+	 */
 	@Override
 	public void action() {
 		if(parentMenu!= null ){

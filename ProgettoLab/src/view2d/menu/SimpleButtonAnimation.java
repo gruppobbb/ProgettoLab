@@ -18,6 +18,10 @@ public class SimpleButtonAnimation implements ButtonAnimator{
 	private int buttonImageWidth, buttonImageHeight;
 	private boolean needSave;
 	
+	/**
+	 * @param button Pulsante
+	 * @param maxShift shift massimo
+	 */
 	public SimpleButtonAnimation(MenuButton button, int maxShift) {
 		super();
 		this.button = button;

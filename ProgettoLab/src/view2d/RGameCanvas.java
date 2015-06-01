@@ -60,6 +60,12 @@ public class RGameCanvas extends Canvas implements Runnable{
 	private Drawer2D mobDrawer;
 	private Drawer2D shipDrawer;
 	
+	/**
+	 * @param width Larghezza della finestra di gioco
+	 * @param height Altezza della finestra di gioco
+	 * @param ship Ship dell'utente
+	 * @param mobsManager Manager per i mob
+	 */
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager) {
 		super();
 		setFocusable(true);
@@ -70,9 +76,6 @@ public class RGameCanvas extends Canvas implements Runnable{
 		config = GraphicsEnvironment.getLocalGraphicsEnvironment()
 				  .getDefaultScreenDevice() 
 				  .getDefaultConfiguration();
-		
-		
-		
 		
 		Dimension d = new Dimension(width, height);
 		setPreferredSize(d);
@@ -92,6 +95,13 @@ public class RGameCanvas extends Canvas implements Runnable{
 		transparetColor = new Color(0,0,0,0);
 	}
 	
+	/**
+	 * @param width Larghezza della finestra di gioco
+	 * @param height Altezza della finestra di gioco
+	 * @param ship Ship dell'utente
+	 * @param mobsManager Manager per i mob
+	 * @param scoreCalculator Calcolatore per lo score
+	 */
 	public RGameCanvas(int width, int height ,Ship2D ship, MobsManager mobsManager, ScoreCalculator scoreCalculator) {
 		this(width, height ,ship, mobsManager);
 		this.scoreCalculator = scoreCalculator;

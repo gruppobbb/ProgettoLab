@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 
 /**
  * Classe che rappresenta un singolo Sprite.
- *
  * @author Jan
  *
  */
@@ -18,6 +17,9 @@ public class Sprite {
 	private int height;
 	private BufferedImage image;
 	
+	/**
+	 * @param path Path della sprite
+	 */
 	public Sprite(String path) {
 		File file = new File(path);
 		if( file.exists() ){
@@ -35,14 +37,26 @@ public class Sprite {
 		height = image.getHeight();
 	}
 	
+	/**
+	 * Restituisce la {@link BufferedImage} della sprite.
+	 * @return immagine della sprite
+	 */
 	public BufferedImage getImage(){
 		return image;
 	}
 	
+	/**
+	 * Restituisce l'altezza della sprite.
+	 * @return altezza della sprite
+	 */
 	public int getHeight() {
 		return height;
 	}
 	
+	/**
+	 * Restituisce la larghezza della sprite.
+	 * @return larghezza della sprite
+	 */
 	public int getWidth() {
 		return width;
 	}

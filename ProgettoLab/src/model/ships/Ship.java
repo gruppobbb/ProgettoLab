@@ -27,18 +27,34 @@ public class Ship {
 		this.collisionRay = collisionRay;
 	}
 
+	/**
+	 * Ritorna le coordinate attuali della ship.
+	 * @return coordinate della ship
+	 */
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
 
+	/**
+	 * Imposta le coordinate della ship.
+	 * @param coordinate della ship
+	 */
 	public void setCoordinate(Coordinate coordinate) {
 		this.coordinate = coordinate;
 	}
 
+	/**
+	 * Restituisce il raggio di collisione della ship.
+	 * @return raggio di collisione della ship
+	 */
 	public double getCollisionRay() {
 		return collisionRay;
 	}
 
+	/**
+	 * Imposta il collision ray della ship.
+	 * @param collisionRay Raggio di collisione della ship
+	 */
 	public void setCollisionRay(double collisionRay) {
 		this.collisionRay = collisionRay;
 	}	

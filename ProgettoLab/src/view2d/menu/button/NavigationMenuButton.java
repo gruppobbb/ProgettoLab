@@ -31,6 +31,12 @@ public class NavigationMenuButton extends MenuButton{
 		this.nextMenu = nextMenu;
 	}
 
+	/**
+	 * @param parentMenu
+	 * @param nextMenu
+	 * @param buttonName
+	 * @param imageSet
+	 */
 	public NavigationMenuButton(BMenu parentMenu, BMenu nextMenu,String buttonName,
 			ButtonImageSet imageSet) {
 		super(buttonName, imageSet);
@@ -38,6 +44,9 @@ public class NavigationMenuButton extends MenuButton{
 		this.nextMenu = nextMenu;
 	}
 
+	/**
+	 * @see MenuButton
+	 */
 	@Override
 	public void action() {
 		if(nextMenu != null){

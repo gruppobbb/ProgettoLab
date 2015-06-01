@@ -11,10 +11,10 @@ import javax.sound.sampled.Clip;
 import assetsPc.audio.AudioLoader;
 
 /**
- * Classe per la gestone degli Assets del gioco.
+ * Classe per la gestone degli Assets del gioco. 
  * @author Jan
- *
  */
+//SINGLETON
 public class Assets {
 	
 	private static final Assets loader = new Assets();
@@ -23,7 +23,6 @@ public class Assets {
 	private HashMap<Integer,BFont> fonts = new HashMap<Integer,BFont>();
 	private HashMap<Integer, Clip> clips = new HashMap<Integer, Clip>();
 	
-	
 	private Assets(){
 		loadSprites();
 		loadImages();
@@ -31,26 +30,53 @@ public class Assets {
 		loadClips();
 	}
 	
+	/**
+	 * Restituisce l'istanza corrente di Assets.
+	 * @return istanza di {@link Assets}
+	 */
 	public static Assets getLoader(){
 		return loader;
 	}
 	
+	/**
+	 * Restituisce la sprite associata all'identificatore spriteID.
+	 * @param spriteID identificatore della sprite
+	 * @return {@link Sprite} associata a spriteID
+	 */
 	public Sprite getSprite(int spriteID){
 		return sprites.get(spriteID);
 	}
 	
+	/**
+	 * Restituisce l'immagine associata all'identificatore imageID.
+	 * @param imageID identificatore dell'immagine
+	 * @return {@link BufferedImage} associata a imageID
+	 */
 	public BufferedImage getImage(int imageID){
 		return images.get(imageID);
 	}
 	
+	/**
+	 * Restituisce il font associato all'identificatore fontID.
+	 * @param fontID identificatore del font
+	 * @return {@link BFont} associato a fontID
+	 */
 	public BFont getFont(int fontID){
 		return fonts.get(fontID);
 	}
 	
+	/**
+	 * Restituisce la clip associata all'identificatore fontID.
+	 * @param clipID identificatore della clip
+	 * @return {@link Clip} associata a clipID
+	 */
 	public Clip getClip(int clipID){
 		return clips.get(clipID);
 	}
 	
+	/**
+	 * Carica gli sprite necessari.
+	 */
 	private void loadSprites(){
 		sprites.put(SPRITE_DEFAULT, new Sprite("res/sprites/default.png"));
 		sprites.put(SPRITE_SHIP, new Sprite("res/sprites/static_ship.png"));

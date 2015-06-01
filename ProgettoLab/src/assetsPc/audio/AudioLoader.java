@@ -17,6 +17,10 @@ public class AudioLoader {
 	
 private Clip clip;
 
+	/**
+	 * @param soundPath Path della risorsa audio
+	 * @return {@link Clip} audio
+	 */
 	public Clip loadClip(String soundPath) {
 		try {
 	         File file = new File(soundPath);

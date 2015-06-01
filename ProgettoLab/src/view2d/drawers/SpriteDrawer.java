@@ -27,11 +27,17 @@ public class SpriteDrawer implements Drawer2D{
 		spriteDim = new Dimension(sprite.getWidth(), sprite.getHeight());
 	}
 	
+	/**
+	 * @see Drawer2D
+	 */
 	@Override
 	public void draw(Graphics g, Coordinate coo){
 		g.drawImage(sprite.getImage(), (int)coo.getX()-sprite.getWidth()/2,(int) coo.getY()-sprite.getHeight()/2, null);
 	}
 	
+	/**
+	 * @see Drawer2D
+	 */
 	@Override
 	public Dimension getSpriteDimension() {
 		return spriteDim;

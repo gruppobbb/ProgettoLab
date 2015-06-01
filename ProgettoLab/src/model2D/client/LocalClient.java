@@ -17,9 +17,8 @@ import model.scores.ManagerKeeper;
 /**
  * Client che permette di comunicare col Server locale su PC.
  * @author Giulia
- *
  */
-public class LocalClient implements IClient{
+public class LocalClient implements IClient {
 	
 	private File file;
 	
@@ -27,7 +26,9 @@ public class LocalClient implements IClient{
 		this.file = ManagerKeeper.getInstance().getScoreManager().getScoreFile();
 	}
 	
-	
+	/**
+	 * @see IClient
+	 */
 	@Override
 	public void start(int port, String hostName) {
 		
@@ -80,9 +81,5 @@ public class LocalClient implements IClient{
 			fileWriter.newLine();
 		}
 		fileWriter.close();
-		
 	}
-	
-
-
 }

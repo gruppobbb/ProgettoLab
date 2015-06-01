@@ -13,17 +13,32 @@ public class WebLauncherMenuButton extends MenuButton{
 	private static final long serialVersionUID = 1L;
 	private String url;
 	
+	/**
+	 * @param url
+	 * @param buttonName
+	 * @param imageSet
+	 * @param fontID
+	 * @param fontSize
+	 */
 	public WebLauncherMenuButton(String url, String buttonName,
 			ButtonImageSet imageSet, int fontID, float fontSize) {
 		super(buttonName, imageSet, fontID, fontSize);
 		this.url = url;
 	}
 
+	/**
+	 * @param url
+	 * @param buttonName
+	 * @param imageSet
+	 */
 	public WebLauncherMenuButton(String url, String buttonName, ButtonImageSet imageSet) {
 		super(buttonName, imageSet);
 		this.url = url;
 	}
 
+	/**
+	 * @see MenuButton
+	 */
 	@Override
 	public void action() {
 		if(Desktop.isDesktopSupported()){

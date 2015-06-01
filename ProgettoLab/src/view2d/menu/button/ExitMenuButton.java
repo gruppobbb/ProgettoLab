@@ -1,5 +1,7 @@
 package view2d.menu.button;
 
+import java.awt.Menu;
+
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
@@ -33,6 +35,9 @@ public class ExitMenuButton extends MenuButton{
 		super(buttonName, imageSet);
 	}
 
+	/**
+	 * @see MenuButton
+	 */
 	@Override
 	public void action() {
 		System.exit(0);

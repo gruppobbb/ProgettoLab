@@ -34,32 +34,52 @@ public class Mob {
 		this.collisionRay = collisionRay;
 	}
 
+	/**
+	 * Restituisce le coordinate attuali del mob.
+	 * @return {@link Coordinate} del mob
+	 */
 	public Coordinate getCoordinate() {
 		return coordinate;
 	}
 
+	/**
+	 * Imposta le coordinate del mob.
+	 * @param coordinate Coordinate del mob
+	 */
 	public void setCoordinate(Coordinate coordinate) {
 		this.coordinate = coordinate;
 	}
 
+	/**
+	 * Restituisce lo shift amount del mob.
+	 * @return shift amount
+	 */
 	public float getShiftAmount() {
 		return shiftAmount;
 	}
 
+	/**
+	 * Imposta lo shift amount del mob.
+	 * @param shift amount
+	 */
 	public void setShiftAmount(int shiftAmount) {
 		this.shiftAmount = shiftAmount;
 	}
 
+	/**
+	 * Restituisce l'attuale raggio di collisione del mob.
+	 * @return raggio di collisione
+	 */
 	public double getCollisionRay() {
 		return collisionRay;
 	}
 
+	/**
+	 * Imposta il raggio di collisione del mob.
+	 * @param collisionRay Raggio di collisione
+	 */
 	public void setCollisionRay(double collisionRay) {
 		this.collisionRay = collisionRay;
 	}
 	
-	@Override
-	public String toString() {
-		return "Mob at "+coordinate;
-	}
 }

@@ -30,7 +30,6 @@ public class Spawner implements Runnable {
 	}
 	
 	/**
-	 * 
 	 * @param manager {@link MobsManager} in cui porre i mob istanziati
 	 * @param spawnLogic logica di spawning da adottare
 	 * @param sleepTime tempo di sleep del thread

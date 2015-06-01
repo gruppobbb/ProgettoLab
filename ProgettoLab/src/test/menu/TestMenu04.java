@@ -32,7 +32,7 @@ public class TestMenu04 {
 			buttons[i] = new GameMenuButton(null, null, "Nuova Partita", imageSet2);
 			//buttons[i].setButtonAnimator(new SimpleButtonAnimation(buttons[i],5));
 			buttons[i].setBFont(Assets.FONT_GENERAL, 32.f);
-			menu.addButton(buttons[i]);
+			menu.addButtons(buttons[i]);
 		}
 		
 		//#### NOTATEMI ###

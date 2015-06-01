@@ -15,11 +15,18 @@ public class HighscoresButton extends MenuButton{
 	private static final long serialVersionUID = 1L;
 	private ScoreKeeper scores = ScoreKeeper.getInstance();
 	
+	/**
+	 * @param buttonName
+	 * @param imageSet
+	 */
 	public HighscoresButton(String buttonName,
 			ButtonImageSet imageSet) {
 		super(buttonName, imageSet);
 	}
 	
+	/**
+	 * @see MenuButton
+	 */
 	@Override
 	public void action() {
 		// Fa partire il client per aggiornare i punteggi

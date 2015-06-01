@@ -17,7 +17,7 @@ public class BMenu extends JFrame {
 	
 	/**
 	 * Creare un menu con come titolo menuTitle.
-	 * @param menuTitle
+	 * @param menuTitle Titolo
 	 */
 	public BMenu(String menuTitle) {
 		super();
@@ -46,11 +46,6 @@ public class BMenu extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
-	public void addButton(MenuButton button){
-		menuPanel.add(button);
-		pack();
-		setLocationRelativeTo(null);
-	}
 	
 	/**
 	 * Mostra il menu.

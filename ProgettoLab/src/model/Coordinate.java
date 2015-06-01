@@ -10,6 +10,11 @@ public class Coordinate {
 	private float y;
 	private float z;
 	
+	/**
+	 * @param x Coordinata X
+	 * @param y Coordinata Y
+	 * @param z Coordinata Z
+	 */
 	public Coordinate(float x, float y, float z) {
 		this.x = x;
 		this.y = y;
@@ -33,10 +38,5 @@ public class Coordinate {
 	}
 	public void setZ(float z) {
 		this.z = z;
-	}
-	
-	@Override
-	public String toString() {
-		return String.format("x: %s y: %s z: %s", x,y,z);
 	}
 }
