@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
+import model.scores.LocalScoreManager;
+import model.scores.ManagerKeeper;
+import model.scores.XMLLocalStatsManager;
 import model.spawning.Spawner;
 import model2D.ship.Ship2D;
 import model2D.spawner.SimpleRandom2DSpawnLogic;
@@ -16,6 +19,9 @@ import control.Controller2D;
 public class TestCollisioni01 {
 	
 	public static void main(String[] args) {
+		
+		ManagerKeeper.getInstance().setLocalStats(new XMLLocalStatsManager("web/localstats.xml"));
+		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
 		
 
 		Ship2D ship = new Ship2D(new Coordinate(400, 500, 0));

@@ -1,6 +1,9 @@
 package test.g2d;
 
 import model.Game;
+import model.scores.LocalScoreManager;
+import model.scores.ManagerKeeper;
+import model.scores.XMLLocalStatsManager;
 import model2D.SinglePlayer2D;
 import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
@@ -14,6 +17,8 @@ import assetsPc.Assets;
 public class TestMenuSP02 {
 	
 	public static void main(String[] args) {
+		ManagerKeeper.getInstance().setLocalStats(new XMLLocalStatsManager("web/localstats.xml"));
+		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
 		
 				
 		BMenu menu = new BMenu("Test");

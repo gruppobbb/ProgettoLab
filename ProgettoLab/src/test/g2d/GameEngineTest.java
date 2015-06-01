@@ -5,6 +5,9 @@ import javax.swing.JFrame;
 import model.Coordinate;
 import model.GameEngine;
 import model.MobsManager;
+import model.scores.LocalScoreManager;
+import model.scores.ManagerKeeper;
+import model.scores.XMLLocalStatsManager;
 import model.spawning.Spawner;
 import model2D.ship.Ship2D;
 import model2D.spawner.SimpleLanes2DSpawnerJ;
@@ -16,6 +19,10 @@ import control.Controller2D;
 public class GameEngineTest {
 	
 	public static void main(String[] args) {
+		
+		ManagerKeeper.getInstance().setLocalStats(new XMLLocalStatsManager("web/localstats.xml"));
+		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
+		
 		
 		final int width = 1280;
 		final int height = (width/16)*9;
