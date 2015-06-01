@@ -23,6 +23,8 @@ public class GameEngine extends Observable implements Runnable {
 	private boolean collided;
 	private AudioPlayer explosionPlayer;
 	private ScoreCalculator scoreCalculator;
+	private int scoreUpdateCounter;
+	private int scoreUpdateCounterLimit;
 	private Object mPauseLock;
     private boolean mPaused;
     private boolean mFinished;   
@@ -38,6 +40,8 @@ public class GameEngine extends Observable implements Runnable {
 		this.bounds = viewBounds;
 		this.sleepTime = 10; //default
 		this.scoreCalculator = new ScoreCalculator();
+		
+		scoreUpdateCounterLimit = (int)(1000 / sleepTime);	//aggiorna il punteggio ogni secondo
 		
 		//proprietà iniziali del runnable
 		mPauseLock = new Object();
@@ -71,7 +75,11 @@ public class GameEngine extends Observable implements Runnable {
 						mob);
 			}
 			
-			scoreCalculator.updateScore();
+			if(scoreUpdateCounter == scoreUpdateCounterLimit) {
+				scoreCalculator.updateScore();
+				scoreUpdateCounter = 0;
+			}
+			scoreUpdateCounter ++;
 			
 			try {
 				Thread.sleep(sleepTime);
@@ -185,6 +193,7 @@ public class GameEngine extends Observable implements Runnable {
 	 */
 	public void setSleepTime(long sleepTime) {
 		this.sleepTime = sleepTime;
+		scoreUpdateCounterLimit = (int)(1000 / sleepTime);
 	}
 	
 	/**
