@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><scores>
     <entry no="1">
-        <player>Dave</player>
+        <player>AAA</player>
         <score>1000</score>
     </entry>
     <entry no="2">
+        <player>AAA</player>
+        <score>1000</score>
+    </entry>
+    <entry no="3">
+        <player>Dave</player>
+        <score>1000</score>
+    </entry>
+    <entry no="4">
+        <player>AAA</player>
+        <score>950</score>
+    </entry>
+    <entry no="5">
         <player>Mark</player>
         <score>800</score>
     </entry>
-    <entry no="3">
+    <entry no="6">
         <player>AAA</player>
         <score>750</score>
     </entry>
-    <entry no="4">
+    <entry no="7">
         <player>John</player>
         <score>600</score>
     </entry>
-    <entry no="5">
+    <entry no="8">
         <player>AAA</player>
         <score>550</score>
     </entry>
-    <entry no="6">
+    <entry no="9">
         <player>AAA</player>
         <score>500</score>
     </entry>
-    <entry no="7">
-        <player>AAA</player>
-        <score>450</score>
-    </entry>
-    <entry no="8">
-        <player>Jean</player>
-        <score>400</score>
-    </entry>
-    <entry no="9">
-        <player>AAA</player>
-        <score>400</score>
-    </entry>
     <entry no="10">
         <player>AAA</player>
-        <score>350</score>
+        <score>450</score>
     </entry>
 </scores>
