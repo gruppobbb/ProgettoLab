@@ -40,6 +40,7 @@ public class SinglePlayer2D implements Observer {
 	private JFrame gameFrame;
 	private JFrame menuFrame;
 	private AudioPlayer bgmPlayer;
+	private AudioPlayer explosionPlayer;
 	
 	private static final int WIDTH = 700;
 	private static final int HEIGHT = (WIDTH/7)*8;
@@ -77,10 +78,12 @@ public class SinglePlayer2D implements Observer {
 	 * Conclude la partita.
 	 */
 	public void gameOver() {
+		explosionPlayer.play();
 		spawner.setToKill(true);	
 		engine.setToKill(true);	
 		gameCanvas.removeKeyListener(controller);
 		gameCanvas.stop();
+		engine.getScoreCalculator().convalidateScore();
 		bgmPlayer.stop();
 		try {Thread.sleep(1);} catch (InterruptedException e) {e.printStackTrace();}
 		gameFrame.dispose();
@@ -111,6 +114,7 @@ public class SinglePlayer2D implements Observer {
 		ship = new Ship2D(new Coordinate( WIDTH/2, y, 0));
 		viewBounds = new Coordinate(WIDTH, HEIGHT+200, 0);
 		bgmPlayer = new AudioPlayer(Assets.AUDIO_BGM, true);
+		explosionPlayer = new AudioPlayer(Assets.AUDIO_EXPLOSION, false);
 		mobsManager = new MobsManager();	//Istanzio un nuovo mobs manager
 	}
 	
@@ -120,7 +124,6 @@ public class SinglePlayer2D implements Observer {
 		gameFrame = createGameFrame();
 		
 		engine = new GameEngine(mobsManager,ship, viewBounds);
-		engine.setExplosionPlayer(new AudioPlayer(Assets.AUDIO_EXPLOSION, false));
 		engine.addObserver(this);
 		engine.getScoreCalculator().setCoeff(50);		
 		
