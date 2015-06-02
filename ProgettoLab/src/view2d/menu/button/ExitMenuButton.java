@@ -1,7 +1,5 @@
 package view2d.menu.button;
 
-import java.awt.Menu;
-
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 

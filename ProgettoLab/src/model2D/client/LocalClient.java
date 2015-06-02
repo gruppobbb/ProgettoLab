@@ -27,16 +27,15 @@ public class LocalClient implements IClient {
 	@Override
 	public void start(int port, String hostName) {
 		
-		try (
-				Socket clientSocket = new Socket(hostName, port);
-				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-				BufferedReader in = new BufferedReader(
-						new InputStreamReader(clientSocket.getInputStream()));
-				) {
-			
+		try {
+			Socket clientSocket = new Socket(hostName, port);
+			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+			BufferedReader in = new BufferedReader(
+					new InputStreamReader(clientSocket.getInputStream()));
 			sendScores(out);
 			out.println("SCORES SENT");
 			saveScores(in);
+			clientSocket.close();
 
 		} catch (UnknownHostException e) {
 			System.err.println("Impossibile connettersi all'host " + hostName);
