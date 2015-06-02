@@ -19,7 +19,6 @@ public class ScoreKeeper {
 	
 	private ScoreKeeper() {
 
-		
 		scoreManager = ManagerKeeper.getInstance().getScoreManager();
 		localStats = ManagerKeeper.getInstance().getLocalStats();
 		

@@ -133,7 +133,7 @@ public class SinglePlayer2D implements Game, Observer {
 		engine = new GameEngine(mobsManager,ship, viewBounds);
 		engine.setExplosionPlayer(new AudioPlayer(Assets.AUDIO_EXPLOSION, false));
 		engine.addObserver(this);
-		engine.getScoreCalculator().setCoeff(2);		
+		engine.getScoreCalculator().setCoeff(50);		
 		
 		createGameField();	//istanzia canvas + relativo controllo
 		

@@ -1,5 +1,9 @@
 package model.scores;
 
+/**
+ * Interfaccia che astrae sul componente client, che si occupa di dialogare con il server.
+ * @author Giulia
+ */
 public interface IClient {
 	
 	/**

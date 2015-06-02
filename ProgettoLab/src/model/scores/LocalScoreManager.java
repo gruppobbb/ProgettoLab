@@ -30,10 +30,16 @@ public class LocalScoreManager implements IScoreManager{
 	
 	private File scoreFile;
 	
+	/**
+	 * @param fileName Nome del file contenente i punteggi
+	 */
 	public LocalScoreManager(String fileName) {
 		scoreFile = new File(fileName);
 	}
 	
+	/**
+	 * @see IScoreManager
+	 */
 	@Override
 	public void saveScores(ArrayList<ScoreEntry> highScores, String playerName) throws IOException{
 		
@@ -74,6 +80,9 @@ public class LocalScoreManager implements IScoreManager{
 		}
 	}
 	
+	/**
+	 * @see IScoreManager
+	 */
 	@Override
 	public void loadScores(ArrayList<ScoreEntry> highScores) throws FileNotFoundException, IOException{
 		try {
@@ -108,6 +117,9 @@ public class LocalScoreManager implements IScoreManager{
 		
 	}
 
+	/**
+	 * @see IScoreManager
+	 */
 	@Override
 	public File getScoreFile() {
 		return scoreFile;

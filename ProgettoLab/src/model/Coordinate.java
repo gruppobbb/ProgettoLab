@@ -21,21 +21,44 @@ public class Coordinate {
 		this.z = z;
 	}
 	
+	/**
+	 * @return Coordinata X
+	 */
 	public float getX() {
 		return x;
 	}
+	
+	/**
+	 * @param x Coordinata X
+	 */
 	public void setX(float x) {
 		this.x = x;
 	}
+	
+	/**
+	 * @return Coordinata Y
+	 */
 	public float getY() {
 		return y;
 	}
+	
+	/**
+	 * @param y Coordinata Y
+	 */
 	public void setY(float y) {
 		this.y = y;
 	}
+	
+	/**
+	 * @return Coordinata Z
+	 */
 	public float getZ() {
 		return z;
 	}
+	
+	/**
+	 * @param z Coordinata Z
+	 */ 
 	public void setZ(float z) {
 		this.z = z;
 	}

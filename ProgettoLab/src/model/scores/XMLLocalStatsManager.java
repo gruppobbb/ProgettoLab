@@ -30,6 +30,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		this.localFile = new File(localFileName);
 	}
 
+	/**
+	 * @see ILocalStatsManager
+	 */
 	@Override
 	public void setPersonalBest(long score) {
 		try {
@@ -48,6 +51,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		}
 	}
 	
+	/**
+	 * @see ILocalStatsManager
+	 */
 	@Override
 	public long getPersonalBest() {
 		long personalBest = 0;
@@ -65,6 +71,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		return personalBest;
 	}
 
+	/**
+	 * @see ILocalStatsManager
+	 */
 	@Override
 	public void setPlayerName(String playerName) {
 		try {
@@ -83,6 +92,9 @@ public class XMLLocalStatsManager implements ILocalStatsManager{
 		}
 	}
 
+	/**
+	 * @see ILocalStatsManager
+	 */
 	@Override
 	public String getPlayerName() {
 		String playerName = "";

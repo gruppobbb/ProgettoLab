@@ -53,11 +53,6 @@ public class LocalClient implements IClient {
 		}
 	}
 	
-	/**
-	 * Manda i punteggi da locale a server.
-	 * @param out output verso il server
-	 * @throws IOException
-	 */
 	private void sendScores(PrintWriter out) throws IOException{
 		BufferedReader fileReader = new BufferedReader(new FileReader(file));
 		String fromUser;
@@ -67,11 +62,6 @@ public class LocalClient implements IClient {
 		fileReader.close();
 	}
 	
-	/**
-	 * Riceve i punteggi da server a locale.
-	 * @param in input da server
-	 * @throws IOException
-	 */
 	private void saveScores(BufferedReader in) throws IOException{
 		file.delete();
 		BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
