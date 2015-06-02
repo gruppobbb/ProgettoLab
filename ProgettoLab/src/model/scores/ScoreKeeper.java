@@ -77,7 +77,7 @@ public class ScoreKeeper {
 			highScores.add(new ScoreEntry(localStats.getPlayerName(), score));
 			try {
 				trimScoreList();
-				scoreManager.saveScores(highScores, localStats.getPlayerName());
+				scoreManager.saveScores(highScores);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

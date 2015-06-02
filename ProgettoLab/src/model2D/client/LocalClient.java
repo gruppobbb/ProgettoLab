@@ -1,18 +1,17 @@
 package model2D.client;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import model.scores.IClient;
 import model.scores.ManagerKeeper;
+import model.scores.ScoreEntry;
+import model.scores.ScoreKeeper;
 
 /**
  * Client che permette di comunicare col Server locale su PC.
@@ -20,11 +19,7 @@ import model.scores.ManagerKeeper;
  */
 public class LocalClient implements IClient {
 	
-	private File file;
-	
-	public LocalClient() {
-		this.file = ManagerKeeper.getInstance().getScoreManager().getScoreFile();
-	}
+	private ScoreKeeper scores = ScoreKeeper.getInstance();	
 	
 	/**
 	 * @see IClient
@@ -54,22 +49,22 @@ public class LocalClient implements IClient {
 	}
 	
 	private void sendScores(PrintWriter out) throws IOException{
-		BufferedReader fileReader = new BufferedReader(new FileReader(file));
-		String fromUser;
-		while ((fromUser = fileReader.readLine()) != null) {
-			out.println(fromUser);
+		for (int i = 0; i < ScoreKeeper.MAX_SCORES; i++) {
+			ScoreEntry scoreEntry = scores.getHighScores().get(i);
+			out.println(scoreEntry.getPlayerName() + "," + scoreEntry.getScore());
 		}
-		fileReader.close();
 	}
 	
 	private void saveScores(BufferedReader in) throws IOException{
-		file.delete();
-		BufferedWriter fileWriter = new BufferedWriter(new FileWriter(file, true));
+		ArrayList<ScoreEntry> highScores = new ArrayList<ScoreEntry>();
 		String fromServer;
 		while((fromServer = in.readLine()) != null){
-			fileWriter.write(fromServer);
-			fileWriter.newLine();
+			String[] entryValues = fromServer.split(",");
+			ScoreEntry entry = new ScoreEntry();
+			entry.setPlayerName(entryValues[0]);
+			entry.setScore(Long.parseLong(entryValues[1]));
+			highScores.add(entry);
 		}
-		fileWriter.close();
+		ManagerKeeper.getInstance().getScoreManager().saveScores(highScores);
 	}
 }

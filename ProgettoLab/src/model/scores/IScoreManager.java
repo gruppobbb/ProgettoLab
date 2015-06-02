@@ -18,7 +18,7 @@ public interface IScoreManager {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public void saveScores(ArrayList<ScoreEntry> highScores, String playerName) throws FileNotFoundException, IOException;
+	public void saveScores(ArrayList<ScoreEntry> highScores) throws FileNotFoundException, IOException;
 	
 	/**
 	 * Carica gli i punteggi.

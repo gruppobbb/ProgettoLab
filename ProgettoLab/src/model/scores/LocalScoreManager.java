@@ -41,7 +41,7 @@ public class LocalScoreManager implements IScoreManager{
 	 * @see IScoreManager
 	 */
 	@Override
-	public void saveScores(ArrayList<ScoreEntry> highScores, String playerName) throws IOException{
+	public void saveScores(ArrayList<ScoreEntry> highScores) throws IOException{
 		
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
