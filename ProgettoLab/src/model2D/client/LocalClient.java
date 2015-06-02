@@ -39,11 +39,9 @@ public class LocalClient implements IClient {
 
 		} catch (UnknownHostException e) {
 			System.err.println("Impossibile connettersi all'host " + hostName);
-			System.exit(1);
 		} catch (IOException e) {
 			System.err.println("Errore durante la comunicazione con l'host " +
 					hostName);
-			System.exit(1);
 		}
 	}
 	

@@ -6,7 +6,9 @@ import java.awt.TextArea;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.scores.IClient;
 import model.scores.ScoreKeeper;
+import model2D.client.LocalClient;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
 
@@ -30,8 +32,8 @@ public class HighscoresButton extends MenuButton{
 	@Override
 	public void action() {
 			// Fa partire il client per aggiornare i punteggi
-			//		IClient client = new LocalClient();
-			//		client.start(8080, "127.0.0.1");
+					IClient client = new LocalClient();
+					client.start(8080, "127.0.0.1");
 					JFrame frame = new JFrame("Highscores");
 					JPanel panel = new JPanel(new GridLayout(2, 1));
 					frame.getContentPane().add(panel);
