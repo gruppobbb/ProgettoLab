@@ -40,7 +40,7 @@ public class LocalClient implements IClient {
 				) {
 			
 			sendScores(out);
-			out.println("SENDING SCORES ONLINE");
+			out.println("SCORES SENT");
 			saveScores(in);
 
 		} catch (UnknownHostException e) {
