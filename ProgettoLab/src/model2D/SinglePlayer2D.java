@@ -8,7 +8,6 @@ import java.util.Observer;
 import javax.swing.JFrame;
 
 import model.Coordinate;
-import model.Game;
 import model.GameEngine;
 import model.MobsManager;
 import model.spawning.Spawner;
@@ -25,7 +24,7 @@ import control.Controller2D;
  * Componente che si occupa dell'assemblaggio di tutto ci� che serve per giocare una partita single player in 2D.
  * @author Max
  */
-public class SinglePlayer2D implements Game, Observer {
+public class SinglePlayer2D implements Observer {
 
 	private ArrayList<Thread> threads = new ArrayList<Thread>();	//contiene i thread che dovranno essere lanciati, messi in pausa e fermati
 	private MobsManager mobsManager;
@@ -53,9 +52,8 @@ public class SinglePlayer2D implements Game, Observer {
 	}
 	
 	/**
-	 * @see Game
+	 * Inizia la partita.
 	 */
-	@Override
 	public void start() {
 		setup();
 		gameFrame.getContentPane().add(gameCanvas);
@@ -76,17 +74,8 @@ public class SinglePlayer2D implements Game, Observer {
 	}
 	
 	/**
-	 * @see Game
+	 * Conclude la partita.
 	 */
-	@Override
-	public void pause() {
-		//La pausa non � stata implementata nella versione 2D del gioco		
-	}
-	
-	/**
-	 * @see Game
-	 */
-	@Override
 	public void gameOver() {
 		spawner.setToKill(true);	
 		engine.setToKill(true);	

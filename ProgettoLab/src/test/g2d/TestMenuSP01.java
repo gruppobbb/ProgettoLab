@@ -1,7 +1,5 @@
 package test.g2d;
 
-import assetsPc.Assets;
-import model.Game;
 import model.scores.LocalScoreManager;
 import model.scores.ManagerKeeper;
 import model.scores.XMLLocalStatsManager;
@@ -13,6 +11,7 @@ import view2d.menu.SimpleButtonAnimation;
 import view2d.menu.button.ExitMenuButton;
 import view2d.menu.button.GameMenuButton;
 import view2d.menu.button.NavigationMenuButton;
+import assetsPc.Assets;
 
 public class TestMenuSP01 {
 	
@@ -22,7 +21,7 @@ public class TestMenuSP01 {
 				
 		BMenu menu = new BMenu("Test");
 		
-		Game singlePlayerGame = new SinglePlayer2D(menu);		
+		SinglePlayer2D singlePlayerGame = new SinglePlayer2D(menu);		
 		
 		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS_B,
 				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_B,
@@ -35,7 +34,7 @@ public class TestMenuSP01 {
 		menu.showMenu();
 	}
 
-	private static void initMenu(Game singlePlayerGame, BMenu menu,
+	private static void initMenu(SinglePlayer2D singlePlayerGame, BMenu menu,
 			ButtonImageSet imageSet, MenuButton[] buttons) {
 		buttons[0] = new GameMenuButton(menu, singlePlayerGame, "Nuova Partita", imageSet);
 		buttons[0].setButtonAnimator(new SimpleButtonAnimation(buttons[0],3));

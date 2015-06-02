@@ -30,32 +30,23 @@
   </class>  
   <interface id="4" language="java" name="model.movement.Moveable" project="ProgettoLab" 
     file="/ProgettoLab/src/model/movement/Moveable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="167" y="115"/>    
+    <position height="-1" width="-1" x="600" y="72"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <interface id="5" language="java" name="model.Game" project="ProgettoLab" file="/ProgettoLab/src/model/Game.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="386" y="122"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </interface>  
-  <interface id="6" language="java" name="model.scores.IClient" project="ProgettoLab" 
+  <interface id="5" language="java" name="model.scores.IClient" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/IClient.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="248" y="213"/>    
+    <position height="-1" width="-1" x="184" y="254"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="7" language="java" name="model.scores.XMLLocalStatsManager" project="ProgettoLab" 
+  <class id="6" language="java" name="model.scores.XMLLocalStatsManager" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/XMLLocalStatsManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="123" y="378"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +55,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="model.spawning.Spawner" project="ProgettoLab" 
+  <class id="7" language="java" name="model.spawning.Spawner" project="ProgettoLab" 
     file="/ProgettoLab/src/model/spawning/Spawner.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1329" y="186"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="model.ships.Ship" project="ProgettoLab" 
+  <class id="8" language="java" name="model.ships.Ship" project="ProgettoLab" 
     file="/ProgettoLab/src/model/ships/Ship.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="837" y="329"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="model.Coordinate" project="ProgettoLab" 
+  <class id="9" language="java" name="model.Coordinate" project="ProgettoLab" 
     file="/ProgettoLab/src/model/Coordinate.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1029" y="633"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,7 +82,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="model.mobs.Mob" project="ProgettoLab" file="/ProgettoLab/src/model/mobs/Mob.java" 
+  <class id="10" language="java" name="model.mobs.Mob" project="ProgettoLab" file="/ProgettoLab/src/model/mobs/Mob.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1112" y="447"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="model.scores.ScoreKeeper" project="ProgettoLab" 
+  <class id="11" language="java" name="model.scores.ScoreKeeper" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/ScoreKeeper.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="423" y="361"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="model.scores.LocalScoreManager" project="ProgettoLab" 
+  <class id="12" language="java" name="model.scores.LocalScoreManager" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/LocalScoreManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="806" y="641"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="14" language="java" name="model.spawning.SpawnLogic" project="ProgettoLab" 
+  <interface id="13" language="java" name="model.spawning.SpawnLogic" project="ProgettoLab" 
     file="/ProgettoLab/src/model/spawning/SpawnLogic.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1402" y="429"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="15" language="java" name="model.scores.ScoreCalculator" project="ProgettoLab" 
+  <class id="14" language="java" name="model.scores.ScoreCalculator" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/ScoreCalculator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="676" y="329"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="model.MobsManager" project="ProgettoLab" 
+  <class id="15" language="java" name="model.MobsManager" project="ProgettoLab" 
     file="/ProgettoLab/src/model/MobsManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1103" y="275"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="17" language="java" name="model.scores.IScoreManager" project="ProgettoLab" 
+  <interface id="16" language="java" name="model.scores.IScoreManager" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/IScoreManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="568" y="526"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <interface id="18" language="java" name="model.scores.ILocalStatsManager" project="ProgettoLab" 
+  <interface id="17" language="java" name="model.scores.ILocalStatsManager" project="ProgettoLab" 
     file="/ProgettoLab/src/model/scores/ILocalStatsManager.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="182" y="550"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,12 +154,16 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
   <association id="19">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="20" name="scoreCalculator"/>      
       <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="22">    
@@ -176,48 +171,48 @@
       <attribute id="23" name="localStats"/>      
       <multiplicity id="24" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="25">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="17"/>  
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="16"/>  
   </realization>  
   <association id="26">    
-    <end type="SOURCE" refId="16" navigable="false">      
+    <end type="SOURCE" refId="15" navigable="false">      
       <attribute id="27" name="mobs"/>      
       <multiplicity id="28" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="29">    
     <bendpoint x="898" y="399"/>    
-    <end type="SOURCE" refId="9" navigable="false">      
+    <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="30" name="coordinate"/>      
       <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="32">    
-    <end type="SOURCE" refId="15" navigable="false">      
+    <end type="SOURCE" refId="14" navigable="false">      
       <attribute id="33" name="scores"/>      
       <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="35">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="18"/>  
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="17"/>  
   </realization>  
   <association id="36">    
-    <end type="SOURCE" refId="11" navigable="false">      
+    <end type="SOURCE" refId="10" navigable="false">      
       <attribute id="37" name="coordinate"/>      
       <multiplicity id="38" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="39">    
@@ -227,19 +222,19 @@
       <attribute id="40" name="bounds"/>      
       <multiplicity id="41" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="42">    
-    <end type="SOURCE" refId="8" navigable="false">      
+    <end type="SOURCE" refId="7" navigable="false">      
       <attribute id="43" name="spawnLogic"/>      
       <multiplicity id="44" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="45">    
-    <end type="SOURCE" refId="12" navigable="false">      
+    <end type="SOURCE" refId="11" navigable="false">      
       <attribute id="46" name="highScores"/>      
       <multiplicity id="47" minimum="0" maximum="2147483647"/>    
     </end>    
@@ -247,11 +242,11 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="48">    
-    <end type="SOURCE" refId="12" navigable="false">      
+    <end type="SOURCE" refId="11" navigable="false">      
       <attribute id="49" name="scoreManager"/>      
       <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="51">    
@@ -259,15 +254,15 @@
       <attribute id="52" name="ship"/>      
       <multiplicity id="53" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="54">    
-    <end type="SOURCE" refId="12" navigable="false">      
+    <end type="SOURCE" refId="11" navigable="false">      
       <attribute id="55" name="localStats"/>      
       <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="57">    
@@ -275,23 +270,23 @@
       <attribute id="58" name="scoreManager"/>      
       <multiplicity id="59" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="60">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="61" name="manager"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="61" name="manager"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="63">    
-    <end type="SOURCE" refId="12" navigable="false">      
+    <end type="SOURCE" refId="11" navigable="false">      
       <attribute id="64" name="scoreKeeper"/>      
       <multiplicity id="65" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="66">    
@@ -299,7 +294,7 @@
       <attribute id="67" name="mobsManager"/>      
       <multiplicity id="68" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="69">    

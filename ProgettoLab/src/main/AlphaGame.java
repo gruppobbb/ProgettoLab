@@ -1,6 +1,5 @@
 package main;
 
-import model.Game;
 import model.scores.LocalScoreManager;
 import model.scores.ManagerKeeper;
 import model.scores.XMLLocalStatsManager;
@@ -25,7 +24,7 @@ public class AlphaGame {
 		ManagerKeeper.getInstance().setScoreManager(new LocalScoreManager("web/scorelist.xml"));
 		
 		BMenu menu = new BMenu("Test");
-		Game singlePlayerGame = new SinglePlayer2D(menu);		
+		SinglePlayer2D singlePlayerGame = new SinglePlayer2D(menu);		
 		
 		ButtonImageSet imageSet = new ButtonImageSet(	Assets.IMAGE_BUTTON_OUT_FOCUS_B,
 				Assets.IMAGE_BUTTON_ONFOCUS_UNPRESSED_B,
@@ -37,7 +36,7 @@ public class AlphaGame {
 		menu.showMenu();
 	}
 	
-	private static void initMenu(Game singlePlayerGame, BMenu menu,
+	private static void initMenu(SinglePlayer2D singlePlayerGame, BMenu menu,
 			ButtonImageSet imageSet, MenuButton[] buttons) {
 		buttons[0] = new GameMenuButton(menu, singlePlayerGame, "Nuova Partita", imageSet);
 		buttons[0].setButtonAnimator(new SimpleButtonAnimation(buttons[0],3));

@@ -1,9 +1,9 @@
 package view2d.menu.button;
 
+import model2D.SinglePlayer2D;
 import view2d.menu.BMenu;
 import view2d.menu.ButtonImageSet;
 import view2d.menu.MenuButton;
-import model.Game;
 
 /**
  * {@link MenuButton} per l'avvio di una modalità.
@@ -14,7 +14,7 @@ public class GameMenuButton extends MenuButton{
 	
 	private static final long serialVersionUID = 6711130114931024959L;
 	private BMenu parentMenu;
-	private Game game;
+	private SinglePlayer2D game;
 	
 	/**
 	 * Crea un pulsante per l'avvio della modalià game.
@@ -25,7 +25,7 @@ public class GameMenuButton extends MenuButton{
 	 * @param fontID
 	 * @param fontSize
 	 */
-	public GameMenuButton(BMenu parentMenu, Game game, String buttonName,
+	public GameMenuButton(BMenu parentMenu, SinglePlayer2D game, String buttonName,
 			ButtonImageSet imageSet, int fontID, float fontSize) {
 		super(buttonName, imageSet, fontID, fontSize);
 		this.parentMenu = parentMenu;
@@ -39,7 +39,7 @@ public class GameMenuButton extends MenuButton{
 	 * @param buttonName
 	 * @param imageSet
 	 */
-	public GameMenuButton(BMenu parentMenu, Game game, String buttonName,
+	public GameMenuButton(BMenu parentMenu, SinglePlayer2D game, String buttonName,
 			ButtonImageSet imageSet) {
 		super(buttonName, imageSet);
 		this.parentMenu = parentMenu;
