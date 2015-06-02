@@ -284,6 +284,9 @@ public class RGameCanvas extends Canvas implements Runnable{
 		graphics2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 	}
 	
+	/**
+	 * @return {@link RenderInfo}
+	 */
 	public RenderInfo getRenderinfo(){
 		return info;
 	}
